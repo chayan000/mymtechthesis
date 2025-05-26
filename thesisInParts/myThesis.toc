@@ -22,86 +22,87 @@
 \contentsline {paragraph}{Contribution Title}{5}{paragraph*.16}%
 \contentsline {section}{\numberline {1.3}Organization of the Thesis}{5}{section.1.3}%
 \contentsline {chapter}{\chapternumberline {2}Literature Survey}{7}{chapter.2}%
-\contentsline {section}{\numberline {2.1}First Topic}{9}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Second Topic}{11}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Third Topic}{13}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}A subtopic}{15}{subsection.2.3.1}%
-\contentsline {chapter}{\chapternumberline {3}Fault Attack Lab Setup}{19}{chapter.3}%
-\contentsline {section}{\numberline {3.1}ChipWhisperer Setup}{20}{section.3.1}%
-\contentsline {section}{\numberline {3.2}ChipWhisperer Hardware Platform}{20}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Scope Boards (Capture Hardware)}{20}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Target Boards (Device Under Test - DUT)}{21}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Integrated Target on ChipWhisperer-Lite}{21}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Integrated Target on ChipWhisperer-Nano}{21}{subsection.3.2.4}%
-\contentsline {section}{\numberline {3.3}Software Environment}{21}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1} Installing the ChipWhisperer Software Environment}{21}{subsection.3.3.1}%
-\contentsline {subsubsection}{For Windows :}{22}{subsubsection*.21}%
-\contentsline {subsubsection}{for Linux:}{22}{subsubsection*.23}%
-\contentsline {subsubsection}{for MacOs}{23}{subsubsection*.24}%
-\contentsline {subsection}{\numberline {3.3.2}Directory Structure}{23}{subsection.3.3.2}%
-\contentsline {subsubsection}{Educational Focus}{24}{subsubsection*.25}%
-\contentsline {subsubsection}{Organized by Category}{24}{subsubsection*.26}%
-\contentsline {subsubsection}{Python and Hardware Integration}{24}{subsubsection*.27}%
-\contentsline {subsection}{\numberline {3.3.3}Scope API}{25}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Target API}{25}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}}{25}{subsection.3.3.5}%
-\contentsline {chapter}{\chapternumberline {4}Heading on level\xspace 0 (chapter)}{27}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Heading on level\xspace 1 (section)}{27}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Heading on level\xspace 2 (subsection)}{29}{subsection.4.1.1}%
-\contentsline {subsubsection}{Heading on level\xspace 3 (subsection)}{30}{subsubsection*.28}%
-\contentsline {paragraph}{Heading on level\xspace 4 (paragraph)}{31}{paragraph*.29}%
-\contentsline {section}{\numberline {4.2}Lists}{33}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Example for list\xspace (itemize)}{33}{subsection.4.2.1}%
-\contentsline {subsubsection}{Example for list\xspace (4*itemize)}{34}{subsubsection*.30}%
-\contentsline {subsection}{\numberline {4.2.2}Example for list\xspace (enumerate)}{37}{subsection.4.2.2}%
-\contentsline {subsubsection}{Example for list\xspace (4*enumerate)}{38}{subsubsection*.31}%
-\contentsline {subsection}{\numberline {4.2.3}Example for list\xspace (description)}{41}{subsection.4.2.3}%
-\contentsline {subsubsection}{Example for list\xspace (4*description)}{42}{subsubsection*.32}%
+\contentsline {chapter}{\chapternumberline {3}Fault Attack Lab Setup}{9}{chapter.3}%
+\contentsline {section}{\numberline {3.1}ChipWhisperer Setup}{10}{section.3.1}%
+\contentsline {section}{\numberline {3.2}ChipWhisperer Hardware Platform}{10}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Scope Boards (Capture Hardware)}{10}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Target Boards (Device Under Test - DUT)}{11}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Integrated Target on ChipWhisperer-Lite}{11}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Integrated Target on ChipWhisperer-Nano}{11}{subsection.3.2.4}%
+\contentsline {section}{\numberline {3.3}Software Environment}{11}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1} Installing the ChipWhisperer Software Environment}{11}{subsection.3.3.1}%
+\contentsline {subsubsection}{For Windows :}{12}{subsubsection*.18}%
+\contentsline {subsubsection}{for Linux:}{12}{subsubsection*.20}%
+\contentsline {subsubsection}{for MacOs}{13}{subsubsection*.21}%
+\contentsline {subsection}{\numberline {3.3.2}Directory Structure}{13}{subsection.3.3.2}%
+\contentsline {subsubsection}{Educational Focus}{14}{subsubsection*.22}%
+\contentsline {subsubsection}{Organized by Category}{14}{subsubsection*.23}%
+\contentsline {subsubsection}{Python and Hardware Integration}{14}{subsubsection*.24}%
+\contentsline {subsection}{\numberline {3.3.3}Scope API}{15}{subsection.3.3.3}%
+\contentsline {subsubsection}{$scope.adc.samples :$}{15}{subsubsection*.25}%
+\contentsline {subsubsection}{$scope.adc.timeout :$}{16}{subsubsection*.26}%
+\contentsline {subsubsection}{$scope.clock.adc\_src :$}{16}{subsubsection*.27}%
+\contentsline {subsubsection}{$glitch.clk\_src :$}{16}{subsubsection*.28}%
+\contentsline {subsubsection}{$scope.glitch.output :$}{16}{subsubsection*.29}%
+\contentsline {subsubsection}{$scope.glitch.trigger\_src :$}{16}{subsubsection*.30}%
+\contentsline {subsubsection}{$scope.glitch.repeat :$}{16}{subsubsection*.31}%
+\contentsline {subsubsection}{$scope.glitch.width :$}{16}{subsubsection*.32}%
+\contentsline {subsubsection}{$scope.glitch.offset :$}{16}{subsubsection*.33}%
+\contentsline {subsubsection}{$scope.glitch.ext\_offset :$}{16}{subsubsection*.34}%
+\contentsline {subsubsection}{$scope.arm() :$}{16}{subsubsection*.35}%
+\contentsline {subsubsection}{$scope.capture() :$}{16}{subsubsection*.36}%
+\contentsline {subsubsection}{$scope.get\_last\_trace() :$}{16}{subsubsection*.37}%
+\contentsline {subsection}{\numberline {3.3.4}Target API}{16}{subsection.3.3.4}%
+\contentsline {subsubsection}{$target.flush() :$}{17}{subsubsection*.38}%
+\contentsline {subsubsection}{$target.simpleserial\_write(cmd, data) :$}{17}{subsubsection*.39}%
+\contentsline {subsubsection}{$target.simpleserial\_read\_witherrors(cmd, length) :$}{17}{subsubsection*.40}%
+\contentsline {subsubsection}{$target.simpleserial\_wait\_ack(cmd, timeout=1) :$}{17}{subsubsection*.41}%
+\contentsline {subsection}{\numberline {3.3.5}}{17}{subsection.3.3.5}%
 \noindent \hrulefill \leavevmode \par 
-\contentsline {part}{I\hspace {1em}Part Title}{47}{part.1}%
-\contentsline {chapter}{\chapternumberline {5}Heading on level\xspace 0 (chapter)}{53}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Heading on level\xspace 1 (section)}{53}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Heading on level\xspace 2 (subsection)}{54}{subsection.5.1.1}%
-\contentsline {subsubsection}{Heading on level\xspace 3 (subsubsection)}{54}{subsubsection*.34}%
-\contentsline {paragraph}{Heading on level\xspace 4 (paragraph)}{54}{paragraph*.35}%
-\contentsline {section}{\numberline {5.2}Lists}{55}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Example for list\xspace (itemize)}{55}{subsection.5.2.1}%
-\contentsline {subsubsection}{Example for list\xspace (4*itemize)}{55}{subsubsection*.36}%
-\contentsline {subsection}{\numberline {5.2.2}Example for list\xspace (enumerate)}{55}{subsection.5.2.2}%
-\contentsline {subsubsection}{Example for list\xspace (4*enumerate)}{56}{subsubsection*.37}%
-\contentsline {subsection}{\numberline {5.2.3}Example for list\xspace (description)}{56}{subsection.5.2.3}%
-\contentsline {subsubsection}{Example for list\xspace (4*description)}{56}{subsubsection*.38}%
-\contentsline {subsection}{\numberline {5.2.4}Experimental Data}{57}{subsection.5.2.4}%
+\contentsline {chapter}{\chapternumberline {4}Real-world replication of state-of-the-art}{19}{chapter.4}%
+\contentsline {chapter}{\chapternumberline {5}Heading on level\xspace 0 (chapter)}{21}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Heading on level\xspace 1 (section)}{21}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Heading on level\xspace 2 (subsection)}{22}{subsection.5.1.1}%
+\contentsline {subsubsection}{Heading on level\xspace 3 (subsubsection)}{22}{subsubsection*.42}%
+\contentsline {paragraph}{Heading on level\xspace 4 (paragraph)}{22}{paragraph*.43}%
+\contentsline {section}{\numberline {5.2}Lists}{23}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Example for list\xspace (itemize)}{23}{subsection.5.2.1}%
+\contentsline {subsubsection}{Example for list\xspace (4*itemize)}{23}{subsubsection*.44}%
+\contentsline {subsection}{\numberline {5.2.2}Example for list\xspace (enumerate)}{23}{subsection.5.2.2}%
+\contentsline {subsubsection}{Example for list\xspace (4*enumerate)}{24}{subsubsection*.45}%
+\contentsline {subsection}{\numberline {5.2.3}Example for list\xspace (description)}{24}{subsection.5.2.3}%
+\contentsline {subsubsection}{Example for list\xspace (4*description)}{24}{subsubsection*.46}%
+\contentsline {subsection}{\numberline {5.2.4}Experimental Data}{25}{subsection.5.2.4}%
 \noindent \hrulefill \leavevmode \par 
-\contentsline {part}{II\hspace {1em}Part Title}{59}{part.2}%
-\contentsline {chapter}{\chapternumberline {6}Heading on level\xspace 0 (chapter)}{63}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Heading on level\xspace 1 (section)}{63}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Heading on level\xspace 2 (subsection)}{65}{subsection.6.1.1}%
-\contentsline {subsubsection}{Heading on level\xspace 3 (subsection)}{66}{subsubsection*.40}%
-\contentsline {paragraph}{Heading on level\xspace 4 (paragraph)}{67}{paragraph*.41}%
-\contentsline {section}{\numberline {6.2}Lists}{69}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Example for list\xspace (itemize)}{69}{subsection.6.2.1}%
-\contentsline {subsubsection}{Example for list\xspace (4*itemize)}{70}{subsubsection*.42}%
-\contentsline {subsection}{\numberline {6.2.2}Example for list\xspace (enumerate)}{73}{subsection.6.2.2}%
-\contentsline {subsubsection}{Example for list\xspace (4*enumerate)}{74}{subsubsection*.43}%
-\contentsline {subsection}{\numberline {6.2.3}Example for list\xspace (description)}{77}{subsection.6.2.3}%
-\contentsline {subsubsection}{Example for list\xspace (4*description)}{78}{subsubsection*.44}%
-\contentsline {chapter}{\chapternumberline {7}Heading on level\xspace 0 (chapter)}{83}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Heading on level\xspace 1 (section)}{83}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Heading on level\xspace 2 (subsection)}{85}{subsection.7.1.1}%
-\contentsline {subsubsection}{Heading on level\xspace 3 (subsection)}{86}{subsubsection*.45}%
-\contentsline {paragraph}{Heading on level\xspace 4 (paragraph)}{87}{paragraph*.46}%
-\contentsline {section}{\numberline {7.2}Lists}{89}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Example for list\xspace (itemize)}{89}{subsection.7.2.1}%
-\contentsline {subsubsection}{Example for list\xspace (4*itemize)}{90}{subsubsection*.47}%
-\contentsline {subsection}{\numberline {7.2.2}Example for list\xspace (enumerate)}{93}{subsection.7.2.2}%
-\contentsline {subsubsection}{Example for list\xspace (4*enumerate)}{94}{subsubsection*.48}%
-\contentsline {subsection}{\numberline {7.2.3}Example for list\xspace (description)}{97}{subsection.7.2.3}%
-\contentsline {subsubsection}{Example for list\xspace (4*description)}{98}{subsubsection*.49}%
+\contentsline {part}{I\hspace {1em}Part Title}{27}{part.1}%
+\contentsline {chapter}{\chapternumberline {6}Heading on level\xspace 0 (chapter)}{31}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Heading on level\xspace 1 (section)}{31}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Heading on level\xspace 2 (subsection)}{33}{subsection.6.1.1}%
+\contentsline {subsubsection}{Heading on level\xspace 3 (subsection)}{34}{subsubsection*.48}%
+\contentsline {paragraph}{Heading on level\xspace 4 (paragraph)}{35}{paragraph*.49}%
+\contentsline {section}{\numberline {6.2}Lists}{37}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Example for list\xspace (itemize)}{37}{subsection.6.2.1}%
+\contentsline {subsubsection}{Example for list\xspace (4*itemize)}{38}{subsubsection*.50}%
+\contentsline {subsection}{\numberline {6.2.2}Example for list\xspace (enumerate)}{41}{subsection.6.2.2}%
+\contentsline {subsubsection}{Example for list\xspace (4*enumerate)}{42}{subsubsection*.51}%
+\contentsline {subsection}{\numberline {6.2.3}Example for list\xspace (description)}{45}{subsection.6.2.3}%
+\contentsline {subsubsection}{Example for list\xspace (4*description)}{46}{subsubsection*.52}%
+\contentsline {chapter}{\chapternumberline {7}Heading on level\xspace 0 (chapter)}{51}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Heading on level\xspace 1 (section)}{51}{section.7.1}%
+\contentsline {subsection}{\numberline {7.1.1}Heading on level\xspace 2 (subsection)}{53}{subsection.7.1.1}%
+\contentsline {subsubsection}{Heading on level\xspace 3 (subsection)}{54}{subsubsection*.53}%
+\contentsline {paragraph}{Heading on level\xspace 4 (paragraph)}{55}{paragraph*.54}%
+\contentsline {section}{\numberline {7.2}Lists}{57}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Example for list\xspace (itemize)}{57}{subsection.7.2.1}%
+\contentsline {subsubsection}{Example for list\xspace (4*itemize)}{58}{subsubsection*.55}%
+\contentsline {subsection}{\numberline {7.2.2}Example for list\xspace (enumerate)}{61}{subsection.7.2.2}%
+\contentsline {subsubsection}{Example for list\xspace (4*enumerate)}{62}{subsubsection*.56}%
+\contentsline {subsection}{\numberline {7.2.3}Example for list\xspace (description)}{65}{subsection.7.2.3}%
+\contentsline {subsubsection}{Example for list\xspace (4*description)}{66}{subsubsection*.57}%
 \noindent \hrulefill \leavevmode \par 
-\contentsline {chapter}{\chapternumberline {8}Conclusion and Future Scope}{103}{chapter.8}%
-\contentsline {paragraph}{Future Works}{103}{paragraph*.50}%
-\contentsline {chapter}{Dissemination of The Work}{105}{chapter*.51}%
-\contentsline {chapter}{Other Publications}{107}{chapter*.52}%
-\contentsline {chapter}{About the Author}{109}{chapter*.53}%
-\contentsline {chapter}{Bibliography}{111}{chapter*.54}%
+\contentsline {chapter}{\chapternumberline {8}Conclusion and Future Scope}{71}{chapter.8}%
+\contentsline {paragraph}{Future Works}{71}{paragraph*.58}%
+\contentsline {chapter}{Dissemination of The Work}{73}{chapter*.59}%
+\contentsline {chapter}{Other Publications}{75}{chapter*.60}%
+\contentsline {chapter}{About the Author}{77}{chapter*.61}%
+\contentsline {chapter}{Bibliography}{79}{chapter*.62}%

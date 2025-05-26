@@ -160,6 +160,73 @@ import chipwhisperer as cw
 scope = cw.scope()
 \end{lstlisting}
 
+There are two types of \texttt{scope} : OpenADC for \texttt{ChipWhispererLite/Husky} and CWNano for \texttt{ChipWhispererNano}. The choice of scope depends on the specific hardware being used.
+\subsubsection{$scope.adc.samples :$} 
+This property sets the number of samples to capture by the ADC. It is useful for determining the length of the captured trace.
+maximum number of samples for Lite is 244000 and for Husky is 131070
+
+\subsubsection{$scope.adc.timeout :$}   
+
+\subsubsection{$scope.clock.adc\_src :$}
+
+\subsubsection{$glitch.clk\_src :$}    
+
+\subsubsection{$scope.glitch.output :$}
+
+\subsubsection{$scope.glitch.trigger\_src :$}    
+
+\subsubsection{$scope.glitch.repeat :$}
+
+\subsubsection{$scope.glitch.width :$}
+
+\subsubsection{$scope.glitch.offset :$}
+
+\subsubsection{$scope.glitch.ext\_offset :$}
+
+\subsubsection{$scope.arm() :$}
+
+\subsubsection{$scope.capture() :$}
+
+\subsubsection{$scope.get\_last\_trace() :$}
+
+
+
 \subsection{Target API}
+The \texttt{target} object in ChipWhisperer is used to manage the device under test (DUT) and perform operations such as loading firmware, executing commands, and capturing traces. It provides a high-level interface for interacting with the target device.
+ChipWhisperer provides two classes for UART communication:
+
+\begin{itemize}
+    \item \textbf{Simple Serial Target} (default)
+    \item \textbf{Simple Serial V2 Target}
+\end{itemize}
+
+The most straightforward way to create a target object in ChipWhisperer is by using the \texttt{cw.target} function. Here is a simple example:
+
+\begin{lstlisting}[language=Python]
+import chipwhisperer as cw
+scope = cw.scope()
+try:
+    if SS_VER == "SS_VER_2_1":
+        target_type = cw.targets.SimpleSerial2
+    else:
+        target_type = cw.targets.SimpleSerial
+except:
+    SS_VER="SS_VER_1_1"
+    target_type = cw.targets.SimpleSerial
+
+try:
+    target = cw.target(scope, target_type)
+\end{lstlisting}
+
+This code initializes the ChipWhisperer scope and sets up the Simple Serial target.
+
+some useful methods and properties of the \texttt{Simple Serial V2 Target} object include:
+\subsubsection{$target.flush() :$}
+
+\subsubsection{$target.simpleserial\_write(cmd, data) :$}
+
+\subsubsection{$target.simpleserial\_read\_witherrors(cmd, length) :$}
+
+\subsubsection{$target.simpleserial\_wait\_ack(cmd, timeout=1) :$}
 
 \subsection{}

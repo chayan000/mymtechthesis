@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.5.23)  25 MAY 2025 00:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.5.23)  26 MAY 2025 22:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1137,17 +1137,7 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
- (./myThesis.aux (./3_introduction/intro.aux)
-
-LaTeX Warning: Label `fig:dummy' multiply defined.
-
-
-LaTeX Warning: Label `fig:dummy' multiply defined.
-
-
-LaTeX Warning: Label `fig:dummy' multiply defined.
-
-)
+ (./myThesis.aux (./3_introduction/intro.aux))
 \openout1 = `myThesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
@@ -1328,35 +1318,10 @@ Overfull \hbox (2.98776pt too wide) detected at line 10
 
 [17]
 LaTeX Font Info:    Font shape `OT1/pzc/m/it' will be
-(Font)              scaled to size 11.00006pt on input line 61.
+(Font)              scaled to size 11.00006pt on input line 77.
 LaTeX Font Info:    Font shape `OT1/pzc/m/it' will be
-(Font)              scaled to size 7.70004pt on input line 61.
- [18]
-Overfull \hbox (1.58777pt too wide) detected at line 102
- \OT1/cmss/bx/n/12 103
- []
-
-
-Overfull \hbox (1.58777pt too wide) detected at line 104
- \OT1/cmss/bx/n/12 105
- []
-
-
-Overfull \hbox (1.58777pt too wide) detected at line 105
- \OT1/cmss/bx/n/12 107
- []
-
-
-Overfull \hbox (1.58777pt too wide) detected at line 106
- \OT1/cmss/bx/n/12 109
- []
-
-
-Overfull \hbox (1.58777pt too wide) detected at line 107
- \OT1/cmss/bx/n/12 111
- []
-
-) [19] [20
+(Font)              scaled to size 7.70004pt on input line 77.
+ [18]) [19] [20
 
 ] (./myThesis.lof) [21] [22
 
@@ -1383,20 +1348,20 @@ File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 
 
 
-] [7] (./4_lit_survey/first_topic.tex [8] [9] [10]) (./4_lit_survey/second_topic.tex [11] [12]) (./4_lit_survey/third_topic.tex [13] [14] [15])) (./5_contributory_part/contri-part.tex (./5_contributory_part/quote.tex) (./5_contributory_part/intro.tex [16] [17] [18
+] [7] (./4_lit_survey/first_topic.tex) (./4_lit_survey/second_topic.tex) (./4_lit_survey/third_topic.tex)) (./5_contributory_part/contri-part.tex (./5_contributory_part/intro.tex [8]) (./5_contributory_part/1-contri-chapter/chapter.tex [9
 
-]) (./5_contributory_part/1-contri-chapter/chapter.tex [19]
+]
 Overfull \hbox (5.00606pt too wide) in paragraph at lines 19--22
 \OT1/cmss/m/n/12 scope and tar-get func-tion-al-ity, ideal for stu-dents and re-searchers. ChipWhisperer-
  []
 
-[20]
+[10]
 Underfull \hbox (badness 10000) in paragraph at lines 42--43
 
  []
 
-[21]
-</home/cp07/Thesis_chayan/thesisInParts/images/windows.PNG, id=386, 1138.85475pt x 554.07pt>
+[11]
+</home/cp07/Thesis_chayan/thesisInParts/images/windows.PNG, id=308, 1138.85475pt x 554.07pt>
 File: /home/cp07/Thesis_chayan/thesisInParts/images/windows.PNG Graphic file (type png)
 <use /home/cp07/Thesis_chayan/thesisInParts/images/windows.PNG>
 Package pdftex.def Info: /home/cp07/Thesis_chayan/thesisInParts/images/windows.PNG  used on input line 47.
@@ -1424,29 +1389,33 @@ Overfull \hbox (96.39917pt too wide) in paragraph at lines 64--65
 [][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[22 </home/cp07/Thesis_chayan/thesisInParts/images/windows.PNG>]
+[12 </home/cp07/Thesis_chayan/thesisInParts/images/windows.PNG>]
 Overfull \hbox (4.74933pt too wide) in paragraph at lines 85--86
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[23]
+[13]
 Overfull \hbox (48.08176pt too wide) in paragraph at lines 156--157
 []\OT1/cmss/m/n/12 To cre-ate a \OT1/cmtt/m/n/12 scope \OT1/cmss/m/n/12 ob-ject, the eas-i-est ap-proach is to use the \OT1/cmtt/m/n/12 chipwhisperer.scope()
  []
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) [24]) [25] (./5_contributory_part/2-contri-chapter/chapter.tex [26
+) [14]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
+ [15] [16])) (./6_contributory_part/contri-part.tex (./6_contributory_part/quote.tex) (./6_contributory_part/intro.tex [17] [18
 
-] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43]
-Overfull \hbox (0.50082pt too wide) in paragraph at lines 2--2
-[]\OT1/cmss/m/n/12 Lorem ip-sum do-lor sit amet, con-sectetuer
- []
+]) (./6_contributory_part/1-contri-chapter/chapter.tex) [19] (./6_contributory_part/2-contri-chapter/chapter.tex [20
 
-[44])) (./6_contributory_part/contri-part.tex (./6_contributory_part/quote.tex) [45] [46
 
 ]
+Underfull \vbox (badness 1360) has occurred while \output is active []
+
+ [21]
+Underfull \vbox (badness 6592) has occurred while \output is active []
+
+ [22] [23]) [24] [25]) (./7_contributory_part/contri-part.tex (./7_contributory_part/quote.tex) [26]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/sc' in size <12> not available
 (Font)              Font shape `OT1/cmr/m/sc' tried instead on input line 3.
@@ -1457,57 +1426,46 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/sc' in size <9> not available
 
 LaTeX Font Info:    Font shape `OT1/pzc/m/it' will be
 (Font)              scaled to size 12.04506pt on input line 3.
-[47] [48] (./6_contributory_part/intro.tex) [49
+[27
 
-] (./6_contributory_part/1-contri-chapter/chapter.tex) [50] [51] (./6_contributory_part/2-contri-chapter/chapter.tex [52
+] [28] (./7_contributory_part/intro.tex) [29
 
+] (./7_contributory_part/1-contri-chapter/chapter.tex [30] [31
 
-]
-Underfull \vbox (badness 1360) has occurred while \output is active []
-
- [53]
-Underfull \vbox (badness 6592) has occurred while \output is active []
-
- [54] [55]) [56] [57]) (./7_contributory_part/contri-part.tex (./7_contributory_part/quote.tex) [58] [59
-
-] [60] (./7_contributory_part/intro.tex) [61
-
-] (./7_contributory_part/1-contri-chapter/chapter.tex [62] [63
-
-] [64] [65] [66] [67] [68] [69] [70] [71] [72] [73] [74] [75] [76] [77] [78] [79]
+] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47]
 Overfull \hbox (0.50082pt too wide) in paragraph at lines 2--2
 []\OT1/cmss/m/n/12 Lorem ip-sum do-lor sit amet, con-sectetuer
  []
 
-[80]) [81] (./7_contributory_part/2-contri-chapter/chapter.tex [82
+[48]) [49] (./7_contributory_part/2-contri-chapter/chapter.tex [50
 
 
-] [83] [84] [85] [86] [87] [88] [89] [90] [91] [92] [93] [94] [95] [96] [97] [98] [99]
+] [51] [52] [53] [54] [55] [56] [57] [58] [59] [60] [61] [62] [63] [64] [65] [66] [67]
 Overfull \hbox (0.50082pt too wide) in paragraph at lines 2--2
 []\OT1/cmss/m/n/12 Lorem ip-sum do-lor sit amet, con-sectetuer
  []
 
-[100])) (./8_conclusion/conclu_future.tex [101] [102
+[68])) (./8_conclusion/conclu_future.tex [69] [70
 
-] [103]) [104] (./9_back_matter/pubs.tex) (./9_back_matter/other_pubs.tex [105
+] [71]) [72] (./9_back_matter/pubs.tex) (./9_back_matter/other_pubs.tex [73
 
 
-] [106
+] [74
 
-]) (./9_back_matter/about_me.tex [107] [108
+]) (./9_back_matter/about_me.tex [75] [76
 
 ]) (./myThesis.bbl (./myThesis.brf)
 \tf@brf=\write6
 \openout6 = `myThesis.brf'.
 
- [109] [110
+ [77] [78
 
 ]
 bibitemlist
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [111]
+) [79]
 \tf@toc=\write7
 \openout7 = `myThesis.toc'.
 
@@ -1521,9 +1479,6 @@ LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were multiply-defined labels.
-
 Package rerunfilecheck Info: File `myThesis.brf' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  )
@@ -1532,20 +1487,20 @@ Package rerunfilecheck Info: File `myThesis.brf' has not changed.
 ### simple group (level 1) entered at line 2 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 38640 strings out of 478287
- 721444 string characters out of 5849289
- 1377670 words of memory out of 5000000
- 55722 multiletter control sequences out of 15000+600000
- 499232 words of font info for 135 fonts, out of 8000000 for 9000
+ 38594 strings out of 478287
+ 720991 string characters out of 5849289
+ 1376377 words of memory out of 5000000
+ 55713 multiletter control sequences out of 15000+600000
+ 499853 words of font info for 137 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 120i,12n,139p,859b,2515s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 120i,12n,139p,859b,2482s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{https://github.com/newaetech/chipwhisperer} has been referenced but does not exist, replaced by a fixed one
 
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/calligra-type1/callig15.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on myThesis.pdf (135 pages, 620837 bytes).
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/calligra-type1/callig15.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
+Output written on myThesis.pdf (103 pages, 523783 bytes).
 PDF statistics:
- 1260 PDF objects out of 1440 (max. 8388607)
- 1064 compressed objects within 11 object streams
- 334 named destinations out of 1000 (max. 500000)
- 601 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1038 PDF objects out of 1200 (max. 8388607)
+ 888 compressed objects within 9 object streams
+ 300 named destinations out of 1000 (max. 500000)
+ 513 words of extra memory for PDF output out of 10000 (max. 10000000)
 
