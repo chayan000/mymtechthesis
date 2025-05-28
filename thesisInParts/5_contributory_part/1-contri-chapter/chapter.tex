@@ -9,7 +9,7 @@ The combination of ChipWhisperer and ChipSHOUTER provides a versatile environmen
 
 By documenting the lab setup in detail, this chapter aims to provide a clear guide for reproducing the environment, thereby supporting transparency and repeatability in experimental research. Furthermore, it serves as a reference for anyone seeking to extend the setup for more advanced fault analysis, side-channel studies, or the testing of hardware security mechanisms against active fault-based threats.
 
-\section{ChipWhisperer Setup}
+\section{Techniques and analysis: Side-Channel Attacks Using ChipWhisperer }
 ChipWhisperer is an open-source platform developed by NewAE Technology Inc. for conducting side-channel analysis and fault injection attacks. It integrates hardware and software components in a tightly-coupled system, allowing for efficient experimentation and research. This section provides a detailed overview of the ChipWhisperer setup used in the laboratory, covering the hardware tools, software environment, and essential firmware components.
 \section{ChipWhisperer Hardware Platform}
 The ChipWhisperer ecosystem includes a suite of hardware components specifically designed for performing side-channel analysis and fault injection on embedded systems. These components are broadly categorized into scope boards and target boards, which together create a complete testbench for evaluating the security of cryptographic implementations.
@@ -31,17 +31,16 @@ Example usage scenario: Capturing power traces during AES encryption for differe
 
 \subsection{Integrated Target on ChipWhisperer-Nano}
 
+\subsection{ChipWhisperer-Husky}
+
 Together, the scope and target boards in the ChipWhisperer hardware ecosystem offer a comprehensive solution for conducting side-channel and fault injection attacks. Their modular, open-source nature makes them accessible to students, researchers, and engineers alike, and they are widely used in academic studies, industry evaluations, and security training environments.
 
 \section{Software Environment}
-The ChipWhisperer platform includes a flexible and scriptable software environment built primarily around Python and Jupyter Notebooks. This environment is well-suited for side-channel analysis and fault injection research, offering full control of the hardware and reproducibility of experiments.
-
-\subsection{ Installing the ChipWhisperer Software Environment}
+The ChipWhisperer platform includes a flexible and scriptable software environment built primarily around Python and Jupyter Notebooks. This environment is well-suited for side-channel analysis and fault injection research, offering full control of the hardware and reproducibility. 
+\subsubsection{ChipWhisperer Software Environment}
  Setting up the ChipWhisperer software environment involves installing the necessary tools to interface with the hardware, control experiments, and analyze captured data. This section outlines the steps required to install the ChipWhisperer software stack using the recommended method.
 \subsubsection{For Windows :}
-Installing ChipWhisperer on Windows is straightforward with the provided executable. Here's a step-by-step guide:\newline
-
-To install ChipWhisperer on Windows, start by visiting the official ChipWhisperer GitHub page at \hyperlink{https://github.com/newaetech/chipwhisperer}{https://github.com/newaetech/chipwhisperer}  and download the latest Windows Installer (.exe) file. Once the download is complete, double-click the .exe file to launch the installer. If a security prompt appears, allow the installation to proceed. The ChipWhisperer Setup Wizard will open—follow the on-screen instructions by clicking "Next." Choose a destination folder or use the default option, then continue by clicking "Next" again. After the installation is finished, click "Finish" to complete the setup.
+Installing ChipWhisperer on Windows is straightforward with the provided \.exe file. Once the download is complete, double-click the .exe file to launch the installer. If a security prompt appears, allow the installation to proceed. The ChipWhisperer Setup Wizard will open—follow the on-screen instructions by clicking "Next." Choose a destination folder or use the default option, then continue by clicking "Next" again. After the installation is finished, click "Finish" to complete the setup.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\linewidth]{/home/cp07/Thesis_chayan/thesisInParts/images/windows.PNG}
@@ -116,28 +115,14 @@ The ChipWhisperer framework is a comprehensive toolkit for side-channel power an
 
 Here’s a breakdown of the most relevant parts:
 
-\subsection*{jupyter/ Directory:}
-One of the most user-friendly components of the ChipWhisperer project is the \texttt{jupyter/} directory. This folder contains a wide range of Jupyter Notebooks designed to guide users through hands-on tutorials and experiments.
+\subsection*{/jupyter Directory:}
+One of the most user-friendly components of the ChipWhisperer project is the \texttt{/jupyter} directory. This folder contains a wide range of Jupyter Notebooks designed to guide users through hands-on tutorials and experiments.
 
-\subsubsection{Educational Focus}
+These notebooks provide interactive lessons in topics such as: Side-channel analysis, Cryptographic attacks, Glitching techniques
+The content within the \texttt{/jupyter} directory is well-organized into subfolders, such as:
 
-These notebooks provide interactive lessons in topics such as:
+The Jupyter directory in ChipWhisperer includes several folders designed to support learning and experimentation. The \texttt{demos} folder contains simple, hands-on notebooks meant for beginners. These notebooks introduce key concepts like power analysis and fault injection through guided examples. The \texttt{courses} folder offers more structured content, similar to academic classes, with lecture-style explanations and lab exercises for deeper learning. The \texttt{setupscripts} folder provides example scripts and configurations that demonstrate different experiments and usage scenarios for ChipWhisperer hardware. Together, these resources help users understand and explore various aspects of side-channel analysis and hardware security.
 
-\begin{itemize}[label=--]
-    \item Side-channel analysis
-    \item Cryptographic attacks
-    \item Glitching techniques
-\end{itemize}
-
-\subsubsection{Organized by Category}
-
-The content within the \texttt{jupyter/} directory is well-organized into subfolders, such as:
-
-\begin{itemize}
-    \item \texttt{tutorials}: Contains step-by-step guides aimed at beginners, covering areas like power analysis and fault injection.
-    \item \texttt{courses}: Structured like academic courses, these include lecture-style notebooks and lab-based exercises.
-    \item \texttt{examples}: Demonstrates various use-cases and experiments with ChipWhisperer hardware.
-\end{itemize}
 
 \subsubsection{Python and Hardware Integration}
 
@@ -153,51 +138,118 @@ These notebooks are intended to be executed within a Jupyter Lab environment. Us
 \subsection{Scope API}
 The \texttt{scope} object in ChipWhisperer is used to manage the capture and glitching operations of the hardware.
 
-To create a \texttt{scope} object, the easiest approach is to use the \texttt{chipwhisperer.scope()} function. This function connects to a ChipWhisperer device and returns an instance of the appropriate scope object:
+To create a \texttt{scope} object, the easiest approach is to use the 
+\texttt{chipwhisperer.scope()} function. This function connects to a ChipWhisperer device and returns an instance of the appropriate scope object:
 
 \begin{lstlisting}[language=Python]
 import chipwhisperer as cw
 scope = cw.scope()
 \end{lstlisting}
 
-There are two types of \texttt{scope} : OpenADC for \texttt{ChipWhispererLite/Husky} and CWNano for \texttt{ChipWhispererNano}. The choice of scope depends on the specific hardware being used.
-\subsubsection{$scope.adc.samples :$} 
-This property sets the number of samples to capture by the ADC. It is useful for determining the length of the captured trace.
+There are two types of \texttt{scope} : OpenADC for \texttt{CWLite/Husky} and CWNano for \texttt{CWNano}. The choice of scope depends on the specific hardware being used.
+The \texttt{scope} object provides various properties and methods to configure the hardware, capture traces, and perform glitching operations. Here are some of the key properties and methods:
+\subsubsection{\textbf{\texttt{scope.adc.samples} :}}
+This property sets the number of samples to capture by the  ADC (Analog-to-Digital Converter). It is useful for determining the length of the captured trace.
 maximum number of samples for Lite is 244000 and for Husky is 131070
 
-\subsubsection{$scope.adc.timeout :$}   
-
+\subsubsection{\textbf{\texttt{scope.adc.timeout }:}}
+  
+Specifies the maximum duration (in seconds) the ADC will wait for a trigger signal before aborting the capture. This prevents indefinite waiting during a capture session.
 \subsubsection{$scope.clock.adc\_src :$}
 
-\subsubsection{$glitch.clk\_src :$}    
+Determines the clock source for the  ADC  module. Generally it will be $clkgen\_x1$ or $clkgen\_x4$ which correspond to different clock frequencies.
+\subsubsection{\textbf{\texttt{glitch.clk\_src }:}}
 
+This setting selects the clock source used by the glitch module's DCM (Digital Clock Manager). The DCM determines the timing of when glitches are produced.
+The available clock sources are:
+
+\begin{itemize}
+  \item clkgen: Uses the output from the internal clock generator. \textit{Note: This option is not supported on Husky.}
+  \item pll: Uses the on-board Phase-Locked Loop (PLL) available on Husky devices. \textit{Note: This is specific to Husky.}
+\end{itemize}
+
+Selecting the correct clock source is important for ensuring that glitches are timed correctly with the target device’s operation.
 \subsubsection{$scope.glitch.output :$}
+This setting controls the type of signal produced by the glitch module. It defines how the regular clock and glitch pulses are combined to create the final output signal.
+The available output modes are:
+
+\begin{itemize}
+  \item clock\_only: Outputs only the normal clock signal, with no glitches applied.
+  \item glitch\_only: Outputs only the glitch pulses, ignoring the clock signal entirely.
+  \item clock\_or: The output is high when either the clock or the glitch pulse is high.
+  \item clock\_xor: The output is high only when the clock and glitch pulse differ.
+  \item enable\_only: The output stays high for a set number of full clock cycles. In this mode, \texttt{width} and \texttt{width\_fine} have no effect, but \texttt{offset} and \texttt{offset\_fine} are still used.
+\end{itemize}
+
+These modes are chosen based on the type of glitching attack:
+\begin{itemize}
+    \item For clock glitching, use \texttt{clock\_or} or \texttt{clock\_xor}.
+    \item For oltage glitching, use \texttt{glitch\_only} or \texttt{enable\_only}.
+  \end{itemize}
 
 \subsubsection{$scope.glitch.trigger\_src :$}    
+The glitch module supports four trigger modes:
 
+\begin{itemize}
+    \item Continuous: Glitches are triggered constantly. Parameters like \texttt{ext\_offset}, \texttt{repeat}, and \texttt{num\_glitches} have no effect.
+    
+    \item Manual: Glitches are triggered manually via \texttt{manual\_trigger()} or \texttt{scope.arm()}. Only \texttt{repeat} is relevant; others are ignored.
+    
+    \item ext\_single: Triggers once per arming when a condition is met. Ignores further triggers until re-armed. \texttt{ext\_single} provides a controlled, one-time glitch per arming cycle based on an external condition—making it useful for repeatable and precise fault injection experiments.
+    
+    \item ext\_continuous: Triggers glitches repeatedly whenever the trigger condition is met, regardless of arm status.
+\end{itemize}
 \subsubsection{$scope.glitch.repeat :$}
+\texttt{repeat} is a setting that controls how many glitch pulses are generated per trigger.
 
-\subsubsection{$scope.glitch.width :$}
+\begin{itemize}
+    \item If the output mode is \texttt{glitch\_only}, \texttt{clock\_or}, or \texttt{clock\_xor}, each count in \texttt{repeat} represents a separate glitch pulse.
+    
+    \item If the output mode is \texttt{enable\_only}, the glitch is a single pulse that lasts for \texttt{repeat} clock cycles.
+    
+    \item This helps in creating stronger glitches, especially for voltage glitching.
+    
+    \item On \textbf{CW-Husky}, if multiple glitches are used (\texttt{num\_glitches > 1}), \texttt{repeat} should be a list with one value per glitch. Each value must be $\leq \texttt{ext\_offset}[i+1] + 1$.
+    
+    \item On \textbf{CW-Lite/Nano}, only one glitch is supported, so \texttt{repeat} is a single integer.
+    
+    \item The value of \texttt{repeat} must be in the range [1, 8192], and it has no effect in \texttt{continuous} mode.
+\end{itemize}
+\subsubsection{\textbf{\texttt{scope.glitch.width} :}} 
+The \texttt{width} property defines how wide a single glitch pulse is and can be set using either a float or an integer. Its meaning depends on the type of hardware used. For CWHusky, the width is measured in phase shift steps. A value of 0 gives the smallest pulse, while the maximum is at half the total number of phase shift steps. Negative values are allowed and are interpreted as wrapping around the phase shift range, so $-x$ is treated the same as $\texttt{total\_steps} - x$. The values also wrap around when going beyond the maximum.
 
-\subsubsection{$scope.glitch.offset :$}
+For other devices like CWLite or CWNano, the width is given as a percentage of one clock cycle. You can set the pulse from about $-49.8\%$ to $+49.8\%$ of the cycle. A width of $0\%$ will not work reliably. Negative widths behave like their positive counterparts but are applied to the opposite half of the clock cycle. This setting has no effect if the output mode is set to \texttt{enable\_only}.
+
+\subsubsection{\textbf{\texttt{scope.glitch.offset }:}}
+The \texttt{offset} property sets the delay between the rising edge of the clock and the start of the glitch pulse. It can be a float or an integer, and its meaning depends on the hardware used.
+
+For CWHusky, the offset is measured in phase shift steps. An offset of 0 means the glitch pulse starts exactly at the rising edge of the clock. At half of \texttt{scope.glitch.phase\_shift\_steps}, the glitch starts at the falling edge of the clock. We can use negative values, and $-x$ is treated the same as \texttt{scope.glitch.phase\_shift\_steps} $- x$. The value also wraps around, so $+x$ is the same as \texttt{scope.glitch.phase\_shift\_steps} $+ x$. 
+
+For other devices like CWLite or CWPro, the offset is given as a percentage of one clock period. The glitch can start anywhere from $-49.8\%$ to $+49.8\%$ of the clock cycle. This allows us to move the glitch to any point within the cycle.
 
 \subsubsection{$scope.glitch.ext\_offset :$}
+The \texttt{ext\_offset} property defines how many clock cycles the glitch module should wait after receiving a trigger before generating a glitch pulse. This delay is useful when you want to insert the glitch at a specific point in the target device’s operation, such as during the execution of a particular instruction. On CW-Lite and CW-Pro, multiple glitches are not supported, so \texttt{ext\_offset} is simply an integer representing the delay after the trigger to the single glitch. This setting has no effect if the trigger source is set to \texttt{manual} or \texttt{continuous}.
+
+The \texttt{offset} property, on the other hand, controls the position of the glitch within a single clock cycle. While \texttt{ext\_offset} determines \emph{when} the glitch should start in terms of clock cycles after the trigger, \texttt{offset} adjusts the glitch \emph{within} a chosen clock cycle—allowing very precise control relative to the rising or falling edge of the clock signal. In CW-Husky, \texttt{offset} is measured in phase shift steps, and in CW-Lite or CW-Pro, it is expressed as a percentage of one clock period. Together, these two properties provide both coarse and fine control over glitch timing.
+
 
 \subsubsection{$scope.arm() :$}
+The \texttt{arm()} function prepares the scope to start capturing data or performing a glitch when a trigger is received. This step is required before any capture or glitch attempt can begin. If the scope is set to \texttt{ext\_single} mode, it will remain idle until it is armed and a valid trigger event occurs. Without calling \texttt{arm()}, the scope will not respond to trigger signals.
 
 \subsubsection{$scope.capture() :$}
+The \texttt{capture(poll\_done=False)} function starts the process of capturing a trace. Before using this function, the scope must be armed using \texttt{arm()}. Once called, it waits for a trigger event. When the trigger occurs or a timeout is reached, the function stops the capture, disarms the scope, and retrieves the recorded data.
+
 
 \subsubsection{$scope.get\_last\_trace() :$}
-
-
+The \texttt{get\_last\_trace(as\_int=False)} function returns the most recent trace captured by the scope. By default, it provides the data as a NumPy array of floating-point values scaled between \texttt{-0.5} and \texttt{0.5}. If the parameter \texttt{as\_int} is set to \texttt{True}, the function returns the trace as raw integer values, which are the direct outputs from the ADC of the ChipWhisperer device. The resolution of these values depends on the hardware: for example, the ChipWhisperer-Lite uses a 10-bit ADC, the Nano uses 8-bit, and the Husky can use either 8-bit or 12-bit ADC data.
 
 \subsection{Target API}
 The \texttt{target} object in ChipWhisperer is used to manage the device under test (DUT) and perform operations such as loading firmware, executing commands, and capturing traces. It provides a high-level interface for interacting with the target device.
 ChipWhisperer provides two classes for UART communication:
 
 \begin{itemize}
-    \item \textbf{Simple Serial Target} (default)
-    \item \textbf{Simple Serial V2 Target}
+    \item Simple Serial Target (default)
+    \item Simple Serial V2 Target
 \end{itemize}
 
 The most straightforward way to create a target object in ChipWhisperer is by using the \texttt{cw.target} function. Here is a simple example:
@@ -222,11 +274,43 @@ This code initializes the ChipWhisperer scope and sets up the Simple Serial targ
 
 some useful methods and properties of the \texttt{Simple Serial V2 Target} object include:
 \subsubsection{$target.flush() :$}
+The \texttt{flush()} function clears all data currently stored in the serial buffer. This is useful when you want to discard any previous or unwanted serial communication data before starting a new operation. It helps ensure that the buffer only contains fresh data relevant to the current task.
 
 \subsubsection{$target.simpleserial\_write(cmd, data) :$}
+This function sends a command and associated data to a target device using the SimpleSerial protocol. This function is typically used when communicating with firmware that implements cryptographic functions such as AES encryption. 
+
+The \texttt{cmd} parameter is a one-character string that specifies the type of command. For example, using \texttt{'p'} tells the device to encrypt the given plaintext, while \texttt{'k'} sets the encryption key. These special cases internally map to specific command and sub-command values expected by the firmware.
+
+The \texttt{data} parameter is a \texttt{bytearray} containing the actual data to be sent with the command. If no data is provided, a single byte \texttt{[0x00]} is sent by default. The optional \texttt{end} argument is reserved but not used in this implementation.
+
+\vspace{0.3cm}
+\noindent
+\textbf{Example:} To send a 16-byte plaintext to be encrypted using the AES block cipher, one might use the following:
+
+\begin{verbatim}
+target.simpleserial_write('p', bytearray([0x00]*16))
+\end{verbatim}
+
+This line sends a block of 16 zero bytes to the device with the command \texttt{'p'}, which typically triggers AES encryption of the plaintext using a previously loaded key.
 
 \subsubsection{$target.simpleserial\_read\_witherrors(cmd, length) :$}
+The \texttt{simpleserial\_read\_witherrors()} function is used to read data from a device over a serial connection, especially when doing fault injection or glitch experiments. It tries to receive a full response from the device that includes a command, some data, and a special ending byte. If the response is incomplete, contains errors, or takes too long, the function will try one more time with a longer timeout to get whatever data is available. This is helpful when the target device behaves in unexpected ways due to glitches. The result is returned as a dictionary, which includes whether the response was valid, the decoded data if successful, the full raw output, and any return values if needed.
+
+\vspace{0.3cm}
+\noindent
+\textbf{Example:} Suppose we expect a 16-byte result from a previous command, such as an AES ciphertext. We can read it like this:
+
+\begin{verbatim}
+response = simpleserial_read_witherrors(cmd='r', pay_len=16)
+if response['valid']:
+    print("Received:", response['payload'])
+else:
+    print("Invalid response. Raw output:", response['full_response'])
+\end{verbatim}
+
+In this example, the function tries to read 16 bytes from a response starting with the command \texttt{'r'}. If it fails due to glitches or timing issues, it still gives the raw data so we can analyze what went wrong.
 
 \subsubsection{$target.simpleserial\_wait\_ack(cmd, timeout=1) :$}
+This function is used to wait for an acknowledgment (ack) or error message from the target device after sending a command. This is useful to confirm whether the target received and understood the previous instruction. You can set a timeout in milliseconds, which defines how long to wait for the ack. If the timeout is set to 0, the function will wait indefinitely until it receives a response. If no ack is received within the given time, the function returns \texttt{None}. Otherwise, it returns a code that indicates the result of the command.
 
-\subsection{}
+\section{Process of Clock/Voltage Glitching}
