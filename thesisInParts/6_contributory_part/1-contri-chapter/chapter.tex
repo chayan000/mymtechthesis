@@ -1,1 +1,320 @@
 % Chanper text
+% \[
+% \begin{bmatrix}
+% \texttt{19} & \texttt{a0} & \texttt{9a} & \texttt{e9} \\
+% \texttt{3d} & \textcolor{red}{\boxed{\texttt{f4}}} & \texttt{c6} & \texttt{f8} \\
+% \texttt{e3} & \texttt{e2} & \texttt{8d} & \texttt{48} \\
+% \texttt{be} & \texttt{2b} & \texttt{2a} & \texttt{08}
+% \end{bmatrix}
+% \]
+
+The Advanced Encryption Standard (AES) has stood resilient for decades, becoming a cornerstone in modern cryptographic systems. However, side-channel attacks and fault analysis have emerged as powerful methods to compromise even the most robust ciphers, not by breaking the algorithm itself, but by exploiting its implementation. One such sophisticated technique is the Diagonal Fault Attack (DFA), a targeted fault analysis method designed to extract cryptographic keys from AES by injecting faults into specific portions of the cipher’s internal state.
+
+In this chapter, we reproduce the diagonal fault attack on AES as presented by Dhiman et al. in their 2009 paper titled "A Diagonal Fault Attack on the Advanced Encryption Standard" \cite{Saha2009ADF}. Their work introduced a fault model where a single fault injected into a diagonal of the AES state matrix during the final rounds of encryption enables efficient recovery of the secret key.
+
+To validate their proposed attack in a practical setting, we implemented the diagonal fault injection using two physical fault methods: clock glitching and voltage glitching, both facilitated by the ChipWhisperer Lite (CWLite) platform. Our goal is to observe diagonal fault patterns in the faulty ciphertexts and subsequently perform key recovery using the methodology described in the original paper.
+
+This experimental reproduction helps bridge the gap between theoretical fault models and their real-world applicability, emphasizing the feasibility and efficiency of diagonal fault attacks under controlled glitching conditions.
+
+\section{Four Diagonals in the AES State Matrix}
+
+In the AES algorithm, the internal 128-bit state is arranged as a 4×4 matrix of bytes:
+
+
+\[
+\begin{array}{cc}
+\textbf{Diagonal 0}~[D_0] & \textbf{Diagonal 1}~[D_1] \\[1ex]
+\begin{array}{|c|c|c|c|}
+\hline
+\fcolorbox{red}{red!20}{$a_{00}$} & a_{01} & a_{02} & a_{03} \\
+\hline
+a_{10} & \fcolorbox{red}{red!20}{$a_{11}$} & a_{12} & a_{13} \\
+\hline
+a_{20} & a_{21} & \fcolorbox{red}{red!20}{$a_{22}$} & a_{23} \\
+\hline
+a_{30} & a_{31} & a_{32} & \fcolorbox{red}{red!20}{$a_{33}$} \\
+\hline
+\end{array}
+&
+\begin{array}{|c|c|c|c|}
+\hline
+a_{00} & \fcolorbox{blue}{blue!20}{$a_{01}$} & a_{02} & a_{03} \\
+\hline
+a_{10} & a_{11} & \fcolorbox{blue}{blue!20}{$a_{12}$} & a_{13} \\
+\hline
+a_{20} & a_{21} & a_{22} & \fcolorbox{blue}{blue!20}{$a_{23}$} \\
+\hline
+\fcolorbox{blue}{blue!20}{$a_{30}$} & a_{31} & a_{32} & a_{33} \\
+\hline
+\end{array}
+\\[6ex]
+\textbf{Diagonal 2}~[D_2] & \textbf{Diagonal 3}~[D_3] \\[1ex]
+\begin{array}{|c|c|c|c|}
+\hline
+a_{00} & a_{01} & \fcolorbox{green!50!black}{green!20}{$a_{02}$} & a_{03} \\
+\hline
+a_{10} & a_{11} & a_{12} & \fcolorbox{green!50!black}{green!20}{$a_{13}$} \\
+\hline
+\fcolorbox{green!50!black}{green!20}{$a_{20}$} & a_{21} & a_{22} & a_{23} \\
+\hline
+a_{30} & \fcolorbox{green!50!black}{green!20}{$a_{31}$} & a_{32} & a_{33} \\
+\hline
+\end{array}
+&
+\begin{array}{|c|c|c|c|}
+\hline
+a_{00} & a_{01} & a_{02} & \fcolorbox{orange!80!black}{orange!20}{$a_{03}$} \\
+\hline
+\fcolorbox{orange!80!black}{orange!20}{$a_{10}$} & a_{11} & a_{12} & a_{13} \\
+\hline
+a_{20} & \fcolorbox{orange!80!black}{orange!20}{$a_{21}$} & a_{22} & a_{23} \\
+\hline
+a_{30} & a_{31} & \fcolorbox{orange!80!black}{orange!20}{$a_{32}$} & a_{33} \\
+\hline
+\end{array}
+\end{array}
+\]
+
+
+In the above matrices, each element \(a_{ij}\) represents the entry in the \(i^{\text{th}}\) row and \(j^{\text{th}}\) column of a \(4 \times 4\) state matrix. This state matrix is commonly used in AES (Advanced Encryption Standard) to represent the internal data at various stages of the encryption or decryption process. The highlighted elements correspond to the entries located along one of the four diagonals of the matrix, indexed as \(D_0, D_1, D_2,\) and \(D_3\), respectively.
+
+\section{Diagonal Fault Attack on AES-128 with Fault Injection at Round 8}
+In AES-128, the encryption process consists of 10 rounds, with each round transforming a 4×4 byte matrix called the state. Each round includes operations such as SubBytes, ShiftRows, MixColumns, and AddRoundKey. Notably, the AES state is updated in a predictable pattern, and faults injected in earlier rounds propagate through subsequent transformations in a structured way.
+Step-by-Step Fault Propagation:
+
+\textbf{Fault Introduction (Start of Round 8):}
+A fault is injected into one or more bytes of one or more diagonals in the AES state matrix. This occurs just after the \texttt{AddRoundKey} operation of Round 7 and before the \texttt{SubBytes} transformation of Round 8.
+
+\textbf{SubBytes (Non-linear step):}
+Each byte in the state, including any faulty bytes, undergoes substitution through the AES S-box. This non-linear transformation alters the faulty bytes unpredictably. However, at this stage, the fault remains localized to the originally affected bytes.
+
+\textbf{ShiftRows (Byte reordering):}
+In this step, each row of the state matrix is cyclically shifted by a specific offset. As a result, the previously localized fault bytes—initially within a single diagonal—are now redistributed into different columns. This marks the beginning of spatial fault propagation.
+
+\textbf{MixColumns (Diffusion step):}
+This transformation applies a fixed matrix multiplication over a finite field to each column of the state. Consequently, a single faulty byte in any column results in the corruption of all four bytes within that column. At this stage, the fault diffuses significantly across the state.
+
+\textbf{AddRoundKey :}
+The transformed (and now faulty) state is XORed with the Round 8 key. The fault remains embedded and is now more spread out across the matrix.
+
+\textbf{Rounds 9 and 10:}
+The corrupted state continues to evolve through the remaining AES rounds. Round 9 further propagates the fault via \texttt{SubBytes}, \texttt{ShiftRows}, and \texttt{MixColumns}. However, Round 10 omits the \texttt{MixColumns} step, causing the fault pattern to stabilize. The final faulty ciphertext thus reflects this structured propagation, which can be analyzed to extract internal state information.
+
+\section{Fault Injection at the Start of Round 8 using CW-Lite}
+
+To analyze the behavior of AES under fault conditions, a fault can be intentionally introduced at the beginning of Round 8 using the ChipWhisperer-Lite (CW-Lite) platform. Two common techniques supported by CW-Lite for fault injection are voltage glitching and clock glitching. These methods allow precise control over when and how a fault is introduced into the target device running AES.
+
+\subsection{Using Voltage Glitching}
+Firstly we have identified a probable location(5090 to 5120 samples) of the starting of 8th round from the power trace of the AES-128 running in the integrated target of CWLite-ARM. Then we have set the parametsers for voltage glitching as follows:
+\begin{verbatim}
+    scope.glitch.clk_src = "clkgen"
+    scope.glitch.output = "glitch_only" 
+    scope.glitch.trigger_src = "ext_single"
+    scope.io.glitch_lp = True
+    scope.io.glitch_hp = True
+\end{verbatim}
+\subsubsection{Result}
+A glitch was introduced at location 5100 samples, which corresponds to the start of Round 8. The parametsers 
+\begin{verbatim}
+    scope.glitch.offset= -37.890625 
+    scope.glitch.width= 37.109375
+\end{verbatim}
+were responsible for this fault injection.
+
+\subsubsection{Analysis and Fault Propagation}
+We have one correct ciphertext and one faulty ciphertext after the fault injection. As the key was already known to us we have compared the two ciphertexts to analyze the fault propagation using the AES-128 Decryption method. The following tables show the state of the AES matrix at various stages of the encryption process, both with and without the fault.
+
+
+\subsubsection{After The Fault Injection At Starting of $8^{\text{th}}$ Round :}
+\[
+\begin{array}{ccc}
+\textbf{Without Fault} & \textbf{With Fault } & \textbf{Difference } \\[1ex]
+\begin{array}{|c|c|c|c|}
+\hline
+\texttt{96} & \texttt{e9} & \texttt{e9} & \texttt{3c} \\
+\hline
+\texttt{71} & \texttt{87} & \texttt{61} & \texttt{89} \\
+\hline
+\texttt{6a} & \texttt{91} & \texttt{04} & \texttt{13} \\
+\hline
+\texttt{e4} & \texttt{c7} & \texttt{90} & \texttt{ff} \\
+\hline
+\end{array} 
+&
+
+\begin{array}{|c|c|c|c|}
+    \hline
+    \texttt{96} & \texttt{e9} & \texttt{e9} & \texttt{52} \\
+    \hline
+    \texttt{52} & \texttt{87} & \texttt{61} & \texttt{89} \\
+    \hline
+    \texttt{6a} & \texttt{91} & \texttt{04} & \texttt{13} \\
+    \hline
+    \texttt{e4} & \texttt{c7} & \texttt{90} & \texttt{ff} \\
+    \hline
+    \end{array}
+
+    &
+
+\begin{array}{|c|c|c|c|}
+    \hline
+    \texttt{00} & \texttt{00} & \texttt{00} & \fcolorbox{orange!80!black}{orange!20}{\texttt{6e}} \\
+    \hline
+    \fcolorbox{orange!80!black}{orange!20}{\texttt{23}} & \texttt{00} & \texttt{00} & \texttt{00} \\
+    \hline
+    \texttt{00} & \texttt{00} & \texttt{00} & \texttt{00} \\
+    \hline
+    \texttt{00} & \texttt{00} & \texttt{00} & \texttt{00} \\
+    \hline
+    \end{array}
+\end{array}
+\]
+
+\subsubsection{After The Completion of $8^{\text{th}}$ Round(SubByte,ShiftRow,MixColumn,AddRoundkey(8)) :}
+\[
+\begin{array}{ccc}
+\textbf{Without Fault} & \textbf{With Fault } & \textbf{Difference } \\[1ex]
+\begin{array}{|c|c|c|c|}
+\hline
+\texttt{0c} & \texttt{b7} & \texttt{3b} & \texttt{ad} \\
+\hline
+\texttt{77} & \texttt{b8} & \texttt{a0} & \texttt{c3} \\
+\hline
+\texttt{31} & \texttt{0a} & \texttt{19} & \texttt{d8} \\
+\hline
+\texttt{43} & \texttt{b0} & \texttt{70} & \texttt{eb} \\
+\hline
+\end{array} 
+&
+
+\begin{array}{|c|c|c|c|}
+    \hline
+\texttt{0c} & \texttt{b7} & \texttt{3b} & \texttt{9e} \\
+\hline
+\texttt{77} & \texttt{b8} & \texttt{a0} & \texttt{75} \\
+\hline
+\texttt{31} & \texttt{0a} & \texttt{19} & \texttt{90} \\
+\hline
+\texttt{43} & \texttt{b0} & \texttt{70} & \texttt{6e} \\
+\hline
+    \end{array}
+
+    &
+
+\begin{array}{|c|c|c|c|}
+    \hline
+    \texttt{00} & \texttt{00} & \texttt{00} & \fcolorbox{orange!80!black}{orange!20}{\texttt{33}} \\
+    \hline
+    \texttt{00} & \texttt{00} & \texttt{00} & \fcolorbox{orange!80!black}{orange!20}{\texttt{b6}} \\
+    \hline
+    \texttt{00} & \texttt{00} & \texttt{00} & \fcolorbox{orange!80!black}{orange!20}{\texttt{48}} \\
+    \hline
+    \texttt{00} & \texttt{00} & \texttt{00} & \fcolorbox{orange!80!black}{orange!20}{\texttt{85}} \\
+    \hline
+    \end{array}
+\end{array}
+\]
+
+\subsubsection{After The Completion of $9^{\text{th}}$ Round(SubByte,ShiftRow,MixColumn,AddRoundkey(9)) :}
+\[
+\begin{array}{ccc}
+\textbf{Without Fault} & \textbf{With Fault } & \textbf{Difference } \\[1ex]
+\begin{array}{|c|c|c|c|}
+    \hline
+    \texttt{c2} & \texttt{10} & \texttt{a5} & \texttt{54} \\
+    \hline
+    \texttt{df} & \texttt{31} & \texttt{da} & \texttt{c0} \\
+    \hline
+    \texttt{67} & \texttt{79} & \texttt{42} & \texttt{5d} \\
+    \hline
+    \texttt{9b} & \texttt{74} & \texttt{40} & \texttt{fa} \\
+    \hline
+\end{array} 
+&
+
+\begin{array}{|c|c|c|c|}
+    \hline
+    \texttt{b4} & \texttt{11} & \texttt{6b} & \texttt{73} \\
+    \hline
+    \texttt{a9} & \texttt{32} & \texttt{a7} & \texttt{5e} \\
+    \hline
+    \texttt{fd} & \texttt{7b} & \texttt{f1} & \texttt{c3} \\
+    \hline
+    \texttt{77} & \texttt{75} & \texttt{f3} & \texttt{43} \\
+    \hline
+    \end{array}
+
+    &
+
+    \begin{array}{|c|c|c|c|}
+        \hline
+        \fcolorbox{orange!80!black}{orange!20}{\texttt{76}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{01}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{ce}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{27}} \\
+        \hline
+        \fcolorbox{orange!80!black}{orange!20}{\texttt{76}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{03}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{7d}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{9e}} \\
+        \hline
+        \fcolorbox{orange!80!black}{orange!20}{\texttt{9a}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{02}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{b3}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{9e}} \\
+        \hline
+        \fcolorbox{orange!80!black}{orange!20}{\texttt{ec}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{01}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{b3}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{b9}} \\
+        \hline
+    \end{array}
+\end{array}
+\]
+\subsubsection{After The Completion of $10^{\text{th}}$ Round(SubByte,ShiftRow,AddRoundkey(10)) :}
+\[
+\begin{array}{ccc}
+\textbf{Without Fault} & \textbf{With Fault } & \textbf{Difference } \\[1ex]
+\begin{array}{|c|c|c|c|}
+    \hline
+    \texttt{f5} & \texttt{03} & \texttt{e7} & \texttt{96} \\
+    \hline
+    \texttt{d3} & \texttt{b9} & \texttt{85} & \texttt{fd} \\
+    \hline
+    \texttt{d5} & \texttt{69} & \texttt{89} & \texttt{ba} \\
+    \hline
+    \texttt{85} & \texttt{9d} & \texttt{5a} & \texttt{af} \\
+    \hline
+\end{array} 
+&
+
+\begin{array}{|c|c|c|c|}
+    \hline
+    \texttt{5d} & \texttt{4b} & \texttt{9e} & \texttt{39} \\
+    \hline
+    \texttt{37} & \texttt{b2} & \texttt{67} & \texttt{b0} \\
+    \hline
+    \texttt{58} & \texttt{0b} & \texttt{58} & \texttt{2d} \\
+    \hline
+    \texttt{b2} & \texttt{7c} & \texttt{55} & \texttt{ab} \\
+    \hline
+    \end{array}
+
+    &
+
+\begin{array}{|c|c|c|c|}
+    \hline
+    \fcolorbox{orange!80!black}{orange!20}{\texttt{a8}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{48}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{79}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{af}} \\
+    \hline
+    \fcolorbox{orange!80!black}{orange!20}{\texttt{e4}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{0b}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{e2}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{4d}} \\
+    \hline
+    \fcolorbox{orange!80!black}{orange!20}{\texttt{8d}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{62}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{d1}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{97}} \\
+    \hline
+    \fcolorbox{orange!80!black}{orange!20}{\texttt{37}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{e1}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{0f}} & \fcolorbox{orange!80!black}{orange!20}{\texttt{04}} \\
+    \hline
+    \end{array}
+\end{array}
+\]
+Here we notice that the fault was injected at 2 bytes of the $D_3$ diagonal of the state matrix of 8th round. According to the fault model proposed by Dhiman et al.,\cite{Saha2009ADF} the fault in the $D_3$ diagonal of the state matrix at the start of Round 8 propagates through the subsequent rounds, affecting the final ciphertext. The differences in the ciphertexts before and after the fault injection reveal how the fault has altered specific bytes, which can be exploited to recover parts of the secret key. If we represent the $10^{th}$ round key as \(K_{10}\), it can be expressed as:
+\[
+    \begin{array}{|c|c|c|c|}
+        \hline
+        k_{00} & k_{01} & k_{02} & k_{03} \\
+        \hline
+        k_{10} & k_{11} & k_{12} & k_{13} \\
+        \hline
+        k_{20} & k_{21} & k_{22} & k_{23} \\
+        \hline
+        k_{30} & k_{31} & k_{32} & k_{33} \\
+        \hline
+        \end{array}
+\]
+We can frame 12 equations based on the differences in the ciphertexts before and after the fault injection. The equations are as follows:

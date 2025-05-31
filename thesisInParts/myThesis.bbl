@@ -1,3 +1,24 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{{New}25d}
+
+\bibitem[{New}25a]{chipwhisperer_lite2}
+{NewAE Technology Inc.}
+\newblock {\em ChipWhisperer-Lite}, 2025.
+
+\bibitem[{New}25b]{chipwhisperer_nano}
+{NewAE Technology Inc.}
+\newblock {\em ChipWhisperer-Nano Target Board}, 2025.
+
+\bibitem[{New}25c]{chipwhisperer_lite_capture}
+{NewAE Technology Inc.}
+\newblock {\em CW1173 ChipWhisperer-Lite Capture Documentation}, 2025.
+
+\bibitem[{New}25d]{chipwhisperer_scope_api}
+{NewAE Technology Inc.}
+\newblock {\em Scope API — ChipWhisperer Documentation}, 2025.
+
+\bibitem[SMC09]{Saha2009ADF}
+Dhiman Saha, Debdeep Mukhopadhyay, and Dipanwita~Roy Chowdhury.
+\newblock A diagonal fault attack on the advanced encryption standard.
+\newblock {\em IACR Cryptol. ePrint Arch.}, 2009:581, 2009.
 
 \end{thebibliography}

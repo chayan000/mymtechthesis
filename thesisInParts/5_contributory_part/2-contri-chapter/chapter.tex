@@ -1,2 +1,59 @@
-% Chanper text
-\Blinddocument
+\section{Process of Clock/Voltage Glitching: Loop Skip Fault Attack Using CWLite}
+
+Clock and voltage glitching are effective hardware fault injection techniques used to disrupt normal device behavior by introducing brief disturbances in timing or power. With tools like the ChipWhisperer, these attacks can be precisely controlled and analyzed to identify and exploit vulnerabilities in embedded systems.
+
+The Loop Skip Fault Attack od AES128C aims to bypass certain instructions in a loop, often used in cryptographic operations like key checking or encryption rounds. By injecting a carefully timed glitch, an attacker can force the program to skip one or more loop iterations, potentially weakening the algorithm or leaking secret information. This type of fault is particularly useful when the attacker wants to reduce the number of encryption rounds or skip password verification logic, leading to unintended access or data leakage.
+
+\subsection{Target Configuration Setup}
+
+The first step is configuring the ChipWhisperer environment to match the target device. This involves specifying the correct hardware platform, communication protocol, and cryptographic target. These settings ensure that the glitching process can interact properly with the device under test.
+
+Below is the basic configuration for setting up the CWLite with an ARM-based target running a TinyAES encryption implementation:
+
+\begin{verbatim}
+# Use the OpenADC for data capture
+SCOPETYPE = 'OPENADC' 
+
+# Target is ChipWhisperer-Lite with ARM MCU
+PLATFORM = 'CWLITEARM'  
+
+# Target firmware running TinyAES encryption
+CRYPTO_TARGET = 'TINYAES128C'  
+
+# SimpleSerial version 2.1 for communication
+SS_VER = 'SS_VER_2_1'  
+\end{verbatim}
+
+\subsection{Running the Setup Script}
+
+Once the target configuration is defined, the next step is to initialize the ChipWhisperer environment by running a setup script. This script loads all necessary modules, applies configuration settings, and ensures that the scope and target are ready for communication and glitching.
+
+The following command is used to execute the generic setup script:
+
+\begin{verbatim}
+%run "../../Setup_Scripts/Setup_Generic.ipynb"
+\end{verbatim}
+
+This script sets up the scope, target, and communication interface automatically. It simplifies the initialization process by applying standard settings required for most experiments, allowing the user to focus on customizing parameters for the specific attack.
+\subsection{Compiling the Target Firmware}
+
+After setting up the environment, the firmware running on the target device must be compiled to match the chosen platform and cryptographic implementation. This step ensures that the device is loaded with the correct code, such as TinyAES, and is compatible with the glitching setup.
+
+The following command compiles the firmware using the specified platform, crypto target, and SimpleSerial version:
+
+\begin{verbatim}
+%%bash -s "$PLATFORM" "$CRYPTO_TARGET" "$SS_VER"
+cd ../../../firmware/mcu/simpleserial-aes
+make PLATFORM=$1 CRYPTO_TARGET=$2 SS_VER=$3
+\end{verbatim}
+
+This Bash cell changes the directory to the AES firmware source and runs the `make` command with the appropriate arguments. The output is a firmware binary that will be loaded onto the target for testing the glitching attack.
+\subsection{Loading the Target Firmware}
+Once the firmware is compiled, it needs to be loaded onto the target device. This step ensures that the device is running the correct code for the glitching attack.
+The following command loads the compiled firmware onto the target:
+\begin{verbatim}
+    fw_path = "../../../firmware/mcu/simpleserial-aes/" + 
+              "simpleserial-aes-CWLITEARM.hex"
+    
+    cw.program_target(scope, prog, fw_path)
+    \end{verbatim}

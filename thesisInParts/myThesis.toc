@@ -6,8 +6,8 @@
 \contentsline {chapter}{List of Abbreviations}{xiii}{chapter*.6}%
 \contentsline {chapter}{Abstract}{xv}{section*.7}%
 \contentsline {chapter}{Contents}{xvii}{section*.8}%
-\contentsline {chapter}{List of Figures}{xxi}{section*.9}%
-\contentsline {chapter}{List of Tables}{xxiii}{section*.10}%
+\contentsline {chapter}{List of Figures}{xix}{section*.9}%
+\contentsline {chapter}{List of Tables}{xxi}{section*.10}%
 \contentsline {chapter}{\chapternumberline {1}Introduction}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Motivation and Objectives}{2}{section.1.1}%
 \contentsline {section}{\numberline {1.2}Contributions from this Research}{2}{section.1.2}%
@@ -27,81 +27,55 @@
 \contentsline {section}{\numberline {3.2}ChipWhisperer Hardware Platform}{10}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Scope Boards (Capture Hardware)}{10}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}Target Boards (Device Under Test - DUT)}{11}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Integrated Target on ChipWhisperer-Lite}{11}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Integrated Target on ChipWhisperer-Nano}{11}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}ChipWhisperer-Husky}{11}{subsection.3.2.5}%
-\contentsline {section}{\numberline {3.3}Software Environment}{11}{section.3.3}%
-\contentsline {subsubsection}{ChipWhisperer Software Environment}{11}{subsubsection*.18}%
-\contentsline {subsubsection}{For Windows :}{12}{subsubsection*.19}%
-\contentsline {subsubsection}{for Linux:}{12}{subsubsection*.21}%
-\contentsline {subsubsection}{for MacOs}{13}{subsubsection*.22}%
-\contentsline {subsection}{\numberline {3.3.1}Directory Structure}{13}{subsection.3.3.1}%
-\contentsline {subsubsection}{Python and Hardware Integration}{14}{subsubsection*.23}%
-\contentsline {subsection}{\numberline {3.3.2}Scope API}{14}{subsection.3.3.2}%
-\contentsline {subsubsection}{\textbf {\texttt {scope.adc.samples} :}}{15}{subsubsection*.24}%
-\contentsline {subsubsection}{\textbf {\texttt {scope.adc.timeout }:}}{15}{subsubsection*.25}%
-\contentsline {subsubsection}{$scope.clock.adc\_src :$}{15}{subsubsection*.26}%
-\contentsline {subsubsection}{\textbf {\texttt {glitch.clk\_src }:}}{15}{subsubsection*.27}%
-\contentsline {subsubsection}{$scope.glitch.output :$}{15}{subsubsection*.28}%
-\contentsline {subsubsection}{$scope.glitch.trigger\_src :$}{16}{subsubsection*.29}%
-\contentsline {subsubsection}{$scope.glitch.repeat :$}{16}{subsubsection*.30}%
-\contentsline {subsubsection}{\textbf {\texttt {scope.glitch.width} :}}{17}{subsubsection*.31}%
-\contentsline {subsubsection}{\textbf {\texttt {scope.glitch.offset }:}}{17}{subsubsection*.32}%
-\contentsline {subsubsection}{$scope.glitch.ext\_offset :$}{18}{subsubsection*.33}%
-\contentsline {subsubsection}{$scope.arm() :$}{18}{subsubsection*.34}%
-\contentsline {subsubsection}{$scope.capture() :$}{18}{subsubsection*.35}%
-\contentsline {subsubsection}{$scope.get\_last\_trace() :$}{18}{subsubsection*.36}%
-\contentsline {subsection}{\numberline {3.3.3}Target API}{19}{subsection.3.3.3}%
-\contentsline {subsubsection}{$target.flush() :$}{19}{subsubsection*.37}%
-\contentsline {subsubsection}{$target.simpleserial\_write(cmd, data) :$}{20}{subsubsection*.38}%
-\contentsline {subsubsection}{$target.simpleserial\_read\_witherrors(cmd, length) :$}{20}{subsubsection*.39}%
-\contentsline {subsubsection}{$target.simpleserial\_wait\_ack(cmd, timeout=1) :$}{21}{subsubsection*.40}%
-\contentsline {section}{\numberline {3.4}Process of Clock/Voltage Glitching}{21}{section.3.4}%
+\contentsline {subsection}{\numberline {3.2.3}Integrated Target on ChipWhisperer-Nano}{11}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Integrated Target on ChipWhisperer-Lite}{11}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}ChipWhisperer-Husky}{13}{subsection.3.2.5}%
+\contentsline {section}{\numberline {3.3}Software Environment}{14}{section.3.3}%
+\contentsline {subsubsection}{ChipWhisperer Software Environment}{14}{subsubsection*.22}%
+\contentsline {subsubsection}{For Windows :}{14}{subsubsection*.23}%
+\contentsline {subsubsection}{for Linux:}{15}{subsubsection*.25}%
+\contentsline {subsubsection}{for MacOs}{16}{subsubsection*.26}%
+\contentsline {subsection}{\numberline {3.3.1}Directory Structure}{16}{subsection.3.3.1}%
+\contentsline {subsubsection}{Python and Hardware Integration}{17}{subsubsection*.27}%
+\contentsline {subsection}{\numberline {3.3.2}Scope API}{17}{subsection.3.3.2}%
+\contentsline {subsubsection}{\textbf {\texttt {scope.adc.samples} :}}{17}{subsubsection*.28}%
+\contentsline {subsubsection}{\textbf {\texttt {scope.adc.timeout }:}}{18}{subsubsection*.29}%
+\contentsline {subsubsection}{$scope.clock.adc\_src :$}{18}{subsubsection*.30}%
+\contentsline {subsubsection}{\textbf {\texttt {glitch.clk\_src }:}}{18}{subsubsection*.31}%
+\contentsline {subsubsection}{$scope.glitch.output :$}{18}{subsubsection*.32}%
+\contentsline {subsubsection}{$scope.glitch.trigger\_src :$}{19}{subsubsection*.33}%
+\contentsline {subsubsection}{$scope.glitch.repeat :$}{19}{subsubsection*.34}%
+\contentsline {subsubsection}{\textbf {\texttt {scope.glitch.width} :}}{20}{subsubsection*.35}%
+\contentsline {subsubsection}{\textbf {\texttt {scope.glitch.offset }:}}{20}{subsubsection*.36}%
+\contentsline {subsubsection}{$scope.glitch.ext\_offset :$}{20}{subsubsection*.37}%
+\contentsline {subsubsection}{$scope.arm() :$}{21}{subsubsection*.38}%
+\contentsline {subsubsection}{$scope.capture() :$}{21}{subsubsection*.39}%
+\contentsline {subsubsection}{$scope.get\_last\_trace() :$}{21}{subsubsection*.40}%
+\contentsline {subsection}{\numberline {3.3.3}Target API}{21}{subsection.3.3.3}%
+\contentsline {subsubsection}{$target.flush() :$}{22}{subsubsection*.41}%
+\contentsline {subsubsection}{$target.simpleserial\_write(cmd, data) :$}{22}{subsubsection*.42}%
+\contentsline {subsubsection}{$target.simpleserial\_read\_witherrors(cmd, length) :$}{23}{subsubsection*.43}%
+\contentsline {subsubsection}{$target.simpleserial\_wait\_ack(cmd, timeout=1) :$}{23}{subsubsection*.44}%
+\contentsline {section}{\numberline {3.4}Process of Clock/Voltage Glitching: Loop Skip Fault Attack Using CWLite}{24}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Target Configuration Setup}{24}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Running the Setup Script}{25}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Compiling the Target Firmware}{25}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.4}Loading the Target Firmware}{25}{subsection.3.4.4}%
 \noindent \hrulefill \leavevmode \par 
-\contentsline {chapter}{\chapternumberline {4}Real-world replication of state-of-the-art}{23}{chapter.4}%
-\contentsline {chapter}{\chapternumberline {5}Heading on level\xspace 0 (chapter)}{25}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Heading on level\xspace 1 (section)}{25}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Heading on level\xspace 2 (subsection)}{26}{subsection.5.1.1}%
-\contentsline {subsubsection}{Heading on level\xspace 3 (subsubsection)}{26}{subsubsection*.41}%
-\contentsline {paragraph}{Heading on level\xspace 4 (paragraph)}{26}{paragraph*.42}%
-\contentsline {section}{\numberline {5.2}Lists}{27}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Example for list\xspace (itemize)}{27}{subsection.5.2.1}%
-\contentsline {subsubsection}{Example for list\xspace (4*itemize)}{27}{subsubsection*.43}%
-\contentsline {subsection}{\numberline {5.2.2}Example for list\xspace (enumerate)}{27}{subsection.5.2.2}%
-\contentsline {subsubsection}{Example for list\xspace (4*enumerate)}{28}{subsubsection*.44}%
-\contentsline {subsection}{\numberline {5.2.3}Example for list\xspace (description)}{28}{subsection.5.2.3}%
-\contentsline {subsubsection}{Example for list\xspace (4*description)}{28}{subsubsection*.45}%
-\contentsline {subsection}{\numberline {5.2.4}Experimental Data}{29}{subsection.5.2.4}%
+\contentsline {chapter}{\chapternumberline {4}Real-world replication of state-of-the-art}{27}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Four Diagonals in the AES State Matrix}{28}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Diagonal Fault Attack on AES-128 with Fault Injection at Round 8}{28}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Fault Injection at the Start of Round 8 using CW-Lite}{29}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Using Voltage Glitching}{29}{subsection.4.3.1}%
+\contentsline {subsubsection}{Result}{30}{subsubsection*.45}%
+\contentsline {subsubsection}{Analysis and Fault Propagation}{30}{subsubsection*.46}%
+\contentsline {subsubsection}{After The Fault Injection At Starting of $8^{\text {th}}$ Round :}{30}{subsubsection*.47}%
+\contentsline {subsubsection}{After The Completion of $8^{\text {th}}$ Round(SubByte,ShiftRow,MixColumn,AddRoundkey(8)) :}{30}{subsubsection*.48}%
+\contentsline {subsubsection}{After The Completion of $9^{\text {th}}$ Round(SubByte,ShiftRow,MixColumn,AddRoundkey(9)) :}{31}{subsubsection*.49}%
+\contentsline {subsubsection}{After The Completion of $10^{\text {th}}$ Round(SubByte,ShiftRow,AddRoundkey(10)) :}{31}{subsubsection*.50}%
 \noindent \hrulefill \leavevmode \par 
-\contentsline {part}{I\hspace {1em}Part Title}{31}{part.1}%
-\contentsline {chapter}{\chapternumberline {6}Heading on level\xspace 0 (chapter)}{35}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Heading on level\xspace 1 (section)}{35}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Heading on level\xspace 2 (subsection)}{37}{subsection.6.1.1}%
-\contentsline {subsubsection}{Heading on level\xspace 3 (subsection)}{38}{subsubsection*.47}%
-\contentsline {paragraph}{Heading on level\xspace 4 (paragraph)}{39}{paragraph*.48}%
-\contentsline {section}{\numberline {6.2}Lists}{41}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Example for list\xspace (itemize)}{41}{subsection.6.2.1}%
-\contentsline {subsubsection}{Example for list\xspace (4*itemize)}{42}{subsubsection*.49}%
-\contentsline {subsection}{\numberline {6.2.2}Example for list\xspace (enumerate)}{45}{subsection.6.2.2}%
-\contentsline {subsubsection}{Example for list\xspace (4*enumerate)}{46}{subsubsection*.50}%
-\contentsline {subsection}{\numberline {6.2.3}Example for list\xspace (description)}{49}{subsection.6.2.3}%
-\contentsline {subsubsection}{Example for list\xspace (4*description)}{50}{subsubsection*.51}%
-\contentsline {chapter}{\chapternumberline {7}Heading on level\xspace 0 (chapter)}{55}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Heading on level\xspace 1 (section)}{55}{section.7.1}%
-\contentsline {subsection}{\numberline {7.1.1}Heading on level\xspace 2 (subsection)}{57}{subsection.7.1.1}%
-\contentsline {subsubsection}{Heading on level\xspace 3 (subsection)}{58}{subsubsection*.52}%
-\contentsline {paragraph}{Heading on level\xspace 4 (paragraph)}{59}{paragraph*.53}%
-\contentsline {section}{\numberline {7.2}Lists}{61}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Example for list\xspace (itemize)}{61}{subsection.7.2.1}%
-\contentsline {subsubsection}{Example for list\xspace (4*itemize)}{62}{subsubsection*.54}%
-\contentsline {subsection}{\numberline {7.2.2}Example for list\xspace (enumerate)}{65}{subsection.7.2.2}%
-\contentsline {subsubsection}{Example for list\xspace (4*enumerate)}{66}{subsubsection*.55}%
-\contentsline {subsection}{\numberline {7.2.3}Example for list\xspace (description)}{69}{subsection.7.2.3}%
-\contentsline {subsubsection}{Example for list\xspace (4*description)}{70}{subsubsection*.56}%
 \noindent \hrulefill \leavevmode \par 
-\contentsline {chapter}{\chapternumberline {8}Conclusion and Future Scope}{75}{chapter.8}%
-\contentsline {paragraph}{Future Works}{75}{paragraph*.57}%
-\contentsline {chapter}{Dissemination of The Work}{77}{chapter*.58}%
-\contentsline {chapter}{Other Publications}{79}{chapter*.59}%
-\contentsline {chapter}{About the Author}{81}{chapter*.60}%
-\contentsline {chapter}{Bibliography}{83}{chapter*.61}%
+\contentsline {chapter}{Dissemination of The Work}{33}{chapter*.51}%
+\contentsline {chapter}{Other Publications}{35}{chapter*.52}%
+\contentsline {chapter}{About the Author}{37}{chapter*.53}%
+\contentsline {chapter}{Bibliography}{39}{chapter*.54}%

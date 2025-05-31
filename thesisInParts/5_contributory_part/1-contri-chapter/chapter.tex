@@ -27,12 +27,43 @@ Key features of scope boards:
 Example usage scenario: Capturing power traces during AES encryption for differential power analysis (DPA).
 \subsection{Target Boards (Device Under Test - DUT)}
 
-\subsection{Integrated Target on ChipWhisperer-Lite}
-
 \subsection{Integrated Target on ChipWhisperer-Nano}
+The CWNano is a small and low-cost tool \ref{fig:nano_target} used to learn about hardware security. It has both a target microcontroller and a measurement unit on a single board, making it easy to use. The built-in STM32F030F4P6 microcontroller has 16~KB of flash and 4kB of SRAM, suitable for running simple cryptographic algorithms. The board supports power analysis using an 8-bit ADC with a sampling rate of up to 20~MS/s. It also features basic voltage glitching through a crowbar method. The Nano connects to a computer via USB and is controlled using the ChipWhisperer software suite. It does not support clock glitching and has a limited flash size, but it is ideal for beginners, students, and hobbyists exploring side-channel analysis and embedded security. More details about this can be found in the official documentation \cite{chipwhisperer_nano}.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\linewidth, height=0.5\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/CWNANO.png}
+    \caption{ChipWhisperer-Nano}
+    \label{fig:nano_target}
+\end{figure}
+
+
+
+\subsection{Integrated Target on ChipWhisperer-Lite}
+The CWLite is a compact and low-cost hardware tool designed to help users learn about hardware security. It combines a power measurement system and a microcontroller target on a single board, making it easy to use. This device \cite{chipwhisperer_lite_capture} can capture power traces with high speed and allows for glitching attacks like clock or voltage glitches. It is mainly used to perform and study side-channel attacks, such as breaking encryption by analyzing power usage. The board connects to a computer through USB and works with open-source ChipWhisperer software. Because of its simplicity and low price, it is widely used in education and research.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\linewidth, height=0.5\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/CWLITE.png}
+    \caption{ChipWhisperer-Lite with 32-bit ARM target}
+    \label{lite_target}
+\end{figure}\newline
+It is offered in four hardware options \cite{chipwhisperer_lite2} to suit different learning and testing needs. The first version is the CWLite-XMEGA, which includes both the capture hardware and an ATxmega128D4 microcontroller on a single board. The second option, CWLITE-ARM, features an STM32F3 ARM Cortex-M4 microcontroller instead of the XMEGA, also on a single board as shown in figure \ref{lite_target}. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\linewidth, height=0.5\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/cwlitw_2_part.png}
+    \caption{ChipWhisperer-Lite 2-Part version connections}
+    \label{fig:lite_2_part}
+\end{figure}\newline
+The CWLite 2-Part version as shown in figure \ref{fig:lite_2_part} separates the capture and target sections into two distinct boards, connected via SMA and 20-pin IDC cables. This modular design allows users to easily swap or upgrade target devices, enhancing flexibility for various testing scenarios. The capture board features a 10-bit ADC with a maximum sample rate of 105 MS/s, adjustable gain up to +55\,dB, and supports both voltage and clock glitching with fine-grained control. The target board includes an ATxmega128D4 microcontroller, suitable for implementing and analyzing cryptographic algorithms. This two-part configuration is ideal for users seeking a versatile and open-source platform for embedded hardware security research.\newline
+The CWLite Standalone is a specialized capture board designed for side-channel power analysis and fault injection experiments. Unlike other variants, it does not include an integrated target microcontroller, providing flexibility to connect external targets via standard interfaces. It is ideal for researchers and educators who wish to interface with custom or third-party targets while utilizing ChipWhisperer's powerful capture and analysis capabilities.
+
 
 \subsection{ChipWhisperer-Husky}
-
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\linewidth, height=0.5\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/cwhuskyannoted.png}
+    \caption{ChipWhisperer-Husky with SAM4S target}
+    \label{fig:husky_target}
+\end{figure}
 Together, the scope and target boards in the ChipWhisperer hardware ecosystem offer a comprehensive solution for conducting side-channel and fault injection attacks. Their modular, open-source nature makes them accessible to students, researchers, and engineers alike, and they are widely used in academic studies, industry evaluations, and security training environments.
 
 \section{Software Environment}
@@ -136,10 +167,10 @@ The notebooks leverage Python code to directly interface with ChipWhisperer hard
 These notebooks are intended to be executed within a Jupyter Lab environment. Users can easily launch the environment using the \texttt{chipwhisperer} command-line tools, providing a smooth workflow from code to hardware interaction.
 
 \subsection{Scope API}
-The \texttt{scope} object in ChipWhisperer is used to manage the capture and glitching operations of the hardware.
+The \texttt{scope} object in ChipWhisperer is used to manage the capture and glitching operations of the hardware.The official documentation \cite{chipwhisperer_scope_api} provides a comprehensive overview of the scope API, detailing how to configure the hardware, capture traces, and perform glitching operations. The scope API is designed to be intuitive and flexible, allowing users to easily set up their experiments and interact with the ChipWhisperer hardware.
 
-To create a \texttt{scope} object, the easiest approach is to use the 
-\texttt{chipwhisperer.scope()} function. This function connects to a ChipWhisperer device and returns an instance of the appropriate scope object:
+To create a \texttt{scope} object,  the 
+\texttt{chipwhisperer.scope()} function is the easiest approach to use. This function connects to a ChipWhisperer device and returns an instance of the appropriate scope object:
 
 \begin{lstlisting}[language=Python]
 import chipwhisperer as cw
@@ -313,4 +344,3 @@ In this example, the function tries to read 16 bytes from a response starting wi
 \subsubsection{$target.simpleserial\_wait\_ack(cmd, timeout=1) :$}
 This function is used to wait for an acknowledgment (ack) or error message from the target device after sending a command. This is useful to confirm whether the target received and understood the previous instruction. You can set a timeout in milliseconds, which defines how long to wait for the ack. If the timeout is set to 0, the function will wait indefinitely until it receives a response. If no ack is received within the given time, the function returns \texttt{None}. Otherwise, it returns a code that indicates the result of the command.
 
-\section{Process of Clock/Voltage Glitching}
