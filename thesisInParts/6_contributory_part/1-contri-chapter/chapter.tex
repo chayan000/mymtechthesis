@@ -1,4 +1,4 @@
-% Chanper text
+
 % \[
 % \begin{bmatrix}
 % \texttt{19} & \texttt{a0} & \texttt{9a} & \texttt{e9} \\
@@ -104,6 +104,296 @@ The corrupted state continues to evolve through the remaining AES rounds. Round 
 
 To analyze the behavior of AES under fault conditions, a fault can be intentionally introduced at the beginning of Round 8 using the ChipWhisperer-Lite (CW-Lite) platform. Two common techniques supported by CW-Lite for fault injection are voltage glitching and clock glitching. These methods allow precise control over when and how a fault is introduced into the target device running AES.
 
+\subsection{Using Clock Glitching}
+Firstly we have identified a probable location(5080 to 5120 samples) of the starting of 8th round from the power trace of the AES-128 running in the integrated target of CWLite-ARM. Then we have set the parametsers for voltage glitching as follows:
+\begin{verbatim}
+    scope.glitch.clk_src = "clkgen"
+    scope.glitch.output = "clock_xor"
+    scope.glitch.trigger_src = "ext_single"
+    scope.glitch.repeat = 1
+    scope.io.hs2 = "glitch"
+\end{verbatim}
+\subsubsection{Result}
+A glitch was introduced at location 5086 samples, which corresponds to the start of Round 8. The parametsers 
+\begin{verbatim}
+    scope.glitch.offset= 10
+    scope.glitch.width= 3
+\end{verbatim}
+were responsible for this fault injection. This resulted obtaining a faulty ciphertext b'56 9b 6f 66 c9 41 96 f7 9c f1 49 44 29 13 04 e4' where the correct ciphertext without any fault would be b'f5 d3 d5 85 03 b9 69 9d e7 85 89 5a 96 fd ba af'.
+
+\subsubsection{Fault Propagation \& Analysis}
+We have one correct ciphertext and one faulty ciphertext after the fault injection. As the key was already known to us we have compared the two ciphertexts to analyze the fault propagation using the AES-128 Decryption method. The following tables show the state of the AES matrix at various stages of the encryption process, both with and without the fault.
+
+
+\subsubsection{After The Fault Injection At Starting of $8^{\text{th}}$ Round :}
+\[
+\begin{array}{ccc}
+\textbf{Without Fault} & \textbf{With Fault } & \textbf{Difference } \\[1ex]
+\begin{array}{|c|c|c|c|}
+\hline
+\texttt{96} & \texttt{e9} & \texttt{e9} & \texttt{3c} \\
+\hline
+\texttt{71} & \texttt{87} & \texttt{61} & \texttt{89} \\
+\hline
+\texttt{6a} & \texttt{91} & \texttt{04} & \texttt{13} \\
+\hline
+\texttt{e4} & \texttt{c7} & \texttt{90} & \texttt{ff} \\
+\hline
+\end{array} 
+&
+
+\begin{array}{|c|c|c|c|}
+    \hline
+    \texttt{96} & \texttt{e9} & \texttt{e9} & \texttt{3c} \\
+    \hline
+    \texttt{71} & \texttt{a3} & \texttt{61} & \texttt{89} \\
+    \hline
+    \texttt{6a} & \texttt{91} & \texttt{04} & \texttt{13} \\
+    \hline
+    \texttt{e4} & \texttt{c7} & \texttt{90} & \texttt{ff} \\
+    \hline
+    \end{array}
+
+    &
+
+\begin{array}{|c|c|c|c|}
+    \hline
+    \texttt{00} & \texttt{00} & \texttt{00} &\texttt{00} \\
+    \hline
+    {\texttt{00}} & \fcolorbox{red}{red!20}{\texttt{24}} & \texttt{00} & \texttt{00} \\
+    \hline
+    \texttt{00} & \texttt{00} & \texttt{00} & \texttt{00} \\
+    \hline
+    \texttt{00} & \texttt{00} & \texttt{00} & \texttt{00} \\
+    \hline
+    \end{array}
+\end{array}
+\]
+
+\subsubsection{After The Completion of $8^{\text{th}}$ Round(SubByte,ShiftRow,MixColumn,AddRoundkey(8)) :}
+\[
+\begin{array}{ccc}
+\textbf{Without Fault} & \textbf{With Fault } & \textbf{Difference } \\[1ex]
+\begin{array}{|c|c|c|c|}
+\hline
+\texttt{0c} & \texttt{b7} & \texttt{3b} & \texttt{ad} \\
+\hline
+\texttt{77} & \texttt{b8} & \texttt{a0} & \texttt{c3} \\
+\hline
+\texttt{31} & \texttt{0a} & \texttt{19} & \texttt{d8} \\
+\hline
+\texttt{43} & \texttt{b0} & \texttt{70} & \texttt{eb} \\
+\hline
+\end{array} 
+&
+
+\begin{array}{|c|c|c|c|}
+    \hline
+    \texttt{2b} & \texttt{b7} & \texttt{3b} & \texttt{ad} \\
+    \hline
+    \texttt{4d} & \texttt{b8} & \texttt{a0} & \texttt{c3} \\
+    \hline
+    \texttt{2c} & \texttt{0a} & \texttt{19} & \texttt{d8} \\
+    \hline
+    \texttt{5e} & \texttt{b0} & \texttt{70} & \texttt{eb} \\
+    \hline
+    \end{array}
+
+    &
+
+\begin{array}{|c|c|c|c|}
+    \hline
+    \fcolorbox{red}{red!20}{\texttt{27}} & \texttt{00} & \texttt{00} & \texttt{00} \\
+    \hline
+    \fcolorbox{red}{red!20}{\texttt{3a}} & \texttt{00} & \texttt{00} & \texttt{00}  \\
+    \hline
+    \fcolorbox{red}{red!20}{\texttt{1d}} & \texttt{00} & \texttt{00} & \texttt{00}  \\
+    \hline
+    \fcolorbox{red}{red!20}{\texttt{1d}} & \texttt{00} & \texttt{00} & \texttt{00}  \\
+    \hline
+    \end{array}
+\end{array}
+\]
+
+\subsubsection{After The Completion of $9^{\text{th}}$ Round(SubByte,ShiftRow,MixColumn,AddRoundkey(9)) :}
+\[
+\begin{array}{ccc}
+\textbf{Without Fault} & \textbf{With Fault } & \textbf{Difference } \\[1ex]
+\begin{array}{|c|c|c|c|}
+    \hline
+    \texttt{c2} & \texttt{10} & \texttt{a5} & \texttt{54} \\
+    \hline
+    \texttt{df} & \texttt{31} & \texttt{da} & \texttt{c0} \\
+    \hline
+    \texttt{67} & \texttt{79} & \texttt{42} & \texttt{5d} \\
+    \hline
+    \texttt{9b} & \texttt{74} & \texttt{40} & \texttt{fa} \\
+    \hline
+\end{array} 
+&
+
+\begin{array}{|c|c|c|c|}
+    \hline
+    \texttt{dc} & \texttt{52} & \texttt{13} & \texttt{6e} \\
+    \hline
+    \texttt{d0} & \texttt{73} & \texttt{1b} & \texttt{ec} \\
+    \hline
+    \texttt{68} & \texttt{bf} & \texttt{35} & \texttt{4b} \\
+    \hline
+    \texttt{8a} & \texttt{f0} & \texttt{f6} & \texttt{ec} \\
+    \hline
+    \end{array}
+
+    &
+
+    \begin{array}{|c|c|c|c|}
+        \hline
+        \fcolorbox{red}{red!20}{\texttt{1e}} & \fcolorbox{red}{red!20}{\texttt{42}} & \fcolorbox{red}{red!20}{\texttt{b6}} & \fcolorbox{red}{red!20}{\texttt{3a}} \\
+        \hline
+        \fcolorbox{red}{red!20}{\texttt{0f}} & \fcolorbox{red}{red!20}{\texttt{42}} & \fcolorbox{red}{red!20}{\texttt{c1}} & \fcolorbox{red}{red!20}{\texttt{2c}} \\
+        \hline
+        \fcolorbox{red}{red!20}{\texttt{0f}} & \fcolorbox{red}{red!20}{\texttt{c6}} & \fcolorbox{red}{red!20}{\texttt{77}} & \fcolorbox{red}{red!20}{\texttt{16}} \\
+        \hline
+        \fcolorbox{red}{red!20}{\texttt{11}} & \fcolorbox{red}{red!20}{\texttt{84}} & \fcolorbox{red}{red!20}{\texttt{b6}} & \fcolorbox{red}{red!20}{\texttt{16}} \\
+        \hline
+    \end{array}
+\end{array}
+\]
+\subsubsection{After The Completion of $10^{\text{th}}$ Round(SubByte,ShiftRow,AddRoundkey(10)) :}
+\[
+\begin{array}{ccc}
+\textbf{Without Fault ($ct$)} & \textbf{With Fault ($ct_f$)} & \textbf{Difference } \\[1ex]
+\begin{array}{|c|c|c|c|}
+    \hline
+    \texttt{f5} & \texttt{03} & \texttt{e7} & \texttt{96} \\
+    \hline
+    \texttt{d3} & \texttt{b9} & \texttt{85} & \texttt{fd} \\
+    \hline
+    \texttt{d5} & \texttt{69} & \texttt{89} & \texttt{ba} \\
+    \hline
+    \texttt{85} & \texttt{9d} & \texttt{5a} & \texttt{af} \\
+    \hline
+\end{array} 
+&
+
+\begin{array}{|c|c|c|c|}
+    \hline
+    \texttt{56} & \texttt{c9} & \texttt{9c} & \texttt{29} \\
+    \hline
+    \texttt{9b} & \texttt{41} & \texttt{f1} & \texttt{13} \\
+    \hline
+    \texttt{6f} & \texttt{96} & \texttt{49} & \texttt{04} \\
+    \hline
+    \texttt{66} & \texttt{f7} & \texttt{44} & \texttt{e4} \\
+    \hline
+\end{array}
+
+    &
+
+    \begin{array}{|c|c|c|c|}
+        \hline
+        \fcolorbox{red}{red!20}{\texttt{a3}} & \fcolorbox{red}{red!20}{\texttt{ca}} & \fcolorbox{red}{red!20}{\texttt{7b}} & \fcolorbox{red}{red!20}{\texttt{bf}} \\
+        \hline
+        \fcolorbox{red}{red!20}{\texttt{48}} & \fcolorbox{red}{red!20}{\texttt{f8}} & \fcolorbox{red}{red!20}{\texttt{74}} & \fcolorbox{red}{red!20}{\texttt{ee}} \\
+        \hline
+        \fcolorbox{red}{red!20}{\texttt{ba}} & \fcolorbox{red}{red!20}{\texttt{ff}} & \fcolorbox{red}{red!20}{\texttt{c0}} & \fcolorbox{red}{red!20}{\texttt{be}} \\
+        \hline
+        \fcolorbox{red}{red!20}{\texttt{e3}} & \fcolorbox{red}{red!20}{\texttt{6a}} & \fcolorbox{red}{red!20}{\texttt{1e}} & \fcolorbox{red}{red!20}{\texttt{4b}} \\
+        \hline
+    \end{array}
+    
+\end{array}
+\]
+Here we notice that the fault was injected at 1 bytes of the $D_0$ diagonal of the state matrix of 8th round. According to the fault model proposed by Dhiman et al.,\cite{Saha2009ADF} the fault in the $D_0$ diagonal of the state matrix at the start of Round 8 propagates through the subsequent rounds, affecting the final ciphertext. The differences in the ciphertexts before and after the fault injection reveal how the fault has altered specific bytes, which can be exploited to recover parts of the secret key. 
+If we consider Byte inter-relations at the end of ninth round corresponding to $D_0$ diagonal, we can express the following relation:
+\[
+\begin{array}{ccc}
+    \textbf{After 8th Round} & \textbf{After 9th Round} & \textbf{After 10th Round Shift Row} \\[1ex]
+    \begin{array}{|c|c|c|c|}
+        \hline
+        \texttt{$f_1$} & \texttt{ } & \texttt{ } &  \texttt{ }\\
+        \hline
+        \texttt{$f_2$} & \texttt{ } & \texttt{ } &  \texttt{ }  \\
+        \hline
+        \texttt{$f_3$} & \texttt{ } & \texttt{ } &  \texttt{ }  \\
+        \hline
+        \texttt{$f_4$}& \texttt{ } & \texttt{ } &  \texttt{ }  \\
+        \hline
+    \end{array}
+&
+
+\begin{array}{|c|c|c|c|}
+    \hline
+    \texttt{2$f_1$} & \texttt{$f_4$} & \texttt{$f_3$} & \texttt{3$f_2$} \\
+    \hline
+    \texttt{$f_1$} & \texttt{$f_4$} & \texttt{3$f_3$} & \texttt{2$f_2$} \\
+    \hline
+    \texttt{$f_1$} & \texttt{3$f_4$} & \texttt{2$f_3$} & \texttt{$f_2$} \\
+    \hline
+    \texttt{3$f_1$} & \texttt{2$f_4$} & \texttt{$f_3$} & \texttt{$f_2$} \\
+    \hline
+\end{array}
+
+    &
+
+    \begin{array}{|c|c|c|c|}
+        \hline
+        \texttt{2$f_1$} & \texttt{$f_4$} & \texttt{$f_3$} & \texttt{3$f_2$} \\
+        \hline
+        \texttt{$f_4$} & \texttt{3$f_3$} & \texttt{2$f_2$} & \texttt{$f_1$}\\
+        \hline
+        \texttt{2$f_3$} & \texttt{$f_2$} & \texttt{$f_1$} & \texttt{3$f_4$} \\
+        \hline
+        \texttt{$f_2$} & \texttt{3$f_1$} & \texttt{2$f_4$} & \texttt{$f_3$} \\
+        \hline
+    \end{array}
+    
+\end{array}
+\]
+If we represent the $10^{th}$ round key as \(K_{10}\), it can be expressed as:
+\[
+    \begin{array}{|c|c|c|c|}
+        \hline
+        k_{00} & k_{01} & k_{02} & k_{03} \\
+        \hline
+        k_{10} & k_{11} & k_{12} & k_{13} \\
+        \hline
+        k_{20} & k_{21} & k_{22} & k_{23} \\
+        \hline
+        k_{30} & k_{31} & k_{32} & k_{33} \\
+        \hline
+        \end{array}
+\]
+Now we can frame 3 equations based on the differences in the ciphertexts before and after the fault injection to guess the key bytes $K_{00}$,$K_{13}$,$K_{22}$ and $K_{31}$ . The equations are as follows:
+\begin{align*}
+    \text{ISB}(\text{ct}[0] \oplus K_{00}) \oplus \text{ISB}(\text{ct}_f[0] \oplus K_{00}) 
+    &= \text{mul2} \left( \text{ISB}(\text{ct}[13] \oplus K_{13}) \oplus \text{ISB}(\text{ct}_f[13] \oplus K_{13}) \right)\\
+    \text{ISB}(\text{ct}[13] \oplus K_{13}) \oplus \text{ISB}(\text{ct}_f[13] \oplus K_{13}) 
+    &= \text{ISB}(\text{ct}[10] \oplus K_{22}) \oplus \text{ISB}(\text{ct}_f[10] \oplus K_{22})\\
+    \text{ISB}(\text{ct}[7] \oplus K_{31}) \oplus \text{ISB}(\text{ct}_f[7] \oplus K_{31}) 
+    &= \text{mul3} \left( \text{ISB}(\text{ct}[13] \oplus K_{13}) \oplus \text{ISB}(\text{ct}_f[13] \oplus K_{13}) \right)
+    \end{align*}
+
+Similarly for keybytes $K_{01}$,$K_{12}$,$K_{23}$ and $K_{30}$ we can frame the following equations:
+\begin{align*}
+    \text{ISB}(\text{ct}[11] \oplus K_{32}) \oplus \text{ISB}(\text{ct}_f[11] \oplus K_{32}) &= \text{mul2} \cdot \left( \text{ISB}(\text{ct}[4] \oplus K_{01}) \oplus \text{ISB}(\text{ct}_f[4] \oplus K_{01}) \right) \\
+    \text{ISB}(\text{ct}[1] \oplus K_{10}) \oplus \text{ISB}(\text{ct}_f[1] \oplus K_{10}) &= \text{ISB}(\text{ct}[4] \oplus K_{01}) \oplus \text{ISB}(\text{ct}_f[4] \oplus K_{01}) \\
+    \text{ISB}(\text{ct}[14] \oplus K_{23}) \oplus \text{ISB}(\text{ct}_f[14] \oplus K_{23}) &= \text{mul3} \cdot \left( \text{ISB}(\text{ct}[4] \oplus K_{1}) \oplus \text{ISB}(\text{ct}_f[4] \oplus K_{1}) \right)
+    \end{align*}
+
+For keybytes $K_{02}$,$K_{11}$,$K_{20}$ and $K_{33}$ we can frame the following equations:
+\begin{align*}
+    \text{ISB}(\text{ct}[2] \oplus K_{20}) \oplus \text{ISB}(\text{ct}_f[2] \oplus K_{20}) &= \text{mul2} \cdot \left( \text{ISB}(\text{ct}[8] \oplus K_{02}) \oplus \text{ISB}(\text{ct}_f[8] \oplus K_{02}) \right) \\
+    \text{ISB}(\text{ct}[15] \oplus K_{33}) \oplus \text{ISB}(\text{ct}_f[15] \oplus K_{33}) &= \text{ISB}(\text{ct}[8] \oplus K_{02}) \oplus \text{ISB}(\text{ct}_f[8] \oplus K_{02}) \\
+    \text{ISB}(\text{ct}[5] \oplus K_{11}) \oplus \text{ISB}(\text{ct}_f[5] \oplus K_{11}) &= \text{mul3}\cdot \left( \text{ISB}(\text{ct}[8] \oplus K_{02}) \oplus \text{ISB}(\text{ct}_f[8] \oplus K_{02}) \right)
+    \end{align*}
+Similarly for keybytes $K_{03}$,$K_{10}$,$K_{21}$ and $K_{30}$ we can frame the following equations:
+\begin{align*}
+    \text{ISB}(\text{ct}[9] \oplus K_{12}) \oplus \text{ISB}(\text{ct}_f[9] \oplus K_{12}) &= \text{mul2} \cdot \left( \text{ISB}(\text{ct}[6] \oplus K_{21}) \oplus \text{ISB}(\text{ct}_f[6] \oplus K_{21}) \right) \\
+    \text{ISB}(\text{ct}[3] \oplus K_{30}) \oplus \text{ISB}(\text{ct}_f[3] \oplus K_{30}) &= \text{ISB}(\text{ct}[6] \oplus K_{21}) \oplus \text{ISB}(\text{ct}_f[6] \oplus K_{21}) \\
+    \text{ISB}(\text{ct}[12] \oplus K_{03}) \oplus \text{ISB}(\text{ct}_f[12] \oplus K_{03}) &= \text{mul2} \cdot \left( \text{ISB}(\text{ct}[6] \oplus K_{21}) \oplus \text{ISB}(\text{ct}_f[6] \oplus K_{21}) \right)
+    \end{align*}
+Here in AES, \texttt{mul2} and \texttt{mul3} denote multiplication by 2 and 3 in the finite field $\mathrm{GF}(2^8)$, used in the MixColumns step to achieve diffusion through field arithmetic. Solving these 12 equations allows us to recover the key bytes of 10th Round and thus the complete key of AES-128.
 \subsection{Using Voltage Glitching}
 Firstly we have identified a probable location(5090 to 5120 samples) of the starting of 8th round from the power trace of the AES-128 running in the integrated target of CWLite-ARM. Then we have set the parametsers for voltage glitching as follows:
 \begin{verbatim}
@@ -303,18 +593,83 @@ We have one correct ciphertext and one faulty ciphertext after the fault injecti
     \end{array}
 \end{array}
 \]
-Here we notice that the fault was injected at 2 bytes of the $D_3$ diagonal of the state matrix of 8th round. According to the fault model proposed by Dhiman et al.,\cite{Saha2009ADF} the fault in the $D_3$ diagonal of the state matrix at the start of Round 8 propagates through the subsequent rounds, affecting the final ciphertext. The differences in the ciphertexts before and after the fault injection reveal how the fault has altered specific bytes, which can be exploited to recover parts of the secret key. If we represent the $10^{th}$ round key as \(K_{10}\), it can be expressed as:
+Here we notice that the fault was injected at 2 bytes of the $D_3$ diagonal of the state matrix of 8th round. According to the fault model proposed by Dhiman et al.,\cite{Saha2009ADF} the fault in the $D_3$ diagonal of the state matrix at the start of Round 8 propagates through the subsequent rounds, affecting the final ciphertext.According to The Byte inter-relations corresponding to $D_3$ diagonal, we can express the following relation:
 \[
+\begin{array}{ccc}
+    \textbf{After 8th Round} & \textbf{After 9th Round} & \textbf{After 10th Round Shift Row} \\[1ex]
     \begin{array}{|c|c|c|c|}
         \hline
-        k_{00} & k_{01} & k_{02} & k_{03} \\
+        \texttt{ } & \texttt{ } &  \texttt{ } & \texttt{$f_1$}\\
         \hline
-        k_{10} & k_{11} & k_{12} & k_{13} \\
+        \texttt{ } & \texttt{ } &  \texttt{ } & \texttt{$f_2$}  \\
         \hline
-        k_{20} & k_{21} & k_{22} & k_{23} \\
+        \texttt{ } & \texttt{ } &  \texttt{ } & \texttt{$f_3$}  \\
         \hline
-        k_{30} & k_{31} & k_{32} & k_{33} \\
+        \texttt{ } & \texttt{ } &  \texttt{ } & \texttt{$f_4$} \\
         \hline
-        \end{array}
+    \end{array}
+&
+
+\begin{array}{|c|c|c|c|}
+    \hline
+    \texttt{$f_4$} & \texttt{$f_3$} & \texttt{3$f_2$} & \texttt{$2f_1$} \\
+    \hline
+    \texttt{$f_4$} & \texttt{3$f_3$} & \texttt{2$f_2$} & \texttt{$f_1$} \\
+    \hline
+    \texttt{3$f_4$} & \texttt{2$f_3$} & \texttt{$f_2$} & \texttt{$f_1$} \\
+    \hline
+    \texttt{2$f_4$} & \texttt{$f_3$} & \texttt{$f_2$} & \texttt{3$f_1$} \\
+    \hline
+\end{array}
+
+    &
+
+    \begin{array}{|c|c|c|c|}
+        \hline
+        \texttt{$f_4$} & \texttt{$f_3$} & \texttt{3$f_2$} & \texttt{$2f_1$} \\
+        \hline
+        \texttt{3$f_3$} & \texttt{2$f_2$} & \texttt{$f_1$} & \texttt{$f_4$} \\
+        \hline
+        \texttt{$f_2$} & \texttt{$f_1$} & \texttt{3$f_4$} & \texttt{2$f_3$} \\
+        \hline
+        \texttt{3$f_1$} & \texttt{2$f_4$} & \texttt{$f_3$} & \texttt{$f_2$}\\
+        \hline
+    \end{array}
+    
+\end{array}
 \]
-We can frame 12 equations based on the differences in the ciphertexts before and after the fault injection. The equations are as follows:
+
+Again we can make the following equations based on the differences in the ciphertexts with or without the fault injection to guess the key bytes $K_{00}$,$K_{13}$,$K_{22}$ and $K_{31}$ . The equations are as follows:
+\begin{align*}
+    \text{ISB}(\text{ct}[0] \oplus K_{00}) \oplus \text{ISB}(\text{ct}_f[0] \oplus K_{00}) &= \text{ISB}(\text{ct}[13] \oplus K_{13}) \oplus \text{ISB}(\text{ct}_f[13] \oplus K_{13}) \\
+    \text{ISB}(\text{ct}[10] \oplus K_{22}) \oplus \text{ISB}(\text{ct}_f[10] \oplus K_{22}) &= \text{mul3}\cdot \left( \text{ISB}(\text{ct}[13] \oplus K_{13}) \oplus \text{ISB}(\text{ct}_f[13] \oplus K_{13}) \right) \\
+    \text{ISB}(\text{ct}[7] \oplus K_{31}) \oplus \text{ISB}(\text{ct}_f[7] \oplus K_{31}) &= \text{mul2} \cdot \left( \text{ISB}(\text{ct}[13] \oplus K_{13}) \oplus \text{ISB}(\text{ct}_f[13] \oplus K_{13}) \right)
+    \end{align*}
+Similarly for keybytes $K_{01}$,$K_{10}$,$K_{23}$ and $K_{32}$ we can frame the following equations:
+\begin{align*}
+    \text{ISB}(\text{ct}[11] \oplus K_{32}) \oplus \text{ISB}(\text{ct}_f[11] \oplus K_{32}) &= \text{ISB}(\text{ct}[4] \oplus K_{01}) \oplus \text{ISB}(\text{ct}_f[4] \oplus K_{01}) \\
+    \text{ISB}(\text{ct}[1] \oplus K_{10}) \oplus \text{ISB}(\text{ct}_f[1] \oplus K_{10}) &= \texttt{mul3}\left( \text{ISB}(\text{ct}[11] \oplus K_{32}) \oplus \text{ISB}(\text{ct}_f[11] \oplus K_{32}) \right) \\
+    \text{ISB}(\text{ct}[14] \oplus K_{23}) \oplus \text{ISB}(\text{ct}_f[14] \oplus K_{23}) &= \texttt{mul2}\left( \text{ISB}(\text{ct}[4] \oplus K_{01}) \oplus \text{ISB}(\text{ct}_f[4] \oplus K_{01}) \right)
+    \end{align*}
+For keybytes $K_{02}$,$K_{11}$,$K_{20}$ and $K_{33}$ we can frame the following equations:
+\begin{align*}
+    \text{ISB}(\text{ct}[8] \oplus K_{02}) \oplus \text{ISB}(\text{ct}_f[8] \oplus K_{02}) &= \texttt{mul3} \left( \text{ISB}(\text{ct}[2] \oplus K_{20}) \oplus \text{ISB}(\text{ct}_f[2] \oplus K_{20}) \right) \\
+    \text{ISB}(\text{ct}[15] \oplus K_{33}) \oplus \text{ISB}(\text{ct}_f[15] \oplus K_{33}) &= \text{ISB}(\text{ct}[8] \oplus K_{02}) \oplus \text{ISB}(\text{ct}_f[8] \oplus K_{02}) \\
+    \text{ISB}(\text{ct}[5] \oplus K_{11}) \oplus \text{ISB}(\text{ct}_f[5] \oplus K_{11}) &= \texttt{mul2} \left( \text{ISB}(\text{ct}[2] \oplus K_{20}) \oplus \text{ISB}(\text{ct}_f[2] \oplus K_{20}) \right)
+    \end{align*}
+
+For keybytes $K_{03}$,$K_{10}$,$K_{21}$ and $K_{30}$ we can frame the following equations:
+\begin{align*}
+    \text{ISB}(\text{ct}[9] \oplus K_{12}) \oplus \text{ISB}(\text{ct}_f[9] \oplus K_{12}) &= \text{ISB}(\text{ct}[6] \oplus K_{21}) \oplus \text{ISB}(\text{ct}_f[6] \oplus K_{21}) \\
+    \text{ISB}(\text{ct}[3] \oplus K_{30}) \oplus \text{ISB}(\text{ct}_f[3] \oplus K_{30}) &= \texttt{mul3}\left( \text{ISB}(\text{ct}[6] \oplus K_{21}) \oplus \text{ISB}(\text{ct}_f[6] \oplus K_{21}) \right) \\
+    \text{ISB}(\text{ct}[12] \oplus K_{03}) \oplus \text{ISB}(\text{ct}_f[12] \oplus K_{03}) &= \texttt{mul2}\left( \text{ISB}(\text{ct}[6] \oplus K_{21}) \oplus \text{ISB}(\text{ct}_f[6] \oplus K_{21}) \right)
+    \end{align*}
+
+\section{Conclusion}
+In this experiment, we successfully demonstrated the use of CWLite for voltage glitching and Clock glitching to inject faults into the AES-128 encryption process. By analyzing the fault propagation through the rounds of AES, we were able to derive equations that allowed us to recover key bytes from the faulty ciphertext as mentioned in \cite{Saha2009ADF}. These attacks can also be perfomed with the help of CWHusky with slight modification in the setting by making 
+\begin{verbatim}
+    scope.glitch.clk_src = "pll"
+\end{verbatim} 
+and then finding a suitable glitch location, width and offset.
+This highlights the vulnerabilities of cryptographic systems to physical attacks and emphasizes the importance of implementing robust countermeasures against such threats.
+
