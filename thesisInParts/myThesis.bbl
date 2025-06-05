@@ -1,18 +1,63 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
 \begin{thebibliography}{{New}25d}
 
-\bibitem[{New}25a]{chipwhisperer_lite2}
+\bibitem[B{\etalchar{+}}23]{brito2023evaluation}
+F.~Brito et~al.
+\newblock Evaluation of fault injection tools for reliability estimation of
+  microprocessor-based embedded systems.
+\newblock {\em Microprocessors and Microsystems}, 96:104723, 2023.
+
+\bibitem[BDD{\etalchar{+}}22]{Belkheyar_Daemen_Dobraunig_Ghosh_Rasoolzadeh_2022}
+Yanis Belkheyar, Joan Daemen, Christoph Dobraunig, Santosh Ghosh, and Shahram
+  Rasoolzadeh.
+\newblock Bipbip: A low-latency tweakable block cipher with small dimensions.
+\newblock {\em IACR Transactions on Cryptographic Hardware and Embedded
+  Systems}, 2023(1):326–368, Nov. 2022.
+
+\bibitem[BH22]{breier2022practical}
+Jakub Breier and Xiaolu Hou.
+\newblock How practical are fault injection attacks, really?
+\newblock Cryptology ePrint Archive, Paper 2022/301, 2022.
+
+\bibitem[H{\etalchar{+}}23]{hermelink2023side}
+M.~Hermelink et~al.
+\newblock Side-channel and fault-injection attacks over lattice-based
+  post-quantum schemes (kyber, dilithium): Survey and new results.
+\newblock {\em ACM Transactions on Embedded Computing Systems}, 2023.
+
+\bibitem[{New}16a]{newae_cw305}
+{NewAE Technology Inc.}
+\newblock {\em CW305 Artix FPGA Target Documentation}, 2016.
+\newblock Accessed: 2025-06-05.
+
+\bibitem[{New}16b]{newae_cw308ufo}
+{NewAE Technology Inc.}
+\newblock {\em CW308 UFO Board Documentation}, 2016.
+\newblock Accessed: 2025-06-05.
+
+\bibitem[{New}25a]{chipwhisperer2025}
+{NewAE Technology Inc.}
+\newblock {\em ChipWhisperer Documentation: Getting Started}, 2025.
+\newblock Accessed: 2025-06-05.
+
+\bibitem[{New}25b]{chipwhisperer_linux_install}
+{NewAE Technology Inc.}
+\newblock {\em ChipWhisperer Documentation: Linux Installation}, 2025.
+\newblock Accessed: 2025-06-06.
+
+\bibitem[{New}25c]{chipwhisperer_lite2}
 {NewAE Technology Inc.}
 \newblock {\em ChipWhisperer-Lite}, 2025.
 
-\bibitem[{New}25b]{chipwhisperer_nano}
+\bibitem[{New}25d]{chipwhisperer_nano}
 {NewAE Technology Inc.}
 \newblock {\em ChipWhisperer-Nano Target Board}, 2025.
 
-\bibitem[{New}25c]{chipwhisperer_lite_capture}
+\bibitem[{New}25e]{chipwhisperer_lite_capture}
 {NewAE Technology Inc.}
 \newblock {\em CW1173 ChipWhisperer-Lite Capture Documentation}, 2025.
 
-\bibitem[{New}25d]{chipwhisperer_scope_api}
+\bibitem[{New}25f]{chipwhisperer_scope_api}
 {NewAE Technology Inc.}
 \newblock {\em Scope API — ChipWhisperer Documentation}, 2025.
 
@@ -20,5 +65,16 @@
 Dhiman Saha, Debdeep Mukhopadhyay, and Dipanwita~Roy Chowdhury.
 \newblock A diagonal fault attack on the advanced encryption standard.
 \newblock {\em IACR Cryptol. ePrint Arch.}, 2009:581, 2009.
+
+\bibitem[SZFT23]{mazumder2023comprehensive}
+Amit~Mazumder Shuvo, Tao Zhang, Farimah Farahmandi, and Mark Tehranipoor.
+\newblock A comprehensive survey on non-invasive fault injection attacks.
+\newblock Cryptology ePrint Archive, Paper 2023/1769, 2023.
+
+\bibitem[YSW20]{yuce2020fault}
+Bilgiday Yuce, Patrick Schaumont, and Marc Witteman.
+\newblock Fault attacks on secure embedded software: Threats, design and
+  evaluation.
+\newblock {\em arXiv preprint arXiv:2003.10513}, 2020.
 
 \end{thebibliography}

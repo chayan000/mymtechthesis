@@ -4,44 +4,44 @@ The top-level auxiliary file: myThesis.aux
 A level-1 auxiliary file: 3_introduction/intro.aux
 The style file: alpha.bst
 Database file #1: 10_bibliography/myThesis.bib
-You've used 5 entries,
+You've used 15 entries,
             2543 wiz_defined-function locations,
-            576 strings with 4911 characters,
-and the built_in function-call counts, 1418 in all, are:
-= -- 131
-> -- 57
-< -- 4
-+ -- 21
-- -- 17
-* -- 85
-:= -- 243
-add.period$ -- 11
-call.type$ -- 5
-change.case$ -- 23
-chr.to.int$ -- 2
-cite$ -- 5
-duplicate$ -- 66
-empty$ -- 110
-format.name$ -- 26
-if$ -- 276
-int.to.chr$ -- 4
+            620 strings with 6449 characters,
+and the built_in function-call counts, 4765 in all, are:
+= -- 455
+> -- 237
+< -- 8
++ -- 85
+- -- 77
+* -- 303
+:= -- 821
+add.period$ -- 41
+call.type$ -- 15
+change.case$ -- 79
+chr.to.int$ -- 9
+cite$ -- 15
+duplicate$ -- 192
+empty$ -- 344
+format.name$ -- 97
+if$ -- 938
+int.to.chr$ -- 7
 int.to.str$ -- 0
-missing$ -- 1
-newline$ -- 24
-num.names$ -- 15
-pop$ -- 28
+missing$ -- 5
+newline$ -- 75
+num.names$ -- 45
+pop$ -- 86
 preamble$ -- 1
-purify$ -- 32
+purify$ -- 102
 quote$ -- 0
-skip$ -- 55
+skip$ -- 170
 stack$ -- 0
-substring$ -- 45
-swap$ -- 9
-text.length$ -- 4
-text.prefix$ -- 4
+substring$ -- 161
+swap$ -- 23
+text.length$ -- 8
+text.prefix$ -- 8
 top$ -- 0
-type$ -- 40
+type$ -- 120
 warning$ -- 0
-while$ -- 12
-width$ -- 7
-write$ -- 55
+while$ -- 40
+width$ -- 20
+write$ -- 178

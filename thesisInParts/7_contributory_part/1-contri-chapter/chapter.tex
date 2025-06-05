@@ -1,0 +1,117 @@
+BipBip is a tweakable block cipher tailored for applications that demand fast decryption, particularly when implemented in Application-Specific Integrated Circuits (ASICs). These are specialized hardware platforms optimized for specific tasks, where minimizing latency—especially during the decryption phase—is often a critical requirement.
+
+BipBip is designed with a relatively unconventional block size of 24 bits, which is smaller than the standard 64 or 128-bit blocks found in more widely used ciphers. It utilizes a 256-bit master key to ensure a high level of cryptographic security and supports a 40-bit tweak, which allows for additional variability in the encryption/decryption process without the need to change the key. This tweakable feature is particularly useful in modes of operation like tweakable block ciphers or authenticated encryption, where different tweaks can offer better resistance against certain attacks.
+
+What sets BipBip apart from many conventional cipher designs is the way its specification is presented. Instead of focusing primarily on the encryption transformation—that is, the process of converting plaintext into ciphertext—BipBip emphasizes the decryption pathway, moving from ciphertext back to plaintext. This design perspective reflects a practical consideration: in many hardware-based systems, especially those that rely on ASICs, decryption is the performance bottleneck, often due to strict real-time constraints. Optimizing decryption can therefore lead to more efficient overall system performance, particularly in security-critical environments such as secure communications, embedded systems, and low-power IoT devices.
+
+By designing with these hardware-centric priorities in mind, BipBip offers a lightweight yet secure option for scenarios where resource constraints and performance requirements must be carefully balanced.
+
+\section{High Level Decryption Structure of BipBip}
+
+\ref{fig:bipbip_decrypt_structure} taken from \cite{Belkheyar_Daemen_Dobraunig_Ghosh_Rasoolzadeh_2022} is structured around three main components of BipBip's decryption: the datapath, the tweak schedule, and the key schedule.
+
+The key schedule selects bits from the 256-bit master key $K$ to produce the whitening key $\kappa_0$ and the tweak-round keys $\kappa_i$. These keys are used later in the tweak and datapath stages. For simplicity, the key schedule is not shown in the structural diagram.
+
+The datapath begins by combining the ciphertext $C$ with the whitening key $\kappa_0$. It then alternates between applying round functions $R$ or $R'$ and mixing in data-round keys $k_i$, eventually producing the plaintext $P$. These $k_i$ keys are not taken directly from the master key but are derived through the tweak schedule.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{/home/cp07/mymtechthesis/thesisInParts/images/bipbip.png}
+    \caption{High Level Decryption Structure of BipBip}
+    \label{fig:bipbip_decrypt_structure}
+\end{figure}
+
+
+The tweak schedule initializes a 53-bit internal state using the padded 40-bit tweak $T$. It applies alternating rounds of functions $G$ and $G'$, combined with the tweak-round keys $\kappa_i$. At each stage, parts of the state are extracted to form the data-round keys $k_i$ used in the datapath.
+
+\section{Proposed Attack on BipBip}
+According to the study by Dilip et al., the BipBip cipher shows a vulnerability to key recovery attacks when a single-bit fault is introduced at the input of the S-box in the 9th round. This fault, after passing through the permutation layer, affects only 2 out of the 6 bits in the corresponding S-box input of the next round. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{/home/cp07/mymtechthesis/thesisInParts/images/bipbip_attack.png}
+    \caption{Proposed fault injection attack}
+    \label{fig:bipbip_attack}
+\end{figure}
+The authors used this limited diffusion property as a filtering technique to narrow down possible key candidates.
+In their approach, they guessed parts of the round key $k_{11}$ relevant to the first S-box, performed partial decryption, and observed the resulting intermediate values. If the bits expected to be affected by the fault were non-zero, those key guesses were ruled out as invalid. Only the keys that produced zero in those specific bits were considered as potential correct keys.
+
+
+
+
+\section{Experimental Setup}
+First task was to add sempleserial to the BipBip cipher implementation so that communication can be established between the scope and target board.Then from the power trace of the BipBip cipher running on CWLite an approximat location for the attack was identified (10820,10890).
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{/home/cp07/mymtechthesis/thesisInParts/images/bipbip_powertrace.png}
+    \caption{Power trace BipBip in CWLite-ARM}
+    \label{fig:bipbip_powertrace}
+\end{figure}
+For conduction a precise Clock glitch attack the following settings were used:
+\begin{verbatim}
+    scope.glitch.clk_src = "clkgen"
+    scope.glitch.output = "clock_xor"
+    scope.glitch.trigger_src = "ext_single"
+    scope.glitch.repeat = 1
+    scope.io.hs2 = "glitch"
+\end{verbatim}
+We have also done this glitch attack on the CWHusky board, and for that we used 
+\begin{verbatim}
+    scope.glitch.clk_src = "pll"
+\end{verbatim}
+and the location of the attack was set at by observing the power trace of the BipBip cipher running on CWHusky target.
+
+\section{Results \& Analysis}
+Here we present the results of the clock glitch fault injection on the BipBip cipher. The table summarizes the parameters used for the fault injection and the resulting faulty plaintexts compared to the correct plaintexts after round 9.
+\begin{table}[h!]
+    \centering
+    \small % Reduce font size to make it fit better
+    \caption{Summary of Clock Glitch Fault Injection Parameters and Results}
+    \begin{tabular}{|c|c|c|c|p{5.5cm}|} % narrower last column
+    \hline
+    \textbf{Location} & \textbf{Width} & \textbf{Offset} & \textbf{Plaintext} & \textbf{Faulty vs Correct state (Input of Round 9)} \\
+    \hline
+    10841 & 1.17 & 1.17 & 052aa7 & 
+    \parbox{5.5cm}{
+        \textbf{Faulty:} 0\textcolor{red}{1}1100 100111 111101 101111\\
+        \textbf{Correct:} 0\textcolor{green}{0}1100\ \ 100111\ 111101\ 101111
+    } \\
+    \hline
+    10842 & 1.95 & 1.17 & 6462d1 & 
+    \parbox{5.5cm}{
+        \textbf{Faulty:} 00\textcolor{red}{0}100 100111 111101 101111\\
+        \textbf{Correct:} 00\textcolor{green}{1}100\ \ 100111\ 111101\ 101111
+    } \\
+    \hline
+    10855 & 1.9 & 1.7 & 6f2a99 &
+    \parbox{5.5cm}{
+        \textbf{Faulty:} 001\textcolor{red}{0}00\ 100111\ 111101\ 101111 \\
+\textbf{Correct:} 001\textcolor{green}{1}00\ 100111\ 111101\ 101111
+
+    } \\
+    \hline
+    10866 & 1.17 & 1.17 & 3c12bc & 
+    \parbox{5.5cm}{
+        \textbf{Faulty:} 00110\textcolor{red}{1}\ 100111\ 111101\ 101111 \\
+\textbf{Correct:} 00110\textcolor{green}{0}\ 100111\ 111101\ 101111
+
+    } \\
+    \hline
+    10878 & 1.17 & 1.17 & 105bfc & 
+    \parbox{5.5cm}{
+        \textbf{Faulty:} 001100\ 1001\textcolor{red}{0}1\ 111101\ 101111 \\
+\textbf{Correct:} 001100\ 1001\textcolor{green}{1}1\ 111101\ 101111
+
+    } \\
+    \hline
+    10887 & 1.9 & 1.17 & 1c52e4 & 
+    \parbox{5.5cm}{
+        \textbf{Faulty:} 001100\ 10\textcolor{red}{1}111\ 111101\ 101111 \\
+\textbf{Correct:} 001100\ 10\textcolor{green}{0}111\ 111101\ 101111
+
+    } \\
+    \hline
+    \end{tabular}
+    \label{tab:glitch_summary}
+    \end{table}
+
+According to the attack model proposed by Dilip et al., only 4 such fault plaintexts are required to recover the 11th round key $k_{11}$. The faulty plaintexts obtained from the clock glitch attack on BipBip were used to filter out incorrect key candidates. The results of the attack are  summarized in Table \ref{tab:glitch_summary}. We have shown that the input of 9th round has only one bit flip in the obtained plaintexts compared to the correct one.
+    

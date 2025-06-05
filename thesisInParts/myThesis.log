@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.5.23)  4 JUN 2025 02:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2025.5.23)  6 JUN 2025 02:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1270,22 +1270,22 @@ Package caption Info: End \AtBeginDocument code.
 <1_front_matter/fig/iitbhlogo.png, id=7, 312.16624pt x 321.2pt>
 File: 1_front_matter/fig/iitbhlogo.png Graphic file (type png)
 <use 1_front_matter/fig/iitbhlogo.png>
-Package pdftex.def Info: 1_front_matter/fig/iitbhlogo.png  used on input line 31.
+Package pdftex.def Info: 1_front_matter/fig/iitbhlogo.png  used on input line 32.
 (pdftex.def)             Requested size: 93.65059pt x 96.36073pt.
-LaTeX Font Info:    Calculating math sizes for size <13> on input line 35.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 35.
+LaTeX Font Info:    Calculating math sizes for size <13> on input line 36.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 36.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 35.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 35.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 36.
  (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 35.
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 36.
  (/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [1
 
 
@@ -1293,74 +1293,10 @@ LaTeX Font Info:    Trying to load font information for U+stmry on input line 35
 
 ]) (./1_front_matter/dedication.tex
 LaTeX Font Info:    Font shape `T1/calligra/m/n' will be
-(Font)              scaled to size 20.73602pt on input line 8.
+(Font)              scaled to size 20.73602pt on input line 18.
+ [3] [4
 
-
-LaTeX Font Warning: Font shape `T1/calligra/b/n' undefined
-(Font)              using `T1/calligra/m/n' instead on input line 9.
-
-LaTeX Font Info:    Font shape `T1/calligra/m/n' will be
-(Font)              scaled to size 29.86565pt on input line 11.
-LaTeX Font Info:    Font shape `OT1/pzc/m/it' will be
-(Font)              scaled to size 22.81412pt on input line 11.
-LaTeX Font Info:    Font shape `OT1/pzc/m/it' will be
-(Font)              scaled to size 15.84007pt on input line 11.
-LaTeX Font Info:    Font shape `OT1/pzc/m/it' will be
-(Font)              scaled to size 13.20007pt on input line 11.
-[3] [4
-
-]) (./1_front_matter/approval.tex
-LaTeX Font Info:    Font shape `OT1/pzc/m/it' will be
-(Font)              scaled to size 8.80005pt on input line 3.
-LaTeX Font Info:    Font shape `OT1/pzc/m/it' will be
-(Font)              scaled to size 6.60004pt on input line 3.
-
-Underfull \hbox (badness 10000) in paragraph at lines 3--4
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 5--6
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 17--21
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 24--25
-
- []
-
-) (./1_front_matter/certif_guide.tex [5
-
-] [6
-
-]
-Underfull \hbox (badness 10000) in paragraph at lines 16--17
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 18--19
-
- []
-
-) (./1_front_matter/acknows.tex [7] [8
-
-] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 9--10
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 11--12
-
- []
-
-[10]) (./1_front_matter/declaration.tex
+]) (./1_front_matter/declaration.tex
 Underfull \hbox (badness 10000) in paragraph at lines 17--18
 
  []
@@ -1370,12 +1306,97 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--20
 
  []
 
-) (./1_front_matter/list_abbrs.tex [11
+) (./1_front_matter/certif_guide.tex [5
+
+] [6
+
+]) (./1_front_matter/approval.tex [7] [8
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+
+ []
 
 
-] [12
+Underfull \hbox (badness 10000) in paragraph at lines 12--13
 
-]) (./1_front_matter/abstract.tex [13] [14
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--20
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 36--39
+
+ []
+
+
+Overfull \vbox (4.46681pt too high) has occurred while \output is active []
+
+ [9]) (./1_front_matter/acknows.tex [10
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 17--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--20
+
+ []
+
+[11] [12
+
+]) (./1_front_matter/copyright.tex
+Underfull \hbox (badness 10000) in paragraph at lines 6--7
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--19
+
+ []
+
+
+Overfull \hbox (2.61108pt too wide) in paragraph at lines 4--20
+$[]$ $[]$
+ []
+
+
+Overfull \hbox (2.61108pt too wide) in paragraph at lines 4--20
+$[]$ $[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--26
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 30--32
+
+ []
+
+
+Overfull \hbox (79.20992pt too wide) in paragraph at lines 28--36
+$[]$ $[]$ 
+ []
+
+) (./1_front_matter/abstract.tex [13
+
+] [14
 
 ]) [15] [16
 
@@ -1389,169 +1410,197 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--20
 \openout2 = `3_introduction/intro.aux'.
 
  (./3_introduction/intro.tex
-Underfull \vbox (badness 4660) has occurred while \output is active []
-
+LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <12> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 6.
  [1
 
 
 
-]) [2] (./4_lit_survey/litSurvey.tex [3
-
-
-
 ]
-LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 9.
+LaTeX Font Info:    Trying to load font information for TS1+cmss on input line 26.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
-) (./4_lit_survey/first_topic.tex) (./4_lit_survey/second_topic.tex) (./4_lit_survey/third_topic.tex)) (./5_contributory_part/contri-part.tex (./5_contributory_part/intro.tex [4]) (./5_contributory_part/1-contri-chapter/chapter.tex [5
+) [2]) [3] (./4_lit_survey/litSurvey.tex [4
 
-]
-Overfull \hbox (5.00606pt too wide) in paragraph at lines 19--22
-\OT1/cmss/m/n/12 scope and tar-get func-tion-al-ity, ideal for stu-dents and re-searchers. ChipWhisperer-
- []
 
-[6]
-</home/cp07/mymtechthesis/thesisInParts/images/CWNANO.png, id=245, 1084.05pt x 1927.2pt>
+
+] (./4_lit_survey/first_topic.tex [5])) (./5_contributory_part/contri-part.tex (./5_contributory_part/intro.tex [6]) (./5_contributory_part/1-contri-chapter/chapter.tex [7
+
+] [8] [9]
+</home/cp07/mymtechthesis/thesisInParts/images/CWNANO.png, id=294, 1084.05pt x 1927.2pt>
 File: /home/cp07/mymtechthesis/thesisInParts/images/CWNANO.png Graphic file (type png)
 <use /home/cp07/mymtechthesis/thesisInParts/images/CWNANO.png>
-Package pdftex.def Info: /home/cp07/mymtechthesis/thesisInParts/images/CWNANO.png  used on input line 34.
+Package pdftex.def Info: /home/cp07/mymtechthesis/thesisInParts/images/CWNANO.png  used on input line 55.
 (pdftex.def)             Requested size: 191.49805pt x 191.4962pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-</home/cp07/mymtechthesis/thesisInParts/images/CWLITE.png, id=248, 434.37282pt x 325.96782pt>
+</home/cp07/mymtechthesis/thesisInParts/images/CWLITE.png, id=297, 434.37282pt x 325.96782pt>
 File: /home/cp07/mymtechthesis/thesisInParts/images/CWLITE.png Graphic file (type png)
 <use /home/cp07/mymtechthesis/thesisInParts/images/CWLITE.png>
-Package pdftex.def Info: /home/cp07/mymtechthesis/thesisInParts/images/CWLITE.png  used on input line 45.
+Package pdftex.def Info: /home/cp07/mymtechthesis/thesisInParts/images/CWLITE.png  used on input line 66.
 (pdftex.def)             Requested size: 229.80556pt x 191.50362pt.
-</home/cp07/mymtechthesis/thesisInParts/images/cwlitw_2_part.png, id=251, 434.37282pt x 325.96782pt>
+</home/cp07/mymtechthesis/thesisInParts/images/cwlitw_2_part.png, id=300, 434.37282pt x 325.96782pt>
 File: /home/cp07/mymtechthesis/thesisInParts/images/cwlitw_2_part.png Graphic file (type png)
 <use /home/cp07/mymtechthesis/thesisInParts/images/cwlitw_2_part.png>
-Package pdftex.def Info: /home/cp07/mymtechthesis/thesisInParts/images/cwlitw_2_part.png  used on input line 52.
+Package pdftex.def Info: /home/cp07/mymtechthesis/thesisInParts/images/cwlitw_2_part.png  used on input line 73.
 (pdftex.def)             Requested size: 229.80556pt x 191.50362pt.
+[10]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[7]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[8 </home/cp07/mymtechthesis/thesisInParts/images/CWNANO.png> </home/cp07/mymtechthesis/thesisInParts/images/cwlite.png>]
-</home/cp07/mymtechthesis/thesisInParts/images/cwhuskyannoted.png, id=266, 325.96782pt x 434.37282pt>
+[11 </home/cp07/mymtechthesis/thesisInParts/images/CWNANO.png>]
+</home/cp07/mymtechthesis/thesisInParts/images/cwhuskyannoted.png, id=317, 325.96782pt x 434.37282pt>
 File: /home/cp07/mymtechthesis/thesisInParts/images/cwhuskyannoted.png Graphic file (type png)
 <use /home/cp07/mymtechthesis/thesisInParts/images/cwhuskyannoted.png>
-Package pdftex.def Info: /home/cp07/mymtechthesis/thesisInParts/images/cwhuskyannoted.png  used on input line 63.
+Package pdftex.def Info: /home/cp07/mymtechthesis/thesisInParts/images/cwhuskyannoted.png  used on input line 84.
 (pdftex.def)             Requested size: 229.80733pt x 191.50241pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [9 </home/cp07/mymtechthesis/thesisInParts/images/cwlitw_2_part.png>]
-</home/cp07/Thesis_chayan/thesisInParts/images/windows.PNG, id=273, 1138.85475pt x 554.07pt>
-File: /home/cp07/Thesis_chayan/thesisInParts/images/windows.PNG Graphic file (type png)
-<use /home/cp07/Thesis_chayan/thesisInParts/images/windows.PNG>
-Package pdftex.def Info: /home/cp07/Thesis_chayan/thesisInParts/images/windows.PNG  used on input line 77.
-(pdftex.def)             Requested size: 306.40117pt x 149.06827pt.
+ [12 </home/cp07/mymtechthesis/thesisInParts/images/cwlite.png> </home/cp07/mymtechthesis/thesisInParts/images/cwlitw_2_part.png>]
+</home/cp07/mymtechthesis/thesisInParts/images/executable file.png, id=325, 1445.4pt x 813.0375pt>
+File: /home/cp07/mymtechthesis/thesisInParts/images/executable file.png Graphic file (type png)
+<use /home/cp07/mymtechthesis/thesisInParts/images/executable file.png>
+Package pdftex.def Info: /home/cp07/mymtechthesis/thesisInParts/images/executable file.png  used on input line 98.
+(pdftex.def)             Requested size: 344.69766pt x 193.8924pt.
+ [13 </home/cp07/mymtechthesis/thesisInParts/images/cwhuskyannoted.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 106--107
 
+ []
 
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[10 </home/cp07/mymtechthesis/thesisInParts/images/cwhuskyannoted.png>] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
-LaTeX Font Info:    Trying to load font information for OMS+cmss on input line 93.
-LaTeX Font Info:    No file OMScmss.fd. on input line 93.
+Underfull \hbox (badness 10000) in paragraph at lines 108--109
 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 113--114
+
+ []
+
+LaTeX Font Info:    Trying to load font information for OMS+cmss on input line 115.
+LaTeX Font Info:    No file OMScmss.fd. on input line 115.
 
 LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
 (Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbackslash' on input line 93.
+(Font)              for symbol `textbackslash' on input line 115.
 
 
-Overfull \hbox (4.74933pt too wide) in paragraph at lines 93--94
+Overfull \hbox (4.74933pt too wide) in paragraph at lines 115--116
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Overfull \hbox (96.39917pt too wide) in paragraph at lines 94--95
-[][][][][][][][][][][][][][][][][][][][][][][] 
+Underfull \hbox (badness 10000) in paragraph at lines 120--121
+
+ []
+
+[14 </home/cp07/mymtechthesis/thesisInParts/images/executable file.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
+
  []
 
 
-Overfull \hbox (4.74933pt too wide) in paragraph at lines 115--116
-[][][][][][][][][][][][][][][][][][][][][][][][] 
+Underfull \hbox (badness 10000) in paragraph at lines 133--134
+
  []
 
-[11 </home/cp07/Thesis_chayan/thesisInParts/images/windows.PNG>] [12] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--140
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 146--147
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
+
+ []
+
+[15] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-)
+) [16]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 182.
- [13]
-Overfull \hbox (2.22746pt too wide) in paragraph at lines 191--192
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 192.
+
+Overfull \hbox (2.22746pt too wide) in paragraph at lines 201--202
 \OT1/cmss/m/n/12 Determines the clock source for the ADC mod-ule. Gen-er-ally it will be $\OML/cmm/m/it/12 clkgen[]x\OT1/cmr/m/n/12 1$
  []
 
-LaTeX Font Info:    Font shape `OT1/cmss/m/it' in size <12> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 198.
-[14]
-Overfull \hbox (9.37642pt too wide) in paragraph at lines 225--226
+[17]
+Overfull \hbox (9.37642pt too wide) in paragraph at lines 235--236
 []\OT1/cmss/m/n/12 Continuous: Glitches are trig-gered con-stantly. Pa-ram-e-ters like \OT1/cmtt/m/n/12 ext[]offset\OT1/cmss/m/n/12 ,
  []
 
 
-Overfull \hbox (40.2854pt too wide) in paragraph at lines 227--228
+Overfull \hbox (40.2854pt too wide) in paragraph at lines 237--238
 []\OT1/cmss/m/n/12 Manual: Glitches are trig-gered man-u-ally via \OT1/cmtt/m/n/12 manual[]trigger() \OT1/cmss/m/n/12 or \OT1/cmtt/m/n/12 scope.arm()\OT1/cmss/m/n/12 .
  []
 
-
-Overfull \hbox (9.63597pt too wide) in paragraph at lines 243--244
+[18]
+Overfull \hbox (9.63597pt too wide) in paragraph at lines 253--254
 []\OT1/cmss/m/n/12 On \OT1/cmss/bx/n/12 CW-Husky\OT1/cmss/m/n/12 , if mul-ti-ple glitches are used (\OT1/cmtt/m/n/12 num[]glitches > 1\OT1/cmss/m/n/12 ), \OT1/cmtt/m/n/12 repeat
  []
 
-[15] [16] [17] [18]
-Overfull \hbox (43.07521pt too wide) in paragraph at lines 339--339
+[19] [20] [21] [22]
+Overfull \hbox (43.07521pt too wide) in paragraph at lines 349--349
 []    \OT1/cmtt/m/n/12 print("Invalid response. Raw output:", response['full_response'])[] 
  []
 
-[19]) (./5_contributory_part/2-contri-chapter/chapter.tex [20])) (./6_contributory_part/contri-part.tex (./6_contributory_part/quote.tex) (./6_contributory_part/intro.tex
+) (./5_contributory_part/2-contri-chapter/chapter.tex
 
 Class memoir Warning: The material used in the headers is too large
 (28.99998pt) for the given head height (14.5pt), it is recommended to
 either increase the head height or redesign the header
-(in both cases you will find help in the memoir manual). on input line 1.
+(in both cases you will find help in the memoir manual). on input line 6.
 
 
 Overfull \vbox (14.49998pt too high) has occurred while \output is active []
 
- [21] [22
+ [23] [24])) (./6_contributory_part/contri-part.tex (./6_contributory_part/quote.tex) (./6_contributory_part/intro.tex
+Overfull \vbox (14.49998pt too high) has occurred while \output is active []
+
+ [25] [26
 
 ]) (./6_contributory_part/1-contri-chapter/chapter.tex
 Underfull \vbox (badness 3128) has occurred while \output is active []
 
- [23] [24] [25] [26]
-Overfull \hbox (3.81523pt too wide) detected at line 352
+ [27] [28]
+</home/cp07/mymtechthesis/thesisInParts/images/aes128_powertrace.png, id=471, 434.37282pt x 325.96782pt>
+File: /home/cp07/mymtechthesis/thesisInParts/images/aes128_powertrace.png Graphic file (type png)
+<use /home/cp07/mymtechthesis/thesisInParts/images/aes128_powertrace.png>
+Package pdftex.def Info: /home/cp07/mymtechthesis/thesisInParts/images/aes128_powertrace.png  used on input line 105.
+(pdftex.def)             Requested size: 344.71497pt x 191.50362pt.
+
+Underfull \vbox (badness 1874) has occurred while \output is active []
+
+
+Overfull \vbox (14.49998pt too high) has occurred while \output is active []
+
+ [29 </home/cp07/mymtechthesis/thesisInParts/images/aes128_powertrace.png>] [30] [31]
+Overfull \hbox (3.81523pt too wide) detected at line 358
 []
  []
 
 
-Overfull \hbox (82.47726pt too wide) detected at line 375
-[]
- []
-
-[27]
-Overfull \hbox (76.97041pt too wide) detected at line 382
+Overfull \hbox (82.47726pt too wide) detected at line 381
 []
  []
 
 
-Overfull \hbox (76.97041pt too wide) detected at line 389
+Overfull \hbox (76.97041pt too wide) detected at line 388
 []
  []
 
@@ -1560,58 +1609,85 @@ Overfull \hbox (76.97041pt too wide) detected at line 395
 []
  []
 
-[28]
-Underfull \vbox (badness 1448) has occurred while \output is active []
 
- [29]
-Overfull \hbox (4.00475pt too wide) detected at line 640
+Overfull \hbox (76.97041pt too wide) detected at line 401
+[]
+ []
+
+[32] [33]
+Overfull \hbox (4.00475pt too wide) detected at line 646
+[]
+ []
+
+[34]
+Overfull \hbox (89.69945pt too wide) detected at line 653
 []
  []
 
 
-Overfull \hbox (89.69945pt too wide) detected at line 647
+Overfull \hbox (83.21925pt too wide) detected at line 659
 []
  []
 
 
-Overfull \hbox (83.21925pt too wide) detected at line 653
-[]
- []
-
-[30]
-Overfull \hbox (70.49022pt too wide) detected at line 659
+Overfull \hbox (70.49022pt too wide) detected at line 665
 []
  []
 
 
-Overfull \hbox (70.49022pt too wide) detected at line 666
+Overfull \hbox (70.49022pt too wide) detected at line 672
 []
  []
 
-)) (./7_contributory_part/contri-part.tex (./7_contributory_part/quote.tex) (./7_contributory_part/intro.tex [31] [32
+[35])) (./7_contributory_part/contri-part.tex (./7_contributory_part/quote.tex) (./7_contributory_part/intro.tex [36]) (./7_contributory_part/1-contri-chapter/chapter.tex [37
 
-]) (./7_contributory_part/1-contri-chapter/chapter.tex)) (./8_contributory_part/contri-part.tex (./8_contributory_part/quote.tex) (./8_contributory_part/intro.tex [33] [34
+]
+</home/cp07/mymtechthesis/thesisInParts/images/bipbip.png, id=528, 825.0825pt x 181.67876pt>
+File: /home/cp07/mymtechthesis/thesisInParts/images/bipbip.png Graphic file (type png)
+<use /home/cp07/mymtechthesis/thesisInParts/images/bipbip.png>
+Package pdftex.def Info: /home/cp07/mymtechthesis/thesisInParts/images/bipbip.png  used on input line 18.
+(pdftex.def)             Requested size: 344.69766pt x 75.89981pt.
+</home/cp07/mymtechthesis/thesisInParts/images/bipbip_attack.png, id=529, 945.5325pt x 86.3225pt>
+File: /home/cp07/mymtechthesis/thesisInParts/images/bipbip_attack.png Graphic file (type png)
+<use /home/cp07/mymtechthesis/thesisInParts/images/bipbip_attack.png>
+Package pdftex.def Info: /home/cp07/mymtechthesis/thesisInParts/images/bipbip_attack.png  used on input line 30.
+(pdftex.def)             Requested size: 344.69766pt x 31.4699pt.
+ [38 </home/cp07/mymtechthesis/thesisInParts/images/bipbip.png> </home/cp07/mymtechthesis/thesisInParts/images/bipbip_attack.png>]
+</home/cp07/mymtechthesis/thesisInParts/images/bipbip_powertrace.png, id=538, 598.235pt x 480.79625pt>
+File: /home/cp07/mymtechthesis/thesisInParts/images/bipbip_powertrace.png Graphic file (type png)
+<use /home/cp07/mymtechthesis/thesisInParts/images/bipbip_powertrace.png>
+Package pdftex.def Info: /home/cp07/mymtechthesis/thesisInParts/images/bipbip_powertrace.png  used on input line 44.
+(pdftex.def)             Requested size: 344.69766pt x 277.03526pt.
+ [39 </home/cp07/mymtechthesis/thesisInParts/images/bipbip_powertrace.png>]
+Overfull \hbox (1.9427pt too wide) in paragraph at lines 68--114
+ [][] 
+ []
 
-]) (./8_contributory_part/1-contri-chapter/chapter.tex)) (./8_conclusion/conclu_future.tex) [35] [36
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+)) (./8_contributory_part/contri-part.tex (./8_contributory_part/quote.tex) (./8_contributory_part/intro.tex [40] [41] [42
+
+]) (./8_contributory_part/1-contri-chapter/chapter.tex)) (./8_conclusion/conclu_future.tex) [43] [44
 
 ] (./9_back_matter/about_me.tex) (./myThesis.bbl (./myThesis.brf)
 \tf@brf=\write6
 \openout6 = `myThesis.brf'.
 
- [37
+ [45
 
-] [38
+] [46
 
 ]
 bibitemlist
-)
+[47])
 
 Class memoir Warning: The material used in the headers is too large
 (28.99998pt) for the given head height (14.5pt), it is recommended to
 either increase the head height or redesign the header
-(in both cases you will find help in the memoir manual). on input line 96.
+(in both cases you will find help in the memoir manual). on input line 98.
 
-[39]
+[48]
 \tf@toc=\write7
 \openout7 = `myThesis.toc'.
 
@@ -1626,25 +1702,25 @@ either increase the head height or redesign the header
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 Package rerunfilecheck Info: File `myThesis.brf' has not changed.
-(rerunfilecheck)             Checksum: 90BE7B117A10E4D0912BE60A307D68E9;464.
+(rerunfilecheck)             Checksum: B54F1C8E48630A39F8D933F402823209;1153.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 2 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 38655 strings out of 478287
- 724546 string characters out of 5849289
- 1412745 words of memory out of 5000000
- 55867 multiletter control sequences out of 15000+600000
- 496493 words of font info for 125 fonts, out of 8000000 for 9000
+ 38636 strings out of 478287
+ 724886 string characters out of 5849289
+ 1424576 words of memory out of 5000000
+ 55823 multiletter control sequences out of 15000+600000
+ 494466 words of font info for 128 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 120i,19n,139p,1038b,1667s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/calligra-type1/callig15.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1200.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/zapfchan/uzcmi8a.pfb>
-Output written on myThesis.pdf (61 pages, 2070215 bytes).
+ 120i,19n,139p,1216b,2249s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/calligra-type1/callig15.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfss1200.pfb>
+Output written on myThesis.pdf (70 pages, 2615100 bytes).
 PDF statistics:
- 747 PDF objects out of 1000 (max. 8388607)
- 627 compressed objects within 7 object streams
- 196 named destinations out of 1000 (max. 500000)
- 381 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 883 PDF objects out of 1000 (max. 8388607)
+ 745 compressed objects within 8 object streams
+ 225 named destinations out of 1000 (max. 500000)
+ 445 words of extra memory for PDF output out of 10000 (max. 10000000)
 

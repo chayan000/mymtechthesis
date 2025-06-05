@@ -99,13 +99,19 @@ The transformed (and now faulty) state is XORed with the Round 8 key. The fault 
 
 \textbf{Rounds 9 and 10:}
 The corrupted state continues to evolve through the remaining AES rounds. Round 9 further propagates the fault via \texttt{SubBytes}, \texttt{ShiftRows}, and \texttt{MixColumns}. However, Round 10 omits the \texttt{MixColumns} step, causing the fault pattern to stabilize. The final faulty ciphertext thus reflects this structured propagation, which can be analyzed to extract internal state information.
-
+\ref{fig:powertrace} is the Power Trace of the AES-128 running in the integrated target of CWLite-ARM. This clearly shows the AES128 rounds:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth, height=0.5\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/aes128_powertrace.png}
+    \caption{AES128 Power Trace of CWLite-ARM}
+    \label{fig:powertrace}
+\end{figure}
 \section{Fault Injection at the Start of Round 8 using CW-Lite}
 
 To analyze the behavior of AES under fault conditions, a fault can be intentionally introduced at the beginning of Round 8 using the ChipWhisperer-Lite (CW-Lite) platform. Two common techniques supported by CW-Lite for fault injection are voltage glitching and clock glitching. These methods allow precise control over when and how a fault is introduced into the target device running AES.
 
 \subsection{Using Clock Glitching}
-Firstly we have identified a probable location(5080 to 5120 samples) of the starting of 8th round from the power trace of the AES-128 running in the integrated target of CWLite-ARM. Then we have set the parametsers for voltage glitching as follows:
+We have identified a probable location(5080 to 5120 samples) of the starting of 8th round from the power trace of the AES-128 running in the integrated target of CWLite-ARM. Then we have set the parametsers for voltage glitching as follows:
 \begin{verbatim}
     scope.glitch.clk_src = "clkgen"
     scope.glitch.output = "clock_xor"
@@ -670,6 +676,25 @@ In this experiment, we successfully demonstrated the use of CWLite for voltage g
 \begin{verbatim}
     scope.glitch.clk_src = "pll"
 \end{verbatim} 
-and then finding a suitable glitch location, width and offset.
-This highlights the vulnerabilities of cryptographic systems to physical attacks and emphasizes the importance of implementing robust countermeasures against such threats.
+and then finding a suitable glitch location observing Power Trace, width and offset.
+We have observed few glitches in CWHusky as follows:
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|l|c|c|c|}
+    \hline
+    \textbf{Glitch Location} & \textbf{Width} & \textbf{Offset} & \textbf{Effected Diagonal} \\
+    \hline
+    % Add your data rows below
+    6123 & 50 & 10 & $D_3$ \\
+    6134 & 100 & 10 & $D_2$,$D_3$ \\
+    6134 & 500 & 10 & $D_2$,$D_3$ \\
+    6129 & 50 & 50 & $D_2$ \\
+    \hline
+    \end{tabular}
+    \caption{Table showing location, width, offset, and whether the diagonal is affected}
+    \label{tab:location_data}
+    \end{table}
+Similar to the previous section, we can analyze the fault propagation and recover the key bytes by framing the equations from the faulty ciphertext and correct ciphertext.
+These results demonstrate the effectiveness of CWLite and CWHusky in performing fault injection attacks on AES-128 encryption. The ability to manipulate the encryption process through voltage and clock glitches provides valuable insights into the security vulnerabilities of cryptographic systems.
+ 
 

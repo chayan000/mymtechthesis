@@ -1,8 +1,40 @@
 \chapter{Introduction}
-\lipsum[2-4]
 
-\section{Motivation and Objectives}
-\lipsum[1-2]
+
+In an increasingly interconnected world, embedded systems are deeply integrated into the fabric of modern life. From smart cards and smartphones to industrial control units and medical devices, these systems frequently handle sensitive operations such as cryptographic computations, secure communications, and user authentication. As a result, the security of embedded devices is not merely a technical concern, it is a critical requirement.
+
+While traditional cybersecurity research has focused largely on software vulnerabilities, physical attacks on hardware have emerged as a powerful and practical threat vector. Among these, \textit{fault injection attacks} have proven particularly effective. By deliberately introducing transient faults into a device during its operation, attackers can disrupt normal execution paths, bypass security mechanisms, and extract secret data such as cryptographic keys. These attacks are low-cost, non-invasive in many cases, and difficult to defend against without dedicated countermeasures.
+
+This thesis focuses on the design, implementation, and evaluation of a fault injection laboratory based on the ChipWhisperer platform—a widely-used open-source toolkit for hardware security research. The core objective is to enable reproducible experiments that investigate the vulnerability of cryptographic algorithms under fault conditions and assess the effectiveness of various defenses.
+
+\section*{Scope of the Work}
+
+Chapter~3 of this thesis introduces the complete setup of a fault injection laboratory using ChipWhisperer. It discusses the hardware components—including various scope and target boards—and explains how each contributes to the overall experimentation process. Special attention is given to popular configurations such as the ChipWhisperer-Lite, Nano, and Husky, which offer varying capabilities in terms of precision, flexibility, and ease of integration.
+
+The software environment is covered in detail, providing a breakdown of the ChipWhisperer directory structure and its Application Programming Interfaces (APIs) for both scopes and targets. Readers are guided through the steps required to set up, configure, and run fault injection experiments using voltage and clock glitching techniques.
+
+In Chapter~4, the thesis replicates a state-of-the-art diagonal fault attack on AES-128 to demonstrate how theoretical attack models translate into practical exploitation. By injecting faults at strategic points in the encryption process, the experiments show how an attacker could compromise a secure system, even with limited access to internal states.
+
+Chapter~5 applies these methods to a lesser-known cryptographic algorithm, BipBip, to highlight how fault injection techniques can be generalized beyond well-studied targets. The chapter presents a full experimental pipeline—from attack strategy to results analysis—showcasing the lab’s versatility.
+
+Finally, Chapter~6 transitions the discussion to post-quantum cryptography (PQC), with a focus on Kyber, one of the leading candidates in the NIST PQC standardization process. This chapter explores the challenges of preparing next-generation cryptographic algorithms for fault analysis and outlines a roadmap for future research.
+
+\section*{Contributions}
+
+The key contributions of this work are:
+\begin{itemize}
+    \item A well documented, reproducible setup for conducting fault injection attacks using the ChipWhisperer platform.
+    \item Implementation and evaluation of real-world fault attacks on AES-128, including both voltage and clock glitching methods.
+    \item Novel fault analysis on BipBip cipher, contributing original experimental findings to the community.
+    \item Initial groundwork toward fault injection studies on post-quantum cryptographic algorithms, using Kyber as a case study.
+\end{itemize}
+
+
+As physical attacks on embedded systems continue to evolve, the ability to experimentally evaluate their impact becomes increasingly important. This thesis aims to bridge the gap between academic theory and hands-on testing by offering a detailed guide to setting up and using a fault injection laboratory. The results not only validate known attack strategies but also offer a foundation for future explorations in hardware security—especially as we transition into the post-quantum era.
+
+
+% \section{Motivation and Objectives}
+% \lipsum[1-2]
 
 % \section{Contributions from this Research}
 % \lipsum[1]

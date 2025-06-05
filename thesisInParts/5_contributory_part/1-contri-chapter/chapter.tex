@@ -1,22 +1,21 @@
  % Chanper text
-In recent years, fault injection attacks have gained significant attention within the hardware security community due to their effectiveness in compromising embedded systems. By intentionally introducing faults during the execution of cryptographic or security-critical operations, attackers can exploit vulnerabilities that may not be apparent under normal conditions. As research in this area advances, the need for a reliable, flexible, and well-documented laboratory environment becomes crucial. A carefully designed lab setup not only ensures the accuracy and reproducibility of experiments but also helps in the development and evaluation of robust countermeasures.
+ In recent years, fault injection attacks have become a prominent area of study within the hardware security field due to their ability to compromise embedded systems in subtle yet powerful ways. By deliberately introducing faults during the execution of critical operations—particularly those involving cryptographic algorithms—attackers can exploit system weaknesses that remain hidden under normal conditions. As research into these attack vectors evolves, the importance of a dependable, adaptable, and thoroughly documented lab environment has grown significantly. A well-constructed experimental setup not only ensures consistent and reproducible results but also facilitates the design and validation of effective hardware-level countermeasures.
 
-This chapter details the laboratory environment established for conducting fault injection experiments, with a focus on two key tools: the ChipWhisperer and the ChipSHOUTER. The ChipWhisperer platform is widely recognized in the research community for its capabilities in side-channel analysis and glitch-based fault injection. It provides a tightly integrated solution that combines hardware capture tools with a comprehensive software framework, allowing for fine-grained control over experiments. Through features such as precise clock glitching, voltage fault injection, and automated trace capture, ChipWhisperer serves as a foundation for a variety of fault attack methodologies.
-
-To expand the range of possible attacks, particularly in scenarios where non-invasive methods are preferred, the ChipSHOUTER is incorporated into the setup. The ChipSHOUTER enables electromagnetic fault injection with high precision, delivering short, high-voltage pulses that can disrupt the target device without any physical contact. This capability is especially valuable for simulating real-world attack scenarios, where access to a device may be limited or where invasive methods are impractical.
-
-The combination of ChipWhisperer and ChipSHOUTER provides a versatile environment capable of supporting a wide spectrum of fault injection techniques. This chapter will describe the specific hardware components used, the setup and configuration processes, and the challenges encountered during integration. Attention is given to aspects such as signal synchronization, power supply management, timing calibration, and safety precautions, all of which are critical for the success of fault injection experiments.
-
-By documenting the lab setup in detail, this chapter aims to provide a clear guide for reproducing the environment, thereby supporting transparency and repeatability in experimental research. Furthermore, it serves as a reference for anyone seeking to extend the setup for more advanced fault analysis, side-channel studies, or the testing of hardware security mechanisms against active fault-based threats.
-
-\section{Techniques and analysis: Side-Channel Attacks Using ChipWhisperer }
-ChipWhisperer is an open-source platform developed by NewAE Technology Inc. for conducting side-channel analysis and fault injection attacks. It integrates hardware and software components in a tightly-coupled system, allowing for efficient experimentation and research. This section provides a detailed overview of the ChipWhisperer setup used in the laboratory, covering the hardware tools, software environment, and essential firmware components.
+ This chapter outlines the laboratory environment specifically built to conduct fault injection experiments using the ChipWhisperer platform. Known widely in the academic and professional security communities, ChipWhisperer offers a robust suite of tools tailored for side-channel analysis and glitch-based fault injection. One of its major strengths lies in its integrated approach—combining hardware modules with a powerful software interface to deliver a cohesive and highly controllable experimental experience.
+ 
+ ChipWhisperer \cite{chipwhisperer2025} supports a range of fault injection techniques, most notably clock glitching and voltage fault injection. These methods can induce controlled errors in the behavior of a target device, often revealing vulnerabilities in cryptographic implementations or exposing unexpected execution paths. The platform’s ability to fine-tune fault parameters, such as glitch width, offset, and repetition, is essential for conducting systematic attacks and for understanding how and when systems fail under abnormal conditions.
+ 
+ The lab setup described in this chapter includes a detailed walkthrough of the ChipWhisperer’s hardware components, including the capture board, target devices, and power supply configurations. Special attention is paid to key operational aspects such as signal synchronization, trigger alignment, and the calibration of timing parameters, all of which are vital to the success of glitch-based attacks. Safety considerations, especially when dealing with fault injection at the physical level, are also addressed to ensure both operator protection and equipment longevity.
+ 
+ By documenting each step of the setup process, this chapter aims to provide a practical guide for researchers and practitioners who wish to replicate or build upon this work. Whether the goal is to explore new fault injection strategies, assess the resilience of embedded systems, or develop novel countermeasures, a clear understanding of the experimental foundation is critical. In doing so, this chapter contributes to the broader objective of advancing transparency, repeatability, and rigor in the field of hardware security research.
+\section*{Techniques and analysis: Side-Channel Attacks Using ChipWhisperer }
+One of ChipWhisperer’s key strengths lies in its ability to perform highly controlled fault injection techniques, most notably voltage glitching and clock glitching. With voltage glitching, the platform can momentarily drop or distort the power supply to a target device, causing it to behave unpredictably, potentially skipping instructions or bypassing security checks. Clock glitching, on the other hand, involves inserting short, precisely-timed disturbances into the device’s clock signal. These glitches can disrupt the timing of operations, often triggering exploitable faults during critical processes like encryption or authentication. The fine-grained control over timing, width, and offset of these glitches makes ChipWhisperer exceptionally effective for exploring fault-induced vulnerabilities. Combined with its trace capture and analysis tools, these capabilities allow researchers to both induce and observe faults in real time, offering deep insight into how embedded systems respond under non-ideal operating conditions.
 \section{ChipWhisperer Hardware Platform}
-The ChipWhisperer ecosystem includes a suite of hardware components specifically designed for performing side-channel analysis and fault injection on embedded systems. These components are broadly categorized into scope boards and target boards, which together create a complete testbench for evaluating the security of cryptographic implementations.
+The ChipWhisperer platform is made up of specialized hardware designed to carry out side-channel analysis and fault injection on embedded devices. Its hardware setup is typically divided into two main parts: scope boards, which handle signal capture and glitching, and target boards, which run the code being tested. When used together, these components form a complete and flexible environment for testing the security of cryptographic systems and exploring hardware vulnerabilities.
 \subsection{Scope Boards (Capture Hardware)}
 Scope boards are at the heart of ChipWhisperer's side-channel capture capabilities. They serve as the interface between the host computer and the target device, enabling the collection of high-resolution power traces or electromagnetic emissions during cryptographic operations. These boards also provide fine-grained control over clock generation, triggering, and synchronization.
 
-A popular example is the ChipWhisperer-Lite, an all-in-one board combining scope and target functionality, ideal for students and researchers. ChipWhisperer-Husky offer higher sampling rates, more precise timing, and expanded features such as fault injection support.
+A popular example is the ChipWhispererLite(CWLite), an all-in-one board combining scope and target functionality, ideal for students and researchers. ChipWhispererHusky(CWHusky) offer higher sampling rates, more precise timing, and expanded features such as fault injection support.
 Key features of scope boards:
 \begin{itemize}
     \item Adjustable clock generation and distribution
@@ -26,6 +25,28 @@ Key features of scope boards:
 \end{itemize}
 Example usage scenario: Capturing power traces during AES encryption for differential power analysis (DPA).
 \subsection{Target Boards (Device Under Test - DUT)}
+
+Target boards, or Devices Under Test (DUTs), are embedded systems that execute the cryptographic or security-related code being analyzed. These boards are directly connected to the ChipWhisperer scope, allowing researchers to monitor power usage, apply glitches, and assess how the target responds to side-channel or fault injection attacks.
+
+ChipWhisperer supports a variety of target boards suited for both beginners and advanced users. These targets range from basic microcontrollers to FPGA-based systems, making the platform highly flexible for different types of experiments.
+
+Commonly used targets include:
+
+\begin{itemize}
+    \item CW308 UFO Board: A modular baseboard \cite{newae_cw308ufo} designed to support interchangeable target modules. It simplifies switching between different microcontrollers or chips without modifying the core setup.
+    
+    \item XMEGA Target: An Atmel XMEGA microcontroller board, commonly used for introductory experiments in side-channel analysis. It includes a reference AES implementation for easy testing.
+    
+    \item STM32F3 and STM32F4 Targets: ARM Cortex-M microcontrollers that are widely used in real-world applications. These targets are ideal for testing modern firmware under realistic fault or side-channel attack conditions.
+    
+    \item Artix-7 FPGA Target: A powerful platform \cite{newae_cw305} that allows the implementation and testing of custom cryptographic cores or hardware countermeasures. Suitable for advanced research in hardware security.
+    
+    \item SAM4S Target: Based on the ARM Cortex-M4 architecture, this board provides a more complex environment for evaluating side-channel resistance in higher-performance embedded systems.
+\end{itemize}
+
+Each of these targets includes features such as external clock input, adjustable power settings, and standard programming or debug interfaces (e.g., JTAG, SWD, UART). Together, they provide a robust environment for evaluating cryptographic implementations against a range of attack techniques.
+
+
 
 \subsection{Integrated Target on ChipWhisperer-Nano}
 The CWNano is a small and low-cost tool \ref{fig:nano_target} used to learn about hardware security. It has both a target microcontroller and a measurement unit on a single board, making it easy to use. The built-in STM32F030F4P6 microcontroller has 16~KB of flash and 4kB of SRAM, suitable for running simple cryptographic algorithms. The board supports power analysis using an 8-bit ADC with a sampling rate of up to 20~MS/s. It also features basic voltage glitching through a crowbar method. The Nano connects to a computer via USB and is controlled using the ChipWhisperer software suite. It does not support clock glitching and has a limited flash size, but it is ideal for beginners, students, and hobbyists exploring side-channel analysis and embedded security. More details about this can be found in the official documentation \cite{chipwhisperer_nano}.
@@ -68,103 +89,92 @@ Together, the scope and target boards in the ChipWhisperer hardware ecosystem of
 
 \section{Software Environment}
 The ChipWhisperer platform includes a flexible and scriptable software environment built primarily around Python and Jupyter Notebooks. This environment is well-suited for side-channel analysis and fault injection research, offering full control of the hardware and reproducibility. 
-\subsubsection{ChipWhisperer Software Environment}
+
  Setting up the ChipWhisperer software environment involves installing the necessary tools to interface with the hardware, control experiments, and analyze captured data. This section outlines the steps required to install the ChipWhisperer software stack using the recommended method.
 \subsubsection{For Windows :}
-Installing ChipWhisperer on Windows is straightforward with the provided \.exe file. Once the download is complete, double-click the .exe file to launch the installer. If a security prompt appears, allow the installation to proceed. The ChipWhisperer Setup Wizard will open—follow the on-screen instructions by clicking "Next." Choose a destination folder or use the default option, then continue by clicking "Next" again. After the installation is finished, click "Finish" to complete the setup.
+Installing ChipWhisperer on Windows is straightforward with the provided \.exe file \cite{chipwhisperer2025}. Once the download is complete, double-click the .exe file to launch the installer. If a security prompt appears, allow the installation to proceed. The ChipWhisperer Setup Wizard will open—follow the on-screen instructions by clicking "Next." Choose a destination folder or use the default option, then continue by clicking "Next" again. After the installation is finished, click "Finish" to complete the setup.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.8\linewidth]{/home/cp07/Thesis_chayan/thesisInParts/images/windows.PNG}
+    \includegraphics[width=0.9\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/executable file.png}
     \caption{Chipwhisperer official GitHub page}
     \label{fig:windows_installation}
 \end{figure}
 The simplest way to start using ChipWhisperer and access its tutorials is to open the ChipWhisperer application. You can find it in the Start Menu, the installation directory, or on your desktop if you chose to create a shortcut during setup.
 
 \subsubsection{for Linux:}
-If you're using Ubuntu and want to install ChipWhisperer quickly, follow these steps. Start by updating your system:
 
+To install ChipWhisperer on a Linux-based system, follow these steps \cite{chipwhisperer_linux_install}:\\
+
+Step 1: Update System Packages\\
 \begin{lstlisting}[language=bash]
 sudo apt update && sudo apt upgrade
 \end{lstlisting}
 
-Next, install all required dependencies:
-
+Step 2: Install Required Dependencies\\
 \begin{lstlisting}[language=bash]
 sudo apt install libusb-dev make git avr-libc gcc-avr \
-    gcc-arm-none-eabi libusb-1.0-0-dev usbutils python3 python3-venv
+gcc-arm-none-eabi libusb-1.0-0-dev usbutils \
+python3 python3-venv
 \end{lstlisting}
 
-Clone the ChipWhisperer repository from GitHub and navigate to the directory:
-
+Step 3: Clone the Repository\\
 \begin{lstlisting}[language=bash]
 cd ~/
 git clone https://github.com/newaetech/chipwhisperer
 cd chipwhisperer
 \end{lstlisting}
 
-Set up a Python virtual environment and activate it:
-
+Step 4: Set Up Python Virtual Environment\\
 \begin{lstlisting}[language=bash]
 python3 -m venv ~/.cwvenv
 source ~/.cwvenv/bin/activate
 \end{lstlisting}
 
-Copy the USB rules and reload them:
-
+Step 5: Install USB Rules\\
 \begin{lstlisting}[language=bash]
-sudo cp 50-newae.rules /etc/udev/rules.d/50-newae.rules
+sudo cp 50-newae.rules /etc/udev/rules.d/
 sudo udevadm control --reload-rules
 \end{lstlisting}
 
-Add your user to the necessary groups:
-
+Step 6: Add User to Required Groups\\
 \begin{lstlisting}[language=bash]
 sudo groupadd -f chipwhisperer
 sudo usermod -aG chipwhisperer $USER
 sudo usermod -aG plugdev $USER
 \end{lstlisting}
 
-Initialize required submodules and install Python packages:
-
+Step 7: Initialize Submodules and Install Python Packages\\
 \begin{lstlisting}[language=bash]
 git submodule update --init jupyter
 python -m pip install -e .
 python -m pip install -r jupyter/requirements.txt
 \end{lstlisting}
 
-After rebooting your system, you can launch ChipWhisperer Jupyter notebooks with:
+Step 8: Reboot System\\
+Once the setup is complete, reboot your system to apply changes.
 
+Step 9: Launch Jupyter Notebooks\\
 \begin{lstlisting}[language=bash]
 cd ~/chipwhisperer
 jupyter notebook .
 \end{lstlisting}
-
-\subsubsection{for MacOs}
 
 \subsection{Directory Structure}
 The ChipWhisperer framework is a comprehensive toolkit for side-channel power analysis and glitching attacks. Its directory structure is designed to support both hardware interfacing and educational experimentation. Understanding this structure is key to navigating the project efficiently, especially when working with Jupyter notebooks or compiling firmware.
 
 Here’s a breakdown of the most relevant parts:
 
-\subsection*{/jupyter Directory:}
-One of the most user-friendly components of the ChipWhisperer project is the \texttt{/jupyter} directory. This folder contains a wide range of Jupyter Notebooks designed to guide users through hands-on tutorials and experiments.
+\subsection*{jupyter/ Directory :}
+One of the most user-friendly components of the ChipWhisperer project is the \texttt{jupyter/} directory. This folder contains a wide range of Jupyter Notebooks designed to guide users through hands-on tutorials and experiments.
 
 These notebooks provide interactive lessons in topics such as: Side-channel analysis, Cryptographic attacks, Glitching techniques
-The content within the \texttt{/jupyter} directory is well-organized into subfolders, such as:
+The content within the \texttt{jupyter/} directory is well-organized into subfolders, such as:
 
 The Jupyter directory in ChipWhisperer includes several folders designed to support learning and experimentation. The \texttt{demos} folder contains simple, hands-on notebooks meant for beginners. These notebooks introduce key concepts like power analysis and fault injection through guided examples. The \texttt{courses} folder offers more structured content, similar to academic classes, with lecture-style explanations and lab exercises for deeper learning. The \texttt{setupscripts} folder provides example scripts and configurations that demonstrate different experiments and usage scenarios for ChipWhisperer hardware. Together, these resources help users understand and explore various aspects of side-channel analysis and hardware security.
+\subsection*{firmware/ Directory:}
+The \texttt{firmware/} directory in the ChipWhisperer repository contains all the source code necessary to build firmware for a variety of supported target devices. This firmware is essential for running side-channel analysis and fault injection experiments, as it enables precise control and repeatable behavior during cryptographic operations on the Device Under Test (DUT).
 
-
-\subsubsection{Python and Hardware Integration}
-
-The notebooks leverage Python code to directly interface with ChipWhisperer hardware. This allows for:
-
-\begin{itemize}
-    \item Real-time data capture
-    \item On-the-fly analysis
-    \item Dynamic control of experiments
-\end{itemize}
-These notebooks are intended to be executed within a Jupyter Lab environment. Users can easily launch the environment using the \texttt{chipwhisperer} command-line tools, providing a smooth workflow from code to hardware interaction.
+The \texttt{firmware/} folder is organized into several subdirectories that correspond to specific microcontroller families, target boards, or cryptographic examples. \texttt{firmware/mcu} contains Cryptographic firmware examples such as AES and RSA with SimpleSerial protocol support for host-target communication.
 
 \subsection{Scope API}
 The \texttt{scope} object in ChipWhisperer is used to manage the capture and glitching operations of the hardware.The official documentation \cite{chipwhisperer_scope_api} provides a comprehensive overview of the scope API, detailing how to configure the hardware, capture traces, and perform glitching operations. The scope API is designed to be intuitive and flexible, allowing users to easily set up their experiments and interact with the ChipWhisperer hardware.

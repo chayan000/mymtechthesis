@@ -6,14 +6,16 @@
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Dummy Figure\relax }}{4}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces ChipWhisperer-Nano\relax }}{11}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces ChipWhisperer-Lite with 32-bit ARM target\relax }}{12}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces ChipWhisperer-Lite 2-Part version connections\relax }}{12}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces ChipWhisperer-Husky with SAM4S target\relax }}{13}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Chipwhisperer official GitHub page\relax }}{14}{figure.caption.16}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces ChipWhisperer-Nano\relax }}{8}{figure.caption.12}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces ChipWhisperer-Lite with 32-bit ARM target\relax }}{8}{figure.caption.13}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces ChipWhisperer-Lite 2-Part version connections\relax }}{9}{figure.caption.14}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces ChipWhisperer-Husky with SAM4S target\relax }}{10}{figure.caption.15}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Chipwhisperer official GitHub page\relax }}{11}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces AES128 Power Trace of CWLite-ARM\relax }}{29}{figure.caption.35}%
 \addvspace {10pt}
-\addvspace {10pt}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces High Level Decryption Structure of BipBip\relax }}{38}{figure.caption.49}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Proposed fault injection attack\relax }}{38}{figure.caption.50}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Power trace BipBip in CWLite-ARM\relax }}{39}{figure.caption.51}%
 \addvspace {10pt}
 \addvspace {10pt}
