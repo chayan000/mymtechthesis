@@ -10,11 +10,6 @@
 \contentsline {chapter}{List of Tables}{xxi}{section*.10}%
 \contentsline {chapter}{\chapternumberline {1}Introduction}{1}{chapter.1}%
 \contentsline {chapter}{\chapternumberline {2}Literature Survey}{5}{chapter.2}%
-\contentsline {subsection}{\numberline {2.0.1}Non-Invasive Fault Injection Techniques}{5}{subsection.2.0.1}%
-\contentsline {subsection}{\numberline {2.0.2}Practicality of FIAs}{5}{subsection.2.0.2}%
-\contentsline {subsection}{\numberline {2.0.3}Software-Level Implications}{5}{subsection.2.0.3}%
-\contentsline {subsection}{\numberline {2.0.4}Evaluation of Fault Injection Tools}{6}{subsection.2.0.4}%
-\contentsline {subsection}{\numberline {2.0.5}Application to Post-Quantum Cryptography}{6}{subsection.2.0.5}%
 \contentsline {chapter}{\chapternumberline {3}Setting Up a Fault Injection Lab with ChipWhisperer}{7}{chapter.3}%
 \contentsline {section}{\numberline {3.1}ChipWhisperer Hardware Platform}{8}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Scope Boards (Capture Hardware)}{9}{subsection.3.1.1}%
@@ -45,39 +40,46 @@
 \contentsline {subsubsection}{$target.simpleserial\_write(cmd, data) :$}{22}{subsubsection*.32}%
 \contentsline {subsubsection}{$target.simpleserial\_read\_witherrors(cmd, length) :$}{22}{subsubsection*.33}%
 \contentsline {subsubsection}{$target.simpleserial\_wait\_ack(cmd, timeout=1) :$}{23}{subsubsection*.34}%
-\contentsline {section}{\numberline {3.3}Process of Clock/Voltage Glitching: Loop Skip Fault Attack Using CWLite}{23}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Target Configuration Setup}{24}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Running the Setup Script}{24}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Compiling the Target Firmware}{25}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Loading the Target Firmware}{25}{subsection.3.3.4}%
+\contentsline {section}{\numberline {3.3}Process of Clock/Voltage Glitching}{23}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Target Code Configuration with Simpleserial}{23}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Device Configuration}{25}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Running the Setup Script}{25}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Compiling the Target Firmware}{25}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Loading the Target Firmware}{26}{subsection.3.3.5}%
+\contentsline {subsection}{\numberline {3.3.6}Trace Capture Procedure}{26}{subsection.3.3.6}%
+\contentsline {subsection}{\numberline {3.3.7}Setting Up the Glitch Parameters}{27}{subsection.3.3.7}%
+\contentsline {section}{\numberline {3.4}Conclusion}{27}{section.3.4}%
 \noindent \hrulefill \leavevmode \par 
-\contentsline {chapter}{\chapternumberline {4}Real-world replication of state-of-the-art}{27}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Four Diagonals in the AES State Matrix}{28}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Diagonal Fault Attack on AES-128 with Fault Injection at Round 8}{28}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Fault Injection at the Start of Round 8 using CW-Lite}{30}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Using Clock Glitching}{30}{subsection.4.3.1}%
-\contentsline {subsubsection}{Result}{30}{subsubsection*.36}%
-\contentsline {subsubsection}{Fault Propagation \& Analysis}{30}{subsubsection*.37}%
-\contentsline {subsubsection}{After The Fault Injection At Starting of $8^{\text {th}}$ Round :}{31}{subsubsection*.38}%
-\contentsline {subsubsection}{After The Completion of $8^{\text {th}}$ Round(SubByte,ShiftRow,MixColumn,AddRoundkey(8)) :}{31}{subsubsection*.39}%
-\contentsline {subsubsection}{After The Completion of $9^{\text {th}}$ Round(SubByte,ShiftRow,MixColumn,AddRoundkey(9)) :}{31}{subsubsection*.40}%
-\contentsline {subsubsection}{After The Completion of $10^{\text {th}}$ Round(SubByte,ShiftRow,AddRoundkey(10)) :}{31}{subsubsection*.41}%
-\contentsline {subsection}{\numberline {4.3.2}Using Voltage Glitching}{33}{subsection.4.3.2}%
-\contentsline {subsubsection}{Result}{33}{subsubsection*.42}%
-\contentsline {subsubsection}{Analysis and Fault Propagation}{33}{subsubsection*.43}%
-\contentsline {subsubsection}{After The Fault Injection At Starting of $8^{\text {th}}$ Round :}{34}{subsubsection*.44}%
-\contentsline {subsubsection}{After The Completion of $8^{\text {th}}$ Round(SubByte,ShiftRow,MixColumn,AddRoundkey(8)) :}{34}{subsubsection*.45}%
-\contentsline {subsubsection}{After The Completion of $9^{\text {th}}$ Round(SubByte,ShiftRow,MixColumn,AddRoundkey(9)) :}{34}{subsubsection*.46}%
-\contentsline {subsubsection}{After The Completion of $10^{\text {th}}$ Round(SubByte,ShiftRow,AddRoundkey(10)) :}{34}{subsubsection*.47}%
-\contentsline {section}{\numberline {4.4}Conclusion}{35}{section.4.4}%
+\contentsline {chapter}{\chapternumberline {4}Real-world Replication of State-of-the-art}{29}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Four Diagonals in the AES State Matrix}{30}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Diagonal Fault Attack on AES-128 with Fault Injection at Round 8}{30}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Fault Injection at the Start of Round 8 using CW-Lite}{32}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Using Clock Glitching}{32}{subsection.4.3.1}%
+\contentsline {subsubsection}{Result}{32}{subsubsection*.36}%
+\contentsline {subsubsection}{Fault Propagation \& Analysis}{32}{subsubsection*.37}%
+\contentsline {subsubsection}{After The Fault Injection At Starting of $8^{\text {th}}$ Round :}{33}{subsubsection*.38}%
+\contentsline {subsubsection}{After The Completion of $8^{\text {th}}$ Round(SubByte,ShiftRow,MixColumn,AddRoundkey(8)) :}{33}{subsubsection*.39}%
+\contentsline {subsubsection}{After The Completion of $9^{\text {th}}$ Round(SubByte,ShiftRow,MixColumn,AddRoundkey(9)) :}{33}{subsubsection*.40}%
+\contentsline {subsubsection}{After The Completion of $10^{\text {th}}$ Round(SubByte,ShiftRow,AddRoundkey(10)) :}{33}{subsubsection*.41}%
+\contentsline {subsection}{\numberline {4.3.2}Using Voltage Glitching}{35}{subsection.4.3.2}%
+\contentsline {subsubsection}{Result}{35}{subsubsection*.42}%
+\contentsline {subsubsection}{Analysis and Fault Propagation}{35}{subsubsection*.43}%
+\contentsline {subsubsection}{After The Fault Injection At Starting of $8^{\text {th}}$ Round :}{36}{subsubsection*.44}%
+\contentsline {subsubsection}{After The Completion of $8^{\text {th}}$ Round(SubByte,ShiftRow,MixColumn,AddRoundkey(8)) :}{36}{subsubsection*.45}%
+\contentsline {subsubsection}{After The Completion of $9^{\text {th}}$ Round(SubByte,ShiftRow,MixColumn,AddRoundkey(9)) :}{36}{subsubsection*.46}%
+\contentsline {subsubsection}{After The Completion of $10^{\text {th}}$ Round(SubByte,ShiftRow,AddRoundkey(10)) :}{36}{subsubsection*.47}%
+\contentsline {section}{\numberline {4.4}Conclusion}{37}{section.4.4}%
 \noindent \hrulefill \leavevmode \par 
-\contentsline {chapter}{\chapternumberline {5}Flipping Bits to Break BipBip}{37}{chapter.5}%
-\contentsline {section}{\numberline {5.1}High Level Decryption Structure of BipBip}{38}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Proposed Attack on BipBip}{38}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Experimental Setup}{39}{section.5.3}%
-\contentsline {section}{\numberline {5.4}Results \& Analysis}{40}{section.5.4}%
+\contentsline {chapter}{\chapternumberline {5}Flipping Bits to Break BipBip}{39}{chapter.5}%
+\contentsline {section}{\numberline {5.1}High Level Decryption Structure of BipBip}{40}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Proposed Attack on BipBip}{40}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Experimental Setup}{41}{section.5.3}%
+\contentsline {section}{\numberline {5.4}Results \& Analysis}{42}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Conclusion}{42}{section.5.5}%
 \noindent \hrulefill \leavevmode \par 
-\contentsline {chapter}{\chapternumberline {6}Preparing PQC for Fault Analysis: A Kyber Implementation}{43}{chapter.6}%
+\contentsline {chapter}{\chapternumberline {6}Preparing PQC for Fault Analysis: A Kyber Implementation}{45}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Overview of Kyber}{46}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Preparing the Kyber Implementation for Fault Analysis}{47}{section.6.2}%
 \noindent \hrulefill \leavevmode \par 
-\contentsline {chapter}{About the Author}{45}{chapter*.53}%
-\contentsline {chapter}{Bibliography}{47}{chapter*.54}%
+\contentsline {chapter}{About the Author}{49}{chapter*.54}%
+\contentsline {chapter}{Bibliography}{51}{chapter*.55}%

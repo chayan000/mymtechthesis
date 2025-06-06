@@ -1798,7 +1798,6 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
@@ -1897,6 +1896,11 @@ INPUT ./8_contributory_part/1-contri-chapter/chapter.tex
 INPUT 8_contributory_part/1-contri-chapter/chapter.tex
 INPUT ./8_contributory_part/1-contri-chapter/chapter.tex
 INPUT 8_contributory_part/1-contri-chapter/chapter.tex
+INPUT /home/cp07/mymtechthesis/thesisInParts/images/kyber_kem.png
+INPUT /home/cp07/mymtechthesis/thesisInParts/images/kyber_kem.png
+INPUT /home/cp07/mymtechthesis/thesisInParts/images/kyber_kem.png
+INPUT /home/cp07/mymtechthesis/thesisInParts/images/kyber_kem.png
+INPUT /home/cp07/mymtechthesis/thesisInParts/images/kyber_kem.png
 INPUT ./8_conclusion/conclu_future.tex
 INPUT ./8_conclusion/conclu_future.tex
 INPUT ./8_conclusion/conclu_future.tex

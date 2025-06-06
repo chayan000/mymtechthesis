@@ -1,0 +1,25 @@
+
+In recent years, the global cryptographic community is facing a growing concern: the rise of quantum computing is threatning the security foundations of many widely used cryptographic protocols. Algorithms such as RSA, DSA, and ECC, which underpin much of today’s secure communications, are susceptible to quantum attacks—most notably Shor’s algorithm, which can factor large integers and compute discrete logarithms exponentially faster than classical algorithms. This looming threat has spurred the development of Post-Quantum Cryptography (PQC), which refers to cryptographic schemes believed to be resistant to attacks by quantum computers.
+
+PQC does not depend on the number-theoretic problems that quantum computers can efficiently solve. Instead, it builds on hard mathematical problems such as lattice-based, hash-based, code-based, and multivariate polynomial problems. Among these, lattice-based cryptography has emerged as a strong candidate due to its balance between security, efficiency, and versatility. One of the most promising lattice-based schemes is Kyber, a key encapsulation mechanism (KEM) that is part of the  PQC standardization process of NIST. Kyber is based on the Module Learning With Errors (MLWE) problem, which is widely considered secure even in the quantum setting.
+
+The transition to PQC is not only a matter of replacing algorithms but also ensuring their robustness against a wide range of implementation attacks, including fault analysis. While PQC schemes may be theoretically secure, their implementations can still be vulnerable to side-channel and fault injection attacks—forms of active attacks where adversaries induce errors during computation to extract secret information. This report focuses on preparing a Kyber implementation to withstand fault analysis, exploring its vulnerabilities, and proposing countermeasures to secure its deployment in the post-quantum era.
+
+\section{Overview of Kyber}
+Kyber is a lattice-based key encapsulation mechanism (KEM) designed to provide secure key exchange in a post-quantum world. It is built on the Module Learning With Errors (MLWE) problem, which is believed to be hard even for quantum computers. Kyber offers several advantages, including efficient performance, small key sizes, and strong security guarantees.
+Kyber operates by encapsulating a symmetric key within a public key, allowing two parties to securely exchange keys without directly sharing them. The encapsulation process involves generating a random polynomial, encoding it with an error term, and then encrypting it using the recipient's public key. The recipient can then decrypt the encapsulated key using their private key, ensuring that only they can access the shared secret.
+The diagram \ref{fig:kyber_overview} taken from \cite{10.1145/3603170} illustrates the high-level structure of Kyber's key encapsulation mechanism, showing the encapsulation and decapsulation processes. The security of Kyber relies on the hardness of the underlying MLWE problem, making it a strong candidate for post-quantum cryptography.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{/home/cp07/mymtechthesis/thesisInParts/images/kyber_kem.png}
+    \caption{Overview of Kyber's Key Encapsulation Mechanism}
+    \label{fig:kyber_overview}
+    
+
+\end{figure}
+
+\section{Preparing the Kyber Implementation for Fault Analysis}
+The Kyber implementation utilized in this work originates from the official reference code submitted to the National Institute of Standards and Technology (NIST) as part of their Post-Quantum Cryptography (PQC) Standardization Project Round 3 \cite{nistpqc2020}. The reference implementation is written in portable C and primarily designed for algorithm validation and benchmarking on conventional computing platforms.
+
+To adapt the Kyber implementation for hardware-based fault analysis, the codebase was modified to support the SimpleSerial v2 protocol. SimpleSerial provides a lightweight and deterministic serial communication interface, commonly used with side-channel and fault injection tools like ChipWhisperer. Integration involved encapsulating key Kyber operations, including \texttt{crypto\_kem
+\_keypair}, \texttt{crypto\_kem\_enc}, and \texttt{crypto\_kem\_dec}, within SimpleSerial command handlers. This modification enables consistent command-response interaction and reliable triggering for precise measurement and injection. As a result, the enhanced implementation is now fully compatible with ChipWhisperer, making it suitable for in-depth physical security testing of Kyber under fault-injection scenarios.

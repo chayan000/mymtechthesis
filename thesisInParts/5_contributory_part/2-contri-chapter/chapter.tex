@@ -1,59 +1,102 @@
-\section{Process of Clock/Voltage Glitching: Loop Skip Fault Attack Using CWLite}
+\section{Process of Clock/Voltage Glitching}
 
 Clock and voltage glitching are effective hardware fault injection techniques used to disrupt normal device behavior by introducing brief disturbances in timing or power. With tools like the ChipWhisperer, these attacks can be precisely controlled and analyzed to identify and exploit vulnerabilities in embedded systems.
 
-The Loop Skip Fault Attack od AES128C aims to bypass certain instructions in a loop, often used in cryptographic operations like key checking or encryption rounds. By injecting a carefully timed glitch, an attacker can force the program to skip one or more loop iterations, potentially weakening the algorithm or leaking secret information. This type of fault is particularly useful when the attacker wants to reduce the number of encryption rounds or skip password verification logic, leading to unintended access or data leakage.
-
-\subsection{Target Configuration Setup}
-
-The first step is configuring the ChipWhisperer environment to match the target device. This involves specifying the correct hardware platform, communication protocol, and cryptographic target. These settings ensure that the glitching process can interact properly with the device under test.
-
-Below is the basic configuration for setting up the CWLite with an ARM-based target running a TinyAES encryption implementation:
-
+\subsection{Target Code Configuration with Simpleserial}
+The first step in preparing for a clock or voltage glitching attack is to configure the target code. This involves setting up the target device to respond to specific commands and to execute cryptographic operations that can be disrupted by glitches. The ChipWhisperer platform uses a SimpleSerial interface, which allows for easy communication between the host and the target.
+The target code is typically written in C and includes a main loop that listens for commands from the host. The following example illustrates a basic setup for the target code with simpleserial\_v\_{2}, which includes a command to perform cryptographic operation:
 \begin{verbatim}
-# Use the OpenADC for data capture
-SCOPETYPE = 'OPENADC' 
+#include "simpleserial.h"
 
-# Target is ChipWhisperer-Lite with ARM MCU
-PLATFORM = 'CWLITEARM'  
+uint8_t function(uint8_t cmd, uint8_t scmd,
+ uint8_t dlen, uint8_t* data) {
+    //initializations
+    //parsing of 40 bytes of data sent by simpleserial
 
-# Target firmware running TinyAES encryption
-CRYPTO_TARGET = 'TINYAES128C'  
+    trigger_high();
+        //perform cryptographic operation
+    trigger_low();
+    
+    simpleserial_put('r', 5, result);
+    return 0;
+}
+int main(void) {
+    platform_init();
+    init_uart();
+    trigger_setup();
+	simpleserial_init();
+    simpleserial_addcmd('b', 40, function);
+    while(1)
+        simpleserial_get();
+    
 
-# SimpleSerial version 2.1 for communication
-SS_VER = 'SS_VER_2_1'  
+  return 0;
+}
 \end{verbatim}
+The \texttt{function()} is a command handler invoked when a specific command (`b`) is received over the serial interface. It expects 40 bytes of data, representing input for a cryptographic operations. The function performs the operation, triggers a high signal to indicate the start of processing, and then triggers a low signal to indicate completion. Finally, it sends back the 5 bytes result to the host.
+
+\subsection{Device Configuration}
+
+The second step is configuring the ChipWhisperer environment to match the target device. This involves specifying the correct hardware platform, communication protocol, and cryptographic target. These settings ensure that the glitching process can interact properly with the device under test.
+
+For both CWLite and CWHusky devices, the \texttt{SCOPETYPE} should be set to \texttt{'OPENADC'}, which indicates that the OpenADC module is used for signal acquisition. The \texttt{PLATFORM} setting depends on the specific target hardware in use. For the CWLite-ARM board, the platform should be set to \texttt{'CWLITEARM'}. If using the CW308 baseboard with an STM32F3 target, the platform should be \texttt{'CW308\_STM32F3'}. For CWHusky connected to a SAM4S target via the CW308 board, the platform should be \texttt{'CW308\_SAM4S'}. When working with the CW308 baseboard paired with an XMEGA target, the appropriate platform is \texttt{'CW308\_XMEGA'}. Additionally, if SimpleSerial version 2 is used for communication, the \texttt{SS\_VER} must be set to \texttt{'SS\_VER\_2\_1'} to ensure correct protocol compatibility.If using any \texttt{'CRYPTO\_TARGET'}, it should be set. For example, if the crypto target is AES, it can be set to \texttt{'TINYAES128C'} as ChipWhisperer provides an implementation of AES-128.
 
 \subsection{Running the Setup Script}
 
-Once the target configuration is defined, the next step is to initialize the ChipWhisperer environment by running a setup script. This script loads all necessary modules, applies configuration settings, and ensures that the scope and target are ready for communication and glitching.
+Once the target configuration is defined, the next step is to initialize the ChipWhisperer environment by running a setup script. This script is located in the \texttt{jupyter/Setup\_scripts} directory of the ChipWhisperer installation. It loads all necessary modules, applies the appropriate configuration settings, and ensures that the scope and target are properly initialized for communication and glitching operations.
+
 
 The following command is used to execute the generic setup script:
 
 \begin{verbatim}
-%run "../../Setup_Scripts/Setup_Generic.ipynb"
+%run "{PATH to setup script}/Setup_Generic.ipynb"
 \end{verbatim}
 
 This script sets up the scope, target, and communication interface automatically. It simplifies the initialization process by applying standard settings required for most experiments, allowing the user to focus on customizing parameters for the specific attack.
 \subsection{Compiling the Target Firmware}
 
-After setting up the environment, the firmware running on the target device must be compiled to match the chosen platform and cryptographic implementation. This step ensures that the device is loaded with the correct code, such as TinyAES, and is compatible with the glitching setup.
+After setting up the device and selecting the appropriate target firmware, the next step is to compile the firmware to match the specified platform and cryptographic implementation. This ensures that the target device is running the correct code.
 
-The following command compiles the firmware using the specified platform, crypto target, and SimpleSerial version:
+The compilation is typically performed using the \texttt{arm-none-eabi-gcc} compiler, which is suitable for ARM Cortex-M based targets. It is important that this compiler is installed and properly configured in the system's environment variables.
+
+The following Bash command is used within a Jupyter notebook cell to compile the firmware using the selected platform, cryptographic algorithm, and SimpleSerial version:
 
 \begin{verbatim}
 %%bash -s "$PLATFORM" "$CRYPTO_TARGET" "$SS_VER"
-cd ../../../firmware/mcu/simpleserial-aes
+cd {PATH to the firmwire source directory}
 make PLATFORM=$1 CRYPTO_TARGET=$2 SS_VER=$3
 \end{verbatim}
 
-This Bash cell changes the directory to the AES firmware source and runs the `make` command with the appropriate arguments. The output is a firmware binary that will be loaded onto the target for testing the glitching attack.
+This command navigates to the firmware source directory and invokes the \texttt{make} utility with the relevant parameters. The result is a compiled firmware binary that can be flashed to the target device for use in glitching or side-channel analysis experiments.
+
 \subsection{Loading the Target Firmware}
 Once the firmware is compiled, it needs to be loaded onto the target device. This step ensures that the device is running the correct code for the glitching attack.
 The following command loads the compiled firmware onto the target:
 \begin{verbatim}
-    fw_path = "../../../firmware/mcu/simpleserial-aes/" + 
-              "simpleserial-aes-CWLITEARM.hex"
+    fw_path = "{PATH to the firmware source directory}" + 
+              "{compiled targate file}.hex"
     
     cw.program_target(scope, prog, fw_path)
     \end{verbatim}
+
+\subsection{Trace Capture Procedure}
+Once the scope and target are properly configured and the firmware is loaded, the next step involves triggering the cryptographic operation and capturing the power trace. First, the ADC clock source is set using \texttt{scope.clock.adc\_src}, ensuring that the ADC is synchronized with the internal clock generator.
+
+The \texttt{reboot\_flush()} function is then called to reset the target device and flush any residual data from the communication buffer. After that, the scope is armed using \texttt{scope.arm()} to prepare it for capturing power data.
+
+If the firmware needs any input then it is sent to the target using the SimpleSerial interface with the command \texttt{target.simpleserial\_write('{cmd same as defined in the firmware}', data)}. This command triggers the cryptographic operation on the target device.
+
+The \texttt{scope.capture()} function is then called to record the power trace during the operation. If no trigger is detected, an error message is printed. Once the trace is successfully captured, it is retrieved using \texttt{scope.get\_last\_trace()}. By analysing the captured trace, one can observe the power consumption patterns during the cryptographic operation, which can be useful for identifying location of the attack that we want to perform.
+
+Finally, the output (ciphertext) is read back from the target using \texttt{target.\\simpleserial\_read\_witherrors('r',{size of data same as defined in the firmware})}. The captured waveform is then plotted using \texttt{cw.plot(wave)}, which displays the power trace for further analysis or glitching experiments.
+
+
+\subsection{Setting Up the Glitch Parameters}
+The next step is to configure the glitch parameters. This includes setting the glitch type, width, and offset and location of the glitch. The location of the glitch is specified in terms of the number of samples from the start of the trace, and can be set using \texttt{scope.glitch.ext\_offset}.
+For voltage glitching, use \texttt{scope.glitch.output = "glitch\_only"}, and for clock glitching, use \texttt{scope.glitch.output = "clock\_xor"}. Set the other parameters like \texttt{scope.glitch.clk\_src}, \texttt{scope.glitch.trigger\_src} according to the options discussed in the previous section. 
+
+In the next step we can run the glitching attack by varying the width, offset and ext\_offset parameters and analyzing the captured traces or data we can complete the attack. 
+
+\section{Conclusion}
+
+Setting up a fault injection lab with ChipWhisperer combines specialized hardware and software components to enable precise glitching attacks. The step-by-step process from configuring target firmware to capturing traces ensures reliable and repeatable fault injection experiments. This setup provides a powerful foundation for exploring hardware security vulnerabilities effectively.

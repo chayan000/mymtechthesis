@@ -25,6 +25,14 @@ M.~Hermelink et~al.
   post-quantum schemes (kyber, dilithium): Survey and new results.
 \newblock {\em ACM Transactions on Embedded Computing Systems}, 2023.
 
+\bibitem[{Nat}20]{nistpqc2020}
+{National Institute of Standards and Technology}.
+\newblock {Post-Quantum Cryptography Standardization: Round 3 Submissions}.
+\newblock
+  \url{https://csrc.nist.gov/projects/post-quantum-cryptography/post-quantum-cryptography-standardization/round-3-submissions},
+  2020.
+\newblock Accessed: 2025-06-06.
+
 \bibitem[{New}16a]{newae_cw305}
 {NewAE Technology Inc.}
 \newblock {\em CW305 Artix FPGA Target Documentation}, 2016.
@@ -60,6 +68,12 @@ M.~Hermelink et~al.
 \bibitem[{New}25f]{chipwhisperer_scope_api}
 {NewAE Technology Inc.}
 \newblock {\em Scope API — ChipWhisperer Documentation}, 2025.
+
+\bibitem[RCDB24]{10.1145/3603170}
+Prasanna Ravi, Anupam Chattopadhyay, Jan~Pieter D’Anvers, and Anubhab Baksi.
+\newblock Side-channel and fault-injection attacks over lattice-based
+  post-quantum schemes (kyber, dilithium): Survey and new results.
+\newblock {\em ACM Trans. Embed. Comput. Syst.}, 23(2), March 2024.
 
 \bibitem[SMC09]{Saha2009ADF}
 Dhiman Saha, Debdeep Mukhopadhyay, and Dipanwita~Roy Chowdhury.

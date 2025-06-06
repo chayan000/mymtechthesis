@@ -128,3 +128,30 @@
   year = {2023},
   url = {https://dl.acm.org/doi/full/10.1145/3603170}
 }
+
+@article{10.1145/3603170,
+author = {Ravi, Prasanna and Chattopadhyay, Anupam and D’Anvers, Jan Pieter and Baksi, Anubhab},
+title = {Side-channel and Fault-injection attacks over Lattice-based Post-quantum Schemes (Kyber, Dilithium): Survey and New Results},
+year = {2024},
+issue_date = {March 2024},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {23},
+number = {2},
+issn = {1539-9087},
+url = {https://doi.org/10.1145/3603170},
+doi = {10.1145/3603170},
+abstract = {In this work, we present a systematic study of Side-Channel Attacks (SCA) and Fault Injection Attacks (FIA) on structured lattice-based schemes, with main focus on Kyber Key Encapsulation Mechanism (KEM) and Dilithium signature scheme, which are leading candidates in the NIST standardization process for Post-Quantum Cryptography (PQC). Through our study, we attempt to understand the underlying similarities and differences between the existing attacks while classifying them into different categories. Given the wide variety of reported attacks, simultaneous protection against all the attacks requires to implement customized protections/countermeasures for both Kyber and Dilithium. We therefore present a range of customized countermeasures, capable of providing defenses/mitigations against existing SCA/FIA, and incorporate several SCA and FIA countermeasures within a single design of Kyber and Dilithium. Among the several countermeasures discussed in this work, we present novel countermeasures that offer simultaneous protection against several SCA- and FIA-based chosen-ciphertext attacks for Kyber KEM. We implement the presented countermeasures within two well-known public software libraries for PQC: (1) pqm4 library for the ARM Cortex-M4-based microcontroller and (2) liboqs library for the Raspberry Pi 3 Model B Plus based on the ARM Cortex-A53 processor. Our performance evaluation reveals that the presented custom countermeasures incur reasonable performance overheads on both the evaluated embedded platforms. We therefore believe our work argues for usage of custom countermeasures within real-world implementations of lattice-based schemes, either in a standalone manner or as reinforcements to generic countermeasures such as masking.},
+journal = {ACM Trans. Embed. Comput. Syst.},
+month = mar,
+articleno = {35},
+numpages = {54},
+keywords = {Lattice-based cryptography, side-channel attacks, fault-injection attacks, Kyber, Dilithium}
+}
+@misc{nistpqc2020,
+  author       = {{National Institute of Standards and Technology}},
+  title        = {{Post-Quantum Cryptography Standardization: Round 3 Submissions}},
+  howpublished = {\url{https://csrc.nist.gov/projects/post-quantum-cryptography/post-quantum-cryptography-standardization/round-3-submissions}},
+  year         = {2020},
+  note         = {Accessed: 2025-06-06}
+}

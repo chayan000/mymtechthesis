@@ -3,7 +3,7 @@
 
  This chapter outlines the laboratory environment specifically built to conduct fault injection experiments using the ChipWhisperer platform. Known widely in the academic and professional security communities, ChipWhisperer offers a robust suite of tools tailored for side-channel analysis and glitch-based fault injection. One of its major strengths lies in its integrated approach—combining hardware modules with a powerful software interface to deliver a cohesive and highly controllable experimental experience.
  
- ChipWhisperer \cite{chipwhisperer2025} supports a range of fault injection techniques, most notably clock glitching and voltage fault injection. These methods can induce controlled errors in the behavior of a target device, often revealing vulnerabilities in cryptographic implementations or exposing unexpected execution paths. The platform’s ability to fine-tune fault parameters, such as glitch width, offset, and repetition, is essential for conducting systematic attacks and for understanding how and when systems fail under abnormal conditions.
+ ChipWhisperer \cite{chipwhisperer2025} supports a range of techniques for fault injection, most notably Clock glitching and Voltage glitching fault injection. These methods can induce controlled errors in the behavior of a target device, often revealing vulnerabilities in cryptographic implementations or exposing unexpected execution paths. The platform’s ability to fine-tune fault parameters, such as glitch width, offset, and repetition, is essential for conducting systematic attacks and for understanding how and when systems fail under abnormal conditions.
  
  The lab setup described in this chapter includes a detailed walkthrough of the ChipWhisperer’s hardware components, including the capture board, target devices, and power supply configurations. Special attention is paid to key operational aspects such as signal synchronization, trigger alignment, and the calibration of timing parameters, all of which are vital to the success of glitch-based attacks. Safety considerations, especially when dealing with fault injection at the physical level, are also addressed to ensure both operator protection and equipment longevity.
  
@@ -112,8 +112,8 @@ sudo apt update && sudo apt upgrade
 
 Step 2: Install Required Dependencies\\
 \begin{lstlisting}[language=bash]
-sudo apt install libusb-dev make git avr-libc gcc-avr \
-gcc-arm-none-eabi libusb-1.0-0-dev usbutils \
+sudo apt install libusb-dev gcc-arm-none-eabi make git
+ avr-libc gcc-avr avr-libc libusb-1.0-0-dev usbutils
 python3 python3-venv
 \end{lstlisting}
 

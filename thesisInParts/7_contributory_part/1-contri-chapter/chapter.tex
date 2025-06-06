@@ -8,7 +8,7 @@ By designing with these hardware-centric priorities in mind, BipBip offers a lig
 
 \section{High Level Decryption Structure of BipBip}
 
-\ref{fig:bipbip_decrypt_structure} taken from \cite{Belkheyar_Daemen_Dobraunig_Ghosh_Rasoolzadeh_2022} is structured around three main components of BipBip's decryption: the datapath, the tweak schedule, and the key schedule.
+Figure \ref{fig:bipbip_decrypt_structure} taken from \cite{Belkheyar_Daemen_Dobraunig_Ghosh_Rasoolzadeh_2022} is structured around three main components of BipBip's decryption: the datapath, the tweak schedule, and the key schedule.
 
 The key schedule selects bits from the 256-bit master key $K$ to produce the whitening key $\kappa_0$ and the tweak-round keys $\kappa_i$. These keys are used later in the tweak and datapath stages. For simplicity, the key schedule is not shown in the structural diagram.
 
@@ -71,41 +71,47 @@ Here we present the results of the clock glitch fault injection on the BipBip ci
     \hline
     10841 & 1.17 & 1.17 & 052aa7 & 
     \parbox{5.5cm}{
+        \text{}\\
         \textbf{Faulty:} 0\textcolor{red}{1}1100 100111 111101 101111\\
-        \textbf{Correct:} 0\textcolor{green}{0}1100\ \ 100111\ 111101\ 101111
+        \textbf{Correct:} 0\textcolor{green}{0}1100\ \ 100111\ 111101\ 101111 \\
     } \\
     \hline
     10842 & 1.95 & 1.17 & 6462d1 & 
     \parbox{5.5cm}{
+        \text{}\\
         \textbf{Faulty:} 00\textcolor{red}{0}100 100111 111101 101111\\
-        \textbf{Correct:} 00\textcolor{green}{1}100\ \ 100111\ 111101\ 101111
+        \textbf{Correct:} 00\textcolor{green}{1}100\ \ 100111\ 111101\ 101111 \\
     } \\
     \hline
     10855 & 1.9 & 1.7 & 6f2a99 &
     \parbox{5.5cm}{
+        \text{}\\
         \textbf{Faulty:} 001\textcolor{red}{0}00\ 100111\ 111101\ 101111 \\
-\textbf{Correct:} 001\textcolor{green}{1}00\ 100111\ 111101\ 101111
+       \textbf{Correct:} 001\textcolor{green}{1}00\ 100111\ 111101\ 101111 \\
 
     } \\
     \hline
     10866 & 1.17 & 1.17 & 3c12bc & 
     \parbox{5.5cm}{
+        \text{}\\
         \textbf{Faulty:} 00110\textcolor{red}{1}\ 100111\ 111101\ 101111 \\
-\textbf{Correct:} 00110\textcolor{green}{0}\ 100111\ 111101\ 101111
+        \textbf{Correct:} 00110\textcolor{green}{0}\ 100111\ 111101\ 101111 \\
 
     } \\
     \hline
     10878 & 1.17 & 1.17 & 105bfc & 
     \parbox{5.5cm}{
+        \text{}\\
         \textbf{Faulty:} 001100\ 1001\textcolor{red}{0}1\ 111101\ 101111 \\
-\textbf{Correct:} 001100\ 1001\textcolor{green}{1}1\ 111101\ 101111
+        \textbf{Correct:} 001100\ 1001\textcolor{green}{1}1\ 111101\ 101111 \\
 
     } \\
     \hline
     10887 & 1.9 & 1.17 & 1c52e4 & 
     \parbox{5.5cm}{
+        \text{}\\
         \textbf{Faulty:} 001100\ 10\textcolor{red}{1}111\ 111101\ 101111 \\
-\textbf{Correct:} 001100\ 10\textcolor{green}{0}111\ 111101\ 101111
+        \textbf{Correct:} 001100\ 10\textcolor{green}{0}111\ 111101\ 101111 \\
 
     } \\
     \hline
@@ -115,3 +121,7 @@ Here we present the results of the clock glitch fault injection on the BipBip ci
 
 According to the attack model proposed by Dilip et al., only 4 such fault plaintexts are required to recover the 11th round key $k_{11}$. The faulty plaintexts obtained from the clock glitch attack on BipBip were used to filter out incorrect key candidates. The results of the attack are  summarized in Table \ref{tab:glitch_summary}. We have shown that the input of 9th round has only one bit flip in the obtained plaintexts compared to the correct one.
     
+\section{Conclusion}
+
+This work demonstrates how carefully targeted bit-flipping faults can compromise the security of the BipBip cryptographic implementation. By analyzing its decryption structure, an effective fault injection attack was executed. The experimental results confirm the attack's success, highlighting potential vulnerabilities and the importance of robust fault detection mechanisms in such systems.
+
