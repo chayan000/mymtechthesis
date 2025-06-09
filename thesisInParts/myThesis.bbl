@@ -75,6 +75,12 @@ Prasanna Ravi, Anupam Chattopadhyay, Jan~Pieter D’Anvers, and Anubhab Baksi.
   post-quantum schemes (kyber, dilithium): Survey and new results.
 \newblock {\em ACM Trans. Embed. Comput. Syst.}, 23(2), March 2024.
 
+\bibitem[RTO21]{ravi2021fault}
+Karthikeyan Ravi, Michael Tunstall, and Maire O'Neill.
+\newblock Fault injection attacks on kyber.
+\newblock {\em IACR Transactions on Cryptographic Hardware and Embedded
+  Systems}, 2021(4):173--203, 2021.
+
 \bibitem[SMC09]{Saha2009ADF}
 Dhiman Saha, Debdeep Mukhopadhyay, and Dipanwita~Roy Chowdhury.
 \newblock A diagonal fault attack on the advanced encryption standard.

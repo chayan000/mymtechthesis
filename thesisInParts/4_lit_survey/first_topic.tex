@@ -1,7 +1,8 @@
-Fault injection attacks (FIAs) have emerged as a potent threat to embedded systems, exploiting hardware-level vulnerabilities through techniques such as voltage and clock glitching. These attacks can compromise cryptographic implementations by inducing faults that alter a devices normal execution flow. This section explores the major studies and developments in the field.
+Fault injection attacks are considered as a potent threat to embedded systems that exploites hardware-level vulnerabilities through techniques such as Voltage or Clock glitching. These attacks can compromise cryptographic implementations by inducing faults that alter a devices normal execution flow. This section explores the major studies and developments in the field.
 
 \subsection*{Non-Invasive Fault Injection Techniques}
-Mazumder et al.~\cite{mazumder2023comprehensive} present a detailed survey of non-invasive fault injection methods, including voltage, clock, and electromagnetic techniques. These methods allow adversaries to disrupt device operations without direct physical tampering, making them highly relevant in real-world attack scenarios.
+
+comprehensive survey of non-invasive fault injection techniques, such as voltage glitching, clock manipulation, and electromagnetic interference is provided by Mazumder et al.~\cite{mazumder2023comprehensive} . These approaches enable attackers to disrupt a device's operation without needing direct physical access or modifications, making them especially practical and dangerous in real-world attack scenarios.
 
 \subsection*{Practicality of FIAs}
 Breier and Hou~\cite{breier2022practical} examine the practicality of executing fault attacks across various architectures. Their work demonstrates that low-cost setups can achieve successful fault injections on widely used processors, raising concerns about the accessibility of such attacks.
@@ -16,3 +17,9 @@ Brito et al. \cite{brito2023evaluation} conduct a comparative evaluation of faul
 
 \subsection*{Application to Post-Quantum Cryptography}
 Hermelink et al. \cite{hermelink2023side} investigate the resilience of post-quantum algorithms, particularly Kyber and Dilithium, against both side-channel and fault injection attacks. This research is crucial as the cryptographic landscape shifts towards quantum-resistant designs.
+
+
+\subsection*{Glitching Attacks on Post-Quantum Cryptography: A Focus on Kyber}
+
+In recent years, the resilience of lattice-based schemes like Kyber against physical attacks has become an active area of research. Ravi et al.~\cite{ravi2021fault} explored voltage and clock glitching as a means to compromise Kyber implementations. Their study demonstrated that Kyber is not inherently resistant to low-level fault injection techniques and identified several fault models that can lead to secret key recovery. Interestingly, the authors showed that inducing faults during the decryption phase can leak sufficient information through erroneous outputs, allowing attackers to infer sensitive intermediate values. The work emphasizes that even theoretically secure schemes require robust physical implementations to remain secure in real-world devices.
+

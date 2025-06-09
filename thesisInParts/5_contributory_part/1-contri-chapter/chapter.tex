@@ -1,7 +1,7 @@
  % Chanper text
- In recent years, fault injection attacks have become a prominent area of study within the hardware security field due to their ability to compromise embedded systems in subtle yet powerful ways. By deliberately introducing faults during the execution of critical operations—particularly those involving cryptographic algorithms—attackers can exploit system weaknesses that remain hidden under normal conditions. As research into these attack vectors evolves, the importance of a dependable, adaptable, and thoroughly documented lab environment has grown significantly. A well-constructed experimental setup not only ensures consistent and reproducible results but also facilitates the design and validation of effective hardware-level countermeasures.
+ Fault injection attacks are getting a lot of attention in hardware security because they can quietly mess up embedded systems. Attackers sneak in faults at just the right moment, especially during important tasks like encryption, to find hidden weaknesses. As researchers dig deeper into these attacks, having a solid, easy-to-use, and well-explained lab setup is super important. A good lab helps get steady, repeatable results and makes it easier to build and test strong defenses for hardware.
 
- This chapter outlines the laboratory environment specifically built to conduct fault injection experiments using the ChipWhisperer platform. Known widely in the academic and professional security communities, ChipWhisperer offers a robust suite of tools tailored for side-channel analysis and glitch-based fault injection. One of its major strengths lies in its integrated approach—combining hardware modules with a powerful software interface to deliver a cohesive and highly controllable experimental experience.
+ This chapter describes the lab setup we created for fault injection experiments using the ChipWhisperer platform. ChipWhisperer is a well-known tool among security researchers and professionals, offering a solid set of features for side-channel analysis and glitch-based fault injection. What makes it stand out is how it brings together hardware and software into one smooth, easy-to-control system for running experiments.
  
  ChipWhisperer \cite{chipwhisperer2025} supports a range of techniques for fault injection, most notably Clock glitching and Voltage glitching fault injection. These methods can induce controlled errors in the behavior of a target device, often revealing vulnerabilities in cryptographic implementations or exposing unexpected execution paths. The platform’s ability to fine-tune fault parameters, such as glitch width, offset, and repetition, is essential for conducting systematic attacks and for understanding how and when systems fail under abnormal conditions.
  
@@ -59,7 +59,7 @@ The CWNano is a small and low-cost tool \ref{fig:nano_target} used to learn abou
 
 
 
-\subsection{Integrated Target on ChipWhisperer-Lite}
+\subsection{ChipWhisperer-Lite}
 The CWLite is a compact and low-cost hardware tool designed to help users learn about hardware security. It combines a power measurement system and a microcontroller target on a single board, making it easy to use. This device \cite{chipwhisperer_lite_capture} can capture power traces with high speed and allows for glitching attacks like clock or voltage glitches. It is mainly used to perform and study side-channel attacks, such as breaking encryption by analyzing power usage. The board connects to a computer through USB and works with open-source ChipWhisperer software. Because of its simplicity and low price, it is widely used in education and research.
 \begin{figure}[h]
     \centering

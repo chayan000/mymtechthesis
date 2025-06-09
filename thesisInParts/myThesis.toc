@@ -15,8 +15,8 @@
 \contentsline {subsection}{\numberline {3.1.1}Scope Boards (Capture Hardware)}{9}{subsection.3.1.1}%
 \contentsline {subsection}{\numberline {3.1.2}Target Boards (Device Under Test - DUT)}{9}{subsection.3.1.2}%
 \contentsline {subsection}{\numberline {3.1.3}Integrated Target on ChipWhisperer-Nano}{10}{subsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.1.4}Integrated Target on ChipWhisperer-Lite}{11}{subsection.3.1.4}%
-\contentsline {subsection}{\numberline {3.1.5}ChipWhisperer-Husky}{13}{subsection.3.1.5}%
+\contentsline {subsection}{\numberline {3.1.4}ChipWhisperer-Lite}{10}{subsection.3.1.4}%
+\contentsline {subsection}{\numberline {3.1.5}ChipWhisperer-Husky}{12}{subsection.3.1.5}%
 \contentsline {section}{\numberline {3.2}Software Environment}{13}{section.3.2}%
 \contentsline {subsubsection}{For Windows :}{13}{subsubsection*.15}%
 \contentsline {subsubsection}{for Linux:}{14}{subsubsection*.17}%
@@ -26,23 +26,23 @@
 \contentsline {subsubsection}{\textbf {\texttt {scope.adc.timeout }:}}{17}{subsubsection*.19}%
 \contentsline {subsubsection}{$scope.clock.adc\_src :$}{17}{subsubsection*.20}%
 \contentsline {subsubsection}{\textbf {\texttt {glitch.clk\_src }:}}{17}{subsubsection*.21}%
-\contentsline {subsubsection}{$scope.glitch.output :$}{18}{subsubsection*.22}%
+\contentsline {subsubsection}{$scope.glitch.output :$}{17}{subsubsection*.22}%
 \contentsline {subsubsection}{$scope.glitch.trigger\_src :$}{18}{subsubsection*.23}%
-\contentsline {subsubsection}{$scope.glitch.repeat :$}{19}{subsubsection*.24}%
+\contentsline {subsubsection}{$scope.glitch.repeat :$}{18}{subsubsection*.24}%
 \contentsline {subsubsection}{\textbf {\texttt {scope.glitch.width} :}}{19}{subsubsection*.25}%
 \contentsline {subsubsection}{\textbf {\texttt {scope.glitch.offset }:}}{19}{subsubsection*.26}%
 \contentsline {subsubsection}{$scope.glitch.ext\_offset :$}{20}{subsubsection*.27}%
 \contentsline {subsubsection}{$scope.arm() :$}{20}{subsubsection*.28}%
 \contentsline {subsubsection}{$scope.capture() :$}{20}{subsubsection*.29}%
-\contentsline {subsubsection}{$scope.get\_last\_trace() :$}{21}{subsubsection*.30}%
+\contentsline {subsubsection}{$scope.get\_last\_trace() :$}{20}{subsubsection*.30}%
 \contentsline {subsection}{\numberline {3.2.3}Target API}{21}{subsection.3.2.3}%
-\contentsline {subsubsection}{$target.flush() :$}{22}{subsubsection*.31}%
+\contentsline {subsubsection}{$target.flush() :$}{21}{subsubsection*.31}%
 \contentsline {subsubsection}{$target.simpleserial\_write(cmd, data) :$}{22}{subsubsection*.32}%
 \contentsline {subsubsection}{$target.simpleserial\_read\_witherrors(cmd, length) :$}{22}{subsubsection*.33}%
 \contentsline {subsubsection}{$target.simpleserial\_wait\_ack(cmd, timeout=1) :$}{23}{subsubsection*.34}%
 \contentsline {section}{\numberline {3.3}Process of Clock/Voltage Glitching}{23}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Target Code Configuration with Simpleserial}{23}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Device Configuration}{25}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Device Configuration}{24}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}Running the Setup Script}{25}{subsection.3.3.3}%
 \contentsline {subsection}{\numberline {3.3.4}Compiling the Target Firmware}{25}{subsection.3.3.4}%
 \contentsline {subsection}{\numberline {3.3.5}Loading the Target Firmware}{26}{subsection.3.3.5}%
@@ -72,7 +72,7 @@
 \noindent \hrulefill \leavevmode \par 
 \contentsline {chapter}{\chapternumberline {5}Flipping Bits to Break BipBip}{39}{chapter.5}%
 \contentsline {section}{\numberline {5.1}High Level Decryption Structure of BipBip}{40}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Proposed Attack on BipBip}{40}{section.5.2}%
+\contentsline {section}{\numberline {5.2}Dilip et al.'s Attack on BipBip}{40}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Experimental Setup}{41}{section.5.3}%
 \contentsline {section}{\numberline {5.4}Results \& Analysis}{42}{section.5.4}%
 \contentsline {section}{\numberline {5.5}Conclusion}{42}{section.5.5}%
