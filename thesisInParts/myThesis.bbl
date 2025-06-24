@@ -7,6 +7,12 @@ F.~Brito et~al.
   microprocessor-based embedded systems.
 \newblock {\em Microprocessors and Microsystems}, 96:104723, 2023.
 
+\bibitem[BBKN12]{6178001}
+Alessandro Barenghi, Luca Breveglieri, Israel Koren, and David Naccache.
+\newblock Fault injection attacks on cryptographic devices: Theory, practice,
+  and countermeasures.
+\newblock {\em Proceedings of the IEEE}, 100(11):3056--3076, 2012.
+
 \bibitem[BDD{\etalchar{+}}22]{Belkheyar_Daemen_Dobraunig_Ghosh_Rasoolzadeh_2022}
 Yanis Belkheyar, Joan Daemen, Christoph Dobraunig, Santosh Ghosh, and Shahram
   Rasoolzadeh.

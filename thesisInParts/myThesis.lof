@@ -6,17 +6,19 @@
 \addvspace {10pt}
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces ChipWhisperer-Nano\relax }}{11}{figure.caption.11}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces ChipWhisperer-Lite with 32-bit ARM target\relax }}{11}{figure.caption.12}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces ChipWhisperer-Lite 2-Part version connections\relax }}{12}{figure.caption.13}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces ChipWhisperer-Husky with SAM4S target\relax }}{13}{figure.caption.14}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Chipwhisperer official GitHub page\relax }}{14}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces ChipWhisperer-Nano\relax }}{13}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces ChipWhisperer-Lite with 32-bit ARM target\relax }}{14}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces ChipWhisperer-Lite 2-Part version connections\relax }}{14}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces ChipWhisperer-Husky with SAM4S target\relax }}{15}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Chipwhisperer official GitHub page\relax }}{16}{figure.caption.16}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces AES128 Power Trace of CWLite-ARM\relax }}{31}{figure.caption.35}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces AES128 Power Trace on CWLite-ARM\relax }}{33}{figure.caption.35}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Power Trace of AES-128 with Clock Glitch at Start of Round 8\relax }}{35}{figure.caption.37}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Power Trace of AES-128 with Voltage Glitch at Start of Round 8\relax }}{38}{figure.caption.44}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces High Level Decryption Structure of BipBip\relax }}{40}{figure.caption.49}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Proposed fault injection attack\relax }}{40}{figure.caption.50}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Power trace BipBip in CWLite-ARM\relax }}{41}{figure.caption.51}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces High Level Decryption Structure of BipBip\relax }}{44}{figure.caption.51}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Proposed fault injection attack\relax }}{45}{figure.caption.52}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Power trace BipBip in CWLite-ARM\relax }}{45}{figure.caption.53}%
 \addvspace {10pt}
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Overview of Kyber's Key Encapsulation Mechanism\relax }}{46}{figure.caption.53}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Overview of Kyber's Key Encapsulation Mechanism\relax }}{51}{figure.caption.56}%
 \addvspace {10pt}

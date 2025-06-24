@@ -1,4 +1,5 @@
  % Chanper text
+ \section{Introduction}
  Fault injection attacks are getting a lot of attention in hardware security because they can quietly mess up embedded systems. Attackers sneak in faults at just the right moment, especially during important tasks like encryption, to find hidden weaknesses. As researchers dig deeper into these attacks, having a solid, easy-to-use, and well-explained lab setup is super important. A good lab helps get steady, repeatable results and makes it easier to build and test strong defenses for hardware.
 
  This chapter describes the lab setup we created for fault injection experiments using the ChipWhisperer platform. ChipWhisperer is a well-known tool among security researchers and professionals, offering a solid set of features for side-channel analysis and glitch-based fault injection. What makes it stand out is how it brings together hardware and software into one smooth, easy-to-control system for running experiments.
@@ -10,6 +11,27 @@
  By documenting each step of the setup process, this chapter aims to provide a practical guide for researchers and practitioners who wish to replicate or build upon this work. Whether the goal is to explore new fault injection strategies, assess the resilience of embedded systems, or develop novel countermeasures, a clear understanding of the experimental foundation is critical. In doing so, this chapter contributes to the broader objective of advancing transparency, repeatability, and rigor in the field of hardware security research.
 \section*{Techniques and analysis: Side-Channel Attacks Using ChipWhisperer }
 One of ChipWhisperer’s key strengths lies in its ability to perform highly controlled fault injection techniques, most notably voltage glitching and clock glitching. With voltage glitching, the platform can momentarily drop or distort the power supply to a target device, causing it to behave unpredictably, potentially skipping instructions or bypassing security checks. Clock glitching, on the other hand, involves inserting short, precisely-timed disturbances into the device’s clock signal. These glitches can disrupt the timing of operations, often triggering exploitable faults during critical processes like encryption or authentication. The fine-grained control over timing, width, and offset of these glitches makes ChipWhisperer exceptionally effective for exploring fault-induced vulnerabilities. Combined with its trace capture and analysis tools, these capabilities allow researchers to both induce and observe faults in real time, offering deep insight into how embedded systems respond under non-ideal operating conditions.
+
+  \begin{minipage}[b]{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/cwlite_hardware.png}
+    \smallskip
+    CWLite with ARM 32-bit Target
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/cwhusky_hardware.png}
+    \smallskip
+   CWHusky with SAM4S Target
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.3\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/phy_hardware.png}
+    \smallskip
+    PhyWhisperer setup
+  \end{minipage}
 \section{ChipWhisperer Hardware Platform}
 The ChipWhisperer platform is made up of specialized hardware designed to carry out side-channel analysis and fault injection on embedded devices. Its hardware setup is typically divided into two main parts: scope boards, which handle signal capture and glitching, and target boards, which run the code being tested. When used together, these components form a complete and flexible environment for testing the security of cryptographic systems and exploring hardware vulnerabilities.
 \subsection{Scope Boards (Capture Hardware)}

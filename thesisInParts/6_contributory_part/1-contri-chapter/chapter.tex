@@ -102,8 +102,8 @@ The corrupted state continues to evolve through the remaining AES rounds. Round 
 \ref{fig:powertrace} is the Power Trace of the AES-128 running in the integrated target of CWLite-ARM. This clearly shows the AES128 rounds:
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.9\linewidth, height=0.5\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/aes128_powertrace.png}
-    \caption{AES128 Power Trace of CWLite-ARM}
+    \includegraphics[width=0.9\linewidth, height=0.5\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/1.png}
+    \caption{AES128 Power Trace on CWLite-ARM}
     \label{fig:powertrace}
 \end{figure}
 \section{Fault Injection at the Start of Round 8 using CW-Lite}
@@ -120,7 +120,14 @@ We have identified a probable location(5080 to 5120 samples) of the starting of 
     scope.io.hs2 = "glitch"
 \end{verbatim}
 \subsubsection{Result}
-A glitch was introduced at location 5086 samples, which corresponds to the start of Round 8. The parametsers 
+A glitch was introduced at location 5086 samples \ref{fig:clock_glitch_trace}, which corresponds to the start of Round 8. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\linewidth, height=0.5\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/2.png}
+    \caption{Power Trace of AES-128 with Clock Glitch at Start of Round 8}
+    \label{fig:clock_glitch_trace}
+\end{figure}
+The parametsers 
 \begin{verbatim}
     scope.glitch.offset= 10
     scope.glitch.width= 3
@@ -410,7 +417,14 @@ Firstly we have identified a probable location(5090 to 5120 samples) of the star
     scope.io.glitch_hp = True
 \end{verbatim}
 \subsubsection{Result}
-A glitch was introduced at location 5100 samples, which corresponds to the start of Round 8. The parametsers 
+A glitch was introduced at location 5100 samples \ref{fig:voltage_glitch_trace}, which corresponds to the start of Round 8. 
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\linewidth, height=0.5\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/3.png}
+    \caption{Power Trace of AES-128 with Voltage Glitch at Start of Round 8}
+    \label{fig:voltage_glitch_trace}
+\end{figure}
+The parametsers 
 \begin{verbatim}
     scope.glitch.offset= -37.890625 
     scope.glitch.width= 37.109375

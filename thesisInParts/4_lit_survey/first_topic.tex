@@ -14,6 +14,13 @@ Yuce et al.\cite{yuce2020fault} focus on how FIAs affect embedded software syste
 
 \subsection*{Evaluation of Fault Injection Tools}
 Brito et al. \cite{brito2023evaluation} conduct a comparative evaluation of fault injection platforms, helping researchers select suitable tools for reliability testing of embedded systems under attack conditions.
+\subsection*{Fault Injection Attacks on Cryptographic Devices: Theory, Practice, and Countermeasures}
+
+Barenghi et al. \cite{6178001} discuss how FIAs exploit hardware imperfections by introducing faults—via voltage glitches, clock manipulation, or laser/electromagnetic interference—to compromise cryptographic computations. These attacks are classified based on cost and complexity: \textbf{low-cost attacks} are accessible with modest equipment, whereas \textbf{high-cost attacks} require specialized tools and expertise.
+
+Research has demonstrated practical FIAs against major ciphers, often leading to key recovery or algorithm compromise. Countermeasures include hardware-based fault detection, redundancy in computation, and intrusion monitoring systems. Additionally, studies show the combined use of fault and power analysis attacks can further undermine device security.
+
+The literature emphasizes the need for robust, layered defenses that balance performance, cost, and security in embedded cryptographic implementations.
 
 \subsection*{Application to Post-Quantum Cryptography}
 Hermelink et al. \cite{hermelink2023side} investigate the resilience of post-quantum algorithms, particularly Kyber and Dilithium, against both side-channel and fault injection attacks. This research is crucial as the cryptographic landscape shifts towards quantum-resistant designs.
