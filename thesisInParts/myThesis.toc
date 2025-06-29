@@ -1,13 +1,13 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{Declaration}{v}{chapter*.2}%
-\contentsline {chapter}{Certificate}{vii}{chapter*.3}%
-\contentsline {chapter}{Approval}{ix}{chapter*.4}%
-\contentsline {chapter}{Acknowledgements}{xi}{chapter*.5}%
-\contentsline {chapter}{COPYRIGHT TRANSFER CERTIFICATE}{xiii}{chapter*.6}%
-\contentsline {chapter}{Abstract}{xv}{section*.7}%
-\contentsline {chapter}{Contents}{xvii}{section*.8}%
-\contentsline {chapter}{List of Figures}{xxi}{section*.9}%
-\contentsline {chapter}{List of Tables}{xxiii}{section*.10}%
+\contentsline {chapter}{Declaration}{iii}{chapter*.2}%
+\contentsline {chapter}{Certificate}{v}{chapter*.3}%
+\contentsline {chapter}{Approval}{vii}{chapter*.4}%
+\contentsline {chapter}{Acknowledgements}{ix}{chapter*.5}%
+\contentsline {chapter}{Copyright Transfer Certificate}{xi}{chapter*.6}%
+\contentsline {chapter}{Abstract}{xiii}{section*.7}%
+\contentsline {chapter}{Contents}{xv}{section*.8}%
+\contentsline {chapter}{List of Figures}{xix}{section*.9}%
+\contentsline {chapter}{List of Tables}{xxi}{section*.10}%
 \contentsline {chapter}{\chapternumberline {1}Introduction}{1}{chapter.1}%
 \contentsline {chapter}{\chapternumberline {2}Literature Survey}{5}{chapter.2}%
 \contentsline {chapter}{\chapternumberline {3}Setting Up a Fault Injection Lab with ChipWhisperer}{9}{chapter.3}%
@@ -82,8 +82,9 @@
 \contentsline {chapter}{\chapternumberline {6}Fault Analysis of PQC: Injection Attack on Kyber}{49}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Introduction}{49}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Overview of Kyber}{50}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Preparing the Kyber Implementation for Fault Injection using ChipWhisperer}{51}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Challenges faced in the Kyber Implementation}{52}{section.6.4}%
+\contentsline {section}{\numberline {6.3}Fault Injection in Kyber implementation using ChipWhisperer}{51}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Challenges faced in preparing the attack}{51}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Conclusion}{52}{section.6.5}%
 \noindent \hrulefill \leavevmode \par 
 \contentsline {chapter}{About the Author}{53}{chapter*.57}%
 \contentsline {chapter}{Bibliography}{55}{chapter*.58}%

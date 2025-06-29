@@ -39,15 +39,15 @@ The diagram \ref{fig:kyber_overview} taken from \cite{10.1145/3603170} illustrat
 
 \end{figure}
 
-\section{Preparing the Kyber Implementation for Fault Injection using ChipWhisperer}
+\section{Fault Injection in Kyber implementation using ChipWhisperer}
 The Kyber implementation utilized in this work originates from the official reference code submitted to the National Institute of Standards and Technology (NIST) as part of their Post-Quantum Cryptography (PQC) Standardization Project Round 3 \cite{nistpqc2020}. The reference implementation is written in portable C and primarily designed for algorithm validation and benchmarking on conventional computing platforms.
 
 To adapt the Kyber implementation for hardware-based fault analysis, the codebase was modified to support the SimpleSerial v2 protocol. SimpleSerial provides a lightweight and deterministic serial communication interface, commonly used with side-channel and fault injection tools like ChipWhisperer. Integration involved encapsulating key Kyber operations, including \texttt{crypto\_kem
-\_keypair}, \texttt{crypto\_kem\_enc}, and \texttt{crypto\_kem\_dec}, within SimpleSerial command handlers. This modification enables consistent command-response interaction and reliable triggering for precise measurement and injection. As a result, the enhanced implementation is now fully compatible with ChipWhisperer, making it suitable for in-depth physical security testing of Kyber under fault-injection scenarios.
+\_keypair}, \texttt{crypto\_kem\_enc}, and \texttt{crypto\_kem\_dec}, within SimpleSerial command handlers. This modification enables consistent command-response interaction and reliable triggering for precise measurement and injection. As a result, we were able to introduce fault in the keypair generation operation. However this was not a precise and useful attack to retrive any data but it sets the stage for further fault injection attacks on post quantum algorithms like Kyber.
 
-\section{Challenges faced in the Kyber Implementation}
+\section{Challenges faced in preparing the attack}
 The rng.c file present in Kyber implementation provides a pseudo-random byte generator,
-In the various implementations of Kyber, the method of generating random numbers varies based on the platform and performance goals. 
+In various implementations of Kyber, the method of generating random numbers varies based on the platform and performance goals. 
 
 The official Round 3 reference implementation utilizes AES256 in counter mode (AES-CTR) as a deterministic random byte generator, adhering to the NIST standard (SP 800-90A). This implementation is written in portable C, prioritizing correctness and clarity.
 
@@ -55,3 +55,6 @@ For constrained devices, such as microcontrollers, the pqm4 version opts for a d
 In the case of our implementation we have used the tinyaes128 for that purpose.tinyaes128 is implemented in ChipWhisperer as a C-based AES-128 function in the simpleserial-aes firmware project, tightly integrated with serial communication to allow real-time encryption and trace capture.
 
 Another Problem arises when we try to see the public key (pk) or secret key (sk) using the $simpleseerial\_put$ method, which is used to send data over the serial interface. The issue is that the public key (pk) and secret key (sk) are large arrays, and the $simpleseerial\_put$ method can send only 256 bytes at a time. This limitation means that we cannot directly send the entire pk or sk in one go, as they exceed this byte limit. We have to send them in chunks, which requires careful management of the data to ensure that the entire key is transmitted correctly without losing any information. 
+
+\section{Conclusion}
+In this chapter, we have explored the challenges and considerations involved in preparing a Kyber implementation for fault analysis. By integrating the Kyber reference code with the SimpleSerial protocol and addressing the limitations of random number generation and data transmission, we have laid the groundwork for future fault injection attacks on Kyber. This work highlights the importance of robust implementation practices in ensuring the security of post-quantum cryptographic systems against both theoretical and practical threats.

@@ -45,6 +45,36 @@
   note         = {Accessed: 2025-06-05}
 }
 
+@manual{chipshouter_manual_v1.4,
+  title        = {{ChipSHOUTER} PRESS User Manual, version 1.4},
+  author       = {{NewAE Technology Inc.}},
+  organization = {NewAE Technology Inc.},
+  address      = {Dartmouth, Nova Scotia, Canada},
+  year         = {2021},
+  month        = {October},
+  url          = {https://media.newae.com/manuals/ChipSHOUTER_PRESS_1.4.pdf},
+  note         = {Accessed: 2025-06-28},
+}
+
+@misc{chipshouter_ballistic_gel,
+  author       = {{NewAE Technology Inc.}},
+  title        = {{Ballistic Gel – ChipSHOUTER EMFI Experiments}},
+  howpublished = {ChipSHOUTER Documentation},
+  year         = {2025},
+  month        = {June},
+  url          = {https://chipwhisperer.readthedocs.io/en/latest/ChipSHOUTER/Ballistic%20Gel.html},
+  note         = {Accessed: 2025-06-28},
+}
+
+@misc{chipshouter_doc,
+  author       = {{NewAE Technology Inc.}},
+  title        = {{ChipSHOUTER — Low-Cost EMFI Tool}},
+  year         = {2023},
+  url          = {https://chipwhisperer.readthedocs.io/en/latest/ChipSHOUTER/ChipSHOUTER.html},
+  note         = {Accessed: 2025-06-28},
+  howpublished = {\url{https://chipwhisperer.readthedocs.io/en/latest/ChipSHOUTER/ChipSHOUTER.html}}
+}
+
 @manual{newae_cw308ufo,
   title        = {CW308 UFO Board Documentation},
   author       = {{NewAE Technology Inc.}},
@@ -178,3 +208,4 @@ keywords = {Lattice-based cryptography, side-channel attacks, fault-injection at
   publisher={Ruhr-Universität Bochum}
 }
 
+@article{Ravi_Yang_Bhasin_Zhang_Chattopadhyay_2023, title={Fiddling the Twiddle Constants - Fault Injection Analysis of the Number Theoretic Transform}, volume={2023},  url={https://tches.iacr.org/index.php/TCHES/article/view/10290},  DOI={10.46586/tches.v2023.i2.447-481}, abstractNote={In this work, we present the first fault injection analysis of the Number Theoretic Transform (NTT). The NTT is an integral computation unit, widely used for polynomial multiplication in several structured lattice-based key encapsulation mechanisms (KEMs) and digital signature schemes. We identify a critical single fault vulnerability in the NTT, which severely reduces the entropy of its output. This in turn enables us to perform a wide-range of attacks applicable to lattice-based KEMs as well as signature schemes. In particular, we demonstrate novel key recovery and message recovery attacks targeting the key generation and encryption procedure of Kyber KEM. We also propose novel existential forgery attacks targeting deterministic and probabilistic signing procedure of Dilithium, followed by a novel verification bypass attack targeting its verification procedure. All proposed exploits are demonstrated with high success rate using electromagnetic fault injection on optimized implementations of Kyber and Dilithium, from the open-source pqm4 library on the ARM Cortex-M4 microcontroller. We also demonstrate that our proposed attacks are capable of bypassing concrete countermeasures against existing fault attacks on lattice-based KEMs and signature schemes. We believe our work motivates the need for more research towards development of countermeasures for the NTT against fault injection attacks.}, number={2}, journal={IACR Transactions on Cryptographic Hardware and Embedded Systems}, author={Ravi, Prasanna and Yang, Bolin and Bhasin, Shivam and Zhang, Fan and Chattopadhyay, Anupam}, year={2023}, month={Mar.}, pages={447–481} }

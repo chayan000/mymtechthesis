@@ -49,29 +49,49 @@ M.~Hermelink et~al.
 \newblock {\em CW308 UFO Board Documentation}, 2016.
 \newblock Accessed: 2025-06-05.
 
-\bibitem[{New}25a]{chipwhisperer2025}
+\bibitem[{New}21]{chipshouter_manual_v1.4}
+{NewAE Technology Inc.}
+\newblock {\em {ChipSHOUTER} PRESS User Manual, version 1.4}.
+\newblock NewAE Technology Inc., Dartmouth, Nova Scotia, Canada, October 2021.
+\newblock Accessed: 2025-06-28.
+
+\bibitem[{New}23]{chipshouter_doc}
+{NewAE Technology Inc.}
+\newblock {ChipSHOUTER — Low-Cost EMFI Tool}.
+\newblock
+  \url{https://chipwhisperer.readthedocs.io/en/latest/ChipSHOUTER/ChipSHOUTER.html},
+  2023.
+\newblock Accessed: 2025-06-28.
+
+\bibitem[{New}25a]{chipshouter_ballistic_gel}
+{NewAE Technology Inc.}
+\newblock {Ballistic Gel – ChipSHOUTER EMFI Experiments}.
+\newblock ChipSHOUTER Documentation, June 2025.
+\newblock Accessed: 2025-06-28.
+
+\bibitem[{New}25b]{chipwhisperer2025}
 {NewAE Technology Inc.}
 \newblock {\em ChipWhisperer Documentation: Getting Started}, 2025.
 \newblock Accessed: 2025-06-05.
 
-\bibitem[{New}25b]{chipwhisperer_linux_install}
+\bibitem[{New}25c]{chipwhisperer_linux_install}
 {NewAE Technology Inc.}
 \newblock {\em ChipWhisperer Documentation: Linux Installation}, 2025.
 \newblock Accessed: 2025-06-06.
 
-\bibitem[{New}25c]{chipwhisperer_lite2}
+\bibitem[{New}25d]{chipwhisperer_lite2}
 {NewAE Technology Inc.}
 \newblock {\em ChipWhisperer-Lite}, 2025.
 
-\bibitem[{New}25d]{chipwhisperer_nano}
+\bibitem[{New}25e]{chipwhisperer_nano}
 {NewAE Technology Inc.}
 \newblock {\em ChipWhisperer-Nano Target Board}, 2025.
 
-\bibitem[{New}25e]{chipwhisperer_lite_capture}
+\bibitem[{New}25f]{chipwhisperer_lite_capture}
 {NewAE Technology Inc.}
 \newblock {\em CW1173 ChipWhisperer-Lite Capture Documentation}, 2025.
 
-\bibitem[{New}25f]{chipwhisperer_scope_api}
+\bibitem[{New}25g]{chipwhisperer_scope_api}
 {NewAE Technology Inc.}
 \newblock {\em Scope API — ChipWhisperer Documentation}, 2025.
 
@@ -86,6 +106,13 @@ Karthikeyan Ravi, Michael Tunstall, and Maire O'Neill.
 \newblock Fault injection attacks on kyber.
 \newblock {\em IACR Transactions on Cryptographic Hardware and Embedded
   Systems}, 2021(4):173--203, 2021.
+
+\bibitem[RYB{\etalchar{+}}23]{Ravi_Yang_Bhasin_Zhang_Chattopadhyay_2023}
+Prasanna Ravi, Bolin Yang, Shivam Bhasin, Fan Zhang, and Anupam Chattopadhyay.
+\newblock Fiddling the twiddle constants - fault injection analysis of the
+  number theoretic transform.
+\newblock {\em IACR Transactions on Cryptographic Hardware and Embedded
+  Systems}, 2023(2):447–481, Mar. 2023.
 
 \bibitem[SMC09]{Saha2009ADF}
 Dhiman Saha, Debdeep Mukhopadhyay, and Dipanwita~Roy Chowdhury.
