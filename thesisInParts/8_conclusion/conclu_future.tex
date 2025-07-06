@@ -1,7 +1,64 @@
-% \chapter[Conclusion and Future Scope]{Conclusion and \\Future Scope}
-% \lipsum[29-30]
+\chapter[Conclusion and Future Scope]{Conclusion and \\Future Scope}
+% In this Thesis we have explored the vulnerabilities of embedded systems to physical attacks, particularly focusing on fault injection attacks (FIAs) and their implications for cryptographic implementations. We have conducted a comprehensive survey of existing literature, highlighting the evolution of FIAs, their practical applications, and the countermeasures developed to mitigate these threats. In the second chapter we have presented a detailed overview of ChipWhisperer, a versatile platform for conducting fault injection attacks, and demonstrated its capabilities through practical experiments. ChipWhisperer supports fault injection techniques such as clock glitching, voltage glitching. Another device named ChipSHOUTER based on the ChipWhisperer firmware is also introduced, which is capable of performing electromagnetic fault injection attacks. In this chapter we have shown detailed setup procedure for ChipWhisperer starting from installation, overview of the hardware
 
-% \paragraph{Future Works}
-% \blinditemize
+
+
+In this Thesis, we focused on establishing a fault injection laboratory using the ChipWhisperer platform. This setup is essential for understanding and experimenting with hardware security, particularly in the context of cryptographic fault attacks. The process began by introducing the ChipWhisperer hardware and its key components, including both the scope boards (used for capturing power traces) and the target devices (which are the subjects of attack). We looked at different variants like the ChipWhisperer-Lite, ChipWhisperer-Husky, and the integrated target on the ChipWhisperer-Nano to understand the variety of tools available depending on the scale and goal of the experiment.
+
+A detailed walkthrough of the software environment was also provided. This included an explanation of the directory structure, the APIs for interacting with the scope and target, and the importance of proper configuration. The chapter emphasized the importance of synchronizing the software and hardware components, particularly when using glitching techniques to inject faults. 
+
+The practical section involved setting up a clock or voltage glitch attack. We covered how to compile and load firmware, how to configure the glitch parameters, and how to capture traces effectively. Each step was designed to build up a working lab that could successfully inject faults into a target device, providing the foundation for more advanced security research.
+
+We have successfully demonstrated the setup by reproducing a fault injection attack on the AES-128 encryption algorithm. This involved identifying critical rounds in the encryption process where faults could be injected, leading to key recovery. The practical execution of this attack illustrated the effectiveness of the ChipWhisperer platform in real-world scenarios.
+
+In this thesis we have also demonstrated a fault injection attack on the BipBip cipher, a lightweight cryptographic algorithm, using the ChipWhisperer platform. The attack involved identifying a specific location in the power trace where a fault could be injected to compromise the encryption process. We successfully executed clock glitching attacks on both the CWLite and CWHusky boards, demonstrating the practical application of the setup.
+
+we have initiated fault testing on the Kyber post-quantum cryptosystem, showcasing the versatility of the ChipWhisperer platform in evaluating modern cryptographic schemes. This work serves as a foundation for future research in hardware security, particularly in the context of post-quantum cryptography. We have implemented a basic setup for fault injection on the Kyber algorithm, which can be further developed to explore more complex attacks and countermeasures.
+
+\textbf{Key takeaways from this chapter include:}
+
+\begin{itemize}
+  \item Understanding how different ChipWhisperer hardware variants serve various levels of attack complexity and precision.
+  \item Learning how to install and configure the software environment, including APIs used to control the scope and target boards.
+  \item Gaining hands-on experience with fault injection techniques such as clock and voltage glitching.
+  \item Developing the ability to compile and flash custom firmware onto a target for controlled experimentation.
+  \item Capturing traces and observing how specific glitch parameters affect device behavior, which is crucial for analyzing vulnerabilities.
+\end{itemize}
+
+\bigskip
+
+\section*{Future Works}
+
+While the work presented in this chapter establishes a strong foundation for understanding and conducting fault injection using ChipWhisperer, there are numerous opportunities for expanding and enhancing the lab environment. These future directions aim to improve the efficiency, reliability, and real-world applicability of fault analysis.
+
+\subsection*{Automated Glitch Parameter Tuning}
+One of the most time-consuming challenges in fault injection is identifying the precise timing and voltage/glitch configuration needed to cause a fault without crashing the system. This trial-and-error process can take significant time, especially when working with new targets or complex algorithms. A promising future direction is the development of intelligent tools that automate the tuning of glitch parameters. These tools could use optimization techniques such as grid search, genetic algorithms, or Bayesian optimization to systematically explore the glitch space. The goal would be to reduce manual effort while improving the consistency and success rate of fault injections.
+
+\subsection*{Extending to Advanced Cryptographic Schemes}
+While the current lab focuses on symmetric cryptographic systems like AES, there is a growing need to explore fault attacks on more complex and modern algorithms. These include asymmetric protocols like RSA and ECC, as well as post-quantum cryptographic schemes such as Kyber, Dilithium, and Saber. These schemes are being standardized for the future of secure communication in a quantum computing world, making them highly relevant targets. Adapting the existing setup to handle these algorithms would require enhancements in firmware support, synchronization accuracy, and analysis tools.
+
+\subsection*{Machine Learning-Based Trace Analysis and Glitch Prediction}
+The use of machine learning (ML) in side-channel analysis has shown great promise in recent years, particularly in identifying leakage patterns in power or EM traces. Similar ML techniques can be employed for fault injection, both in predicting glitch success based on parameter logs and in classifying traces to identify subtle fault effects. For example, neural networks or ensemble models could be trained on trace data to detect when a fault is likely to have occurred or to predict fault outcomes based on previous injections. This would not only speed up attack execution but could also enhance precision and minimize false positives.
+
+\subsection*{Real-world Embedded System Evaluation}
+Beyond academic and simulated targets, this lab setup can be expanded to include testing of real-world devices such as smartcards, automotive ECUs, secure boot microcontrollers, payment terminals, or IoT hardware. These devices often contain embedded cryptographic functions and could be vulnerable to fault attacks if not properly hardened. Such practical evaluation would bring greater relevance and applicability to the research and could provide insights for both attackers and defenders in industrial settings.
+
+\subsection*{Advanced Visualization and Feedback Tools}
+Another direction for improvement lies in creating more intuitive and real-time visualization tools. These could include dynamic plotting of captured traces, glitch timing overlays, heatmaps of fault success regions, and even interactive dashboards. Such visual tools would not only make the glitching process more transparent but would also help in debugging issues, interpreting results, and making rapid parameter adjustments during live experiments.
+
+\subsection*{Multi-Glitch and Composite Fault Models}
+Traditional fault injection usually involves single glitch events. However, future work could experiment with multiple glitches per encryption cycle, composite attacks combining glitches and power analysis, or fault models targeting memory corruption, instruction skipping, or control-flow hijacking. This would make the attacks more powerful and closer to real-world attack scenarios where multiple vectors are exploited simultaneously.
+
+\subsection*{Hardware and Environmental Variations}
+Exploring fault attacks under different environmental conditions such as temperature extremes, electromagnetic interference, or voltage supply fluctuations could provide deeper insights into the robustness of cryptographic devices. Additionally, evaluating how different microarchitectures (e.g., ARM Cortex M vs. AVR vs. RISC-V) respond to similar glitch profiles would allow for broader applicability of findings.
+
+\subsection*{Collaboration with Countermeasure Design}
+Lastly, a natural progression of this research would be to use the lab not only for attack development but also for testing and improving countermeasures. These might include fault detection mechanisms, redundant computations, glitch filters, or secure coding practices. Designing experiments specifically to break or validate such defenses would make the lab highly relevant to both offensive and defensive cybersecurity domains.
+
+
+Overall, setting up a fault injection lab using ChipWhisperer is not only a valuable educational exercise but also a stepping stone for serious research in embedded security. With ongoing improvements in both hardware and software, this platform offers a scalable and flexible environment for learning, testing, and innovating in the field of fault analysis.
+
+
+
 
 

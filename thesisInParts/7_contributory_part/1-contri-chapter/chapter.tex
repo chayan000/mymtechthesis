@@ -25,7 +25,7 @@ The datapath begins by combining the ciphertext $C$ with the whitening key $\kap
 The tweak schedule initializes a 53-bit internal state using the padded 40-bit tweak $T$. It applies alternating rounds of functions $G$ and $G'$, combined with the tweak-round keys $\kappa_i$. At each stage, parts of the state are extracted to form the data-round keys $k_i$ used in the datapath.
 
 \section{Dilip et al.'s Attack on BipBip}
-According to the study by Dilip et al.[Private], the BipBip cipher shows a vulnerability to key recovery attacks when a single-bit fault is introduced at the input of the S-box in the 9th round. This fault, after passing through the permutation layer, affects only 2 out of the 6 bits in the corresponding S-box input of the next round. 
+According to the study by Dilip et al.[Unpublished manuscript], the BipBip cipher shows a vulnerability to key recovery attacks when a single-bit fault is introduced at the input of the S-box in the 9th round. This fault, after passing through the permutation layer, affects only 2 out of the 6 bits in the corresponding S-box input of the next round. 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.9\textwidth]{/home/cp07/mymtechthesis/thesisInParts/images/bipbip_attack.png}

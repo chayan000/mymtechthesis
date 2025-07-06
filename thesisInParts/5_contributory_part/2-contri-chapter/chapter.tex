@@ -24,12 +24,11 @@ int main(void) {
     platform_init();
     init_uart();
     trigger_setup();
-	simpleserial_init();
+	    simpleserial_init();
     simpleserial_addcmd('b', 40, function);
     while(1)
         simpleserial_get();
     
-
   return 0;
 }
 \end{verbatim}

@@ -4,44 +4,46 @@ The top-level auxiliary file: myThesis.aux
 A level-1 auxiliary file: 3_introduction/intro.aux
 The style file: alpha.bst
 Database file #1: 10_bibliography/myThesis.bib
-You've used 23 entries,
+Warning--empty booktitle in flynnpaper
+You've used 24 entries,
             2543 wiz_defined-function locations,
-            662 strings with 7884 characters,
-and the built_in function-call counts, 7757 in all, are:
-= -- 751
-> -- 391
-< -- 12
-+ -- 140
-- -- 131
-* -- 525
-:= -- 1324
-add.period$ -- 69
-call.type$ -- 23
-change.case$ -- 130
-chr.to.int$ -- 16
-cite$ -- 23
-duplicate$ -- 293
-empty$ -- 555
-format.name$ -- 162
-if$ -- 1535
+            669 strings with 8045 characters,
+and the built_in function-call counts, 8115 in all, are:
+= -- 783
+> -- 410
+< -- 13
++ -- 146
+- -- 137
+* -- 549
+:= -- 1382
+add.period$ -- 72
+call.type$ -- 24
+change.case$ -- 136
+chr.to.int$ -- 17
+cite$ -- 25
+duplicate$ -- 309
+empty$ -- 584
+format.name$ -- 169
+if$ -- 1608
 int.to.chr$ -- 8
 int.to.str$ -- 0
-missing$ -- 9
-newline$ -- 119
-num.names$ -- 69
-pop$ -- 137
+missing$ -- 10
+newline$ -- 124
+num.names$ -- 72
+pop$ -- 146
 preamble$ -- 1
-purify$ -- 162
+purify$ -- 169
 quote$ -- 0
-skip$ -- 257
+skip$ -- 271
 stack$ -- 0
-substring$ -- 296
-swap$ -- 32
-text.length$ -- 12
+substring$ -- 303
+swap$ -- 34
+text.length$ -- 13
 text.prefix$ -- 12
 top$ -- 0
-type$ -- 184
-warning$ -- 0
-while$ -- 64
-width$ -- 28
-write$ -- 287
+type$ -- 192
+warning$ -- 1
+while$ -- 67
+width$ -- 29
+write$ -- 299
+(There was 1 warning)

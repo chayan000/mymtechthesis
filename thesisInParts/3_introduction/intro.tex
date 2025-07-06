@@ -6,12 +6,13 @@ In an increasingly interconnected world, embedded systems are deeply integrated 
 While traditional cybersecurity research has focused largely on software vulnerabilities, physical attacks on hardware have emerged as a powerful and practical threat vector. Among these, \textit{fault injection attacks} have proven particularly effective. By deliberately introducing transient faults into a device during its operation, attackers can disrupt normal execution paths, bypass security mechanisms, and extract secret data such as cryptographic keys. These attacks are low-cost, non-invasive in many cases, and difficult to defend against without dedicated countermeasures.
 
 This thesis focuses on the design, implementation, and evaluation of a fault injection laboratory based on the ChipWhisperer platform—a widely-used open-source toolkit for hardware security research. The core objective is to enable reproducible experiments that investigate the vulnerability of cryptographic algorithms under fault conditions and assess the effectiveness of various defenses.
+\section{Motivation and Objectives}
+The motivation for this research stems from the growing need to understand how physical attacks can compromise embedded systems, particularly in the context of cryptographic algorithms. As we transition into an era dominated by post-quantum cryptography, it is crucial to evaluate how these new algorithms withstand fault injection attacks. 
 
-\section*{Scope of the Work}
+\section{Organization of the Thesis}
+Chapter 2 of this thesis provides a comprehensive overview of fault injection techniques, focusing on voltage,clock and electro  magnetic glitching methods. It discusses the theoretical underpinnings of these attacks, including how they exploit the physical properties of integrated circuits to induce errors in computation. The chapter also reviews existing literature on fault injection, highlighting key findings and methodologies that have shaped current understanding in the field.
 
-Chapter~3 of this thesis introduces the complete setup of a fault injection laboratory using ChipWhisperer. It discusses the hardware components—including various scope and target boards—and explains how each contributes to the overall experimentation process. Special attention is given to popular configurations such as the ChipWhisperer-Lite, Nano, and Husky, which offer varying capabilities in terms of precision, flexibility, and ease of integration.
-
-The software environment is covered in detail, providing a breakdown of the ChipWhisperer directory structure and its Application Programming Interfaces (APIs) for both scopes and targets. Readers are guided through the steps required to set up, configure, and run fault injection experiments using voltage and clock glitching techniques.
+Chapter~3 of this thesis introduces the complete setup of a fault injection laboratory using ChipWhisperer. It discusses the hardware components—including various scope and target boards—and explains how each contributes to the overall experimentation process. Special attention is given to popular configurations such as the ChipWhisperer-Lite, Nano, and Husky, which offer varying capabilities in terms of precision, flexibility, and ease of integration.The software environment is covered in detail, providing a breakdown of the ChipWhisperer directory structure and its Application Programming Interfaces (APIs) for both scopes and targets. Readers are guided through the steps required to set up, configure, and run fault injection experiments using voltage and clock glitching techniques.
 
 In Chapter~4, the thesis replicates a state-of-the-art diagonal fault attack on AES-128 to demonstrate how theoretical attack models translate into practical exploitation. By injecting faults at strategic points in the encryption process, the experiments show how an attacker could compromise a secure system, even with limited access to internal states.
 
@@ -19,7 +20,7 @@ Chapter~5 applies these methods to a lesser-known cryptographic algorithm, BipBi
 
 Finally, Chapter~6 transitions the discussion to post-quantum cryptography (PQC), with a focus on Kyber, one of the leading candidates in the Post Quantum Cryptographic(PQC) standardization process of NIST . This chapter explores the challenges of preparing next-generation cryptographic algorithms for fault analysis and outlines a roadmap for future research.
 
-\section*{Contributions Of The Thesis}
+\section{Contributions Of The Thesis}
 
 The key contributions of this work are:
 \begin{itemize}

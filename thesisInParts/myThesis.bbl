@@ -95,6 +95,12 @@ M.~Hermelink et~al.
 {NewAE Technology Inc.}
 \newblock {\em Scope API — ChipWhisperer Documentation}, 2025.
 
+\bibitem[OC14]{flynnpaper}
+Colin O'Flynn and Zhizhang Chen.
+\newblock Chipwhisperer: An open-source platform for hardware embedded security
+  research.
+\newblock volume 8622, 04 2014.
+
 \bibitem[RCDB24]{10.1145/3603170}
 Prasanna Ravi, Anupam Chattopadhyay, Jan~Pieter D’Anvers, and Anubhab Baksi.
 \newblock Side-channel and fault-injection attacks over lattice-based

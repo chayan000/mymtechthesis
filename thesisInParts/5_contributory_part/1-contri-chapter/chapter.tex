@@ -75,7 +75,7 @@ Each of these targets includes features such as external clock input, adjustable
 The CWNano is a small and low-cost tool \ref{fig:nano_target} used to learn about hardware security. It has both a target microcontroller and a measurement unit on a single board, making it easy to use. The built-in STM32F030F4P6 microcontroller has 16~KB of flash and 4kB of SRAM, suitable for running simple cryptographic algorithms. The board supports power analysis using an 8-bit ADC with a sampling rate of up to 20~MS/s. It also features basic voltage glitching through a crowbar method. The Nano connects to a computer via USB and is controlled using the ChipWhisperer software suite. It does not support clock glitching and has a limited flash size, but it is ideal for beginners, students, and hobbyists exploring side-channel analysis and embedded security. More details about this can be found in the official documentation \cite{chipwhisperer_nano}.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.5\linewidth, height=0.5\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/CWNANO.png}
+    \includegraphics[width=0.8\linewidth, height=0.8\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/CWNANO.png}
     \caption{ChipWhisperer-Nano}
     \label{fig:nano_target}
 \end{figure}
@@ -86,14 +86,14 @@ The CWNano is a small and low-cost tool \ref{fig:nano_target} used to learn abou
 The CWLite is a compact and low-cost hardware tool designed to help users learn about hardware security. It combines a power measurement system and a microcontroller target on a single board, making it easy to use. This device \cite{chipwhisperer_lite_capture} can capture power traces with high speed and allows for glitching attacks like clock or voltage glitches. It is mainly used to perform and study side-channel attacks, such as breaking encryption by analyzing power usage. The board connects to a computer through USB and works with open-source ChipWhisperer software. Because of its simplicity and low price, it is widely used in education and research.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\linewidth, height=0.5\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/CWLITE.png}
+    \includegraphics[width=0.7\linewidth, height=0.5\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/CWLITE.png}
     \caption{ChipWhisperer-Lite with 32-bit ARM target}
     \label{lite_target}
 \end{figure}\newline
 It is offered in four hardware options \cite{chipwhisperer_lite2} to suit different learning and testing needs. The first version is the CWLite-XMEGA, which includes both the capture hardware and an ATxmega128D4 microcontroller on a single board. The second option, CWLITE-ARM, features an STM32F3 ARM Cortex-M4 microcontroller instead of the XMEGA, also on a single board as shown in figure \ref{lite_target}. 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\linewidth, height=0.5\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/cwlitw_2_part.png}
+    \includegraphics[width=0.7\linewidth, height=0.6\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/cwlitw_2_part.png}
     \caption{ChipWhisperer-Lite 2-Part version connections}
     \label{fig:lite_2_part}
 \end{figure}\newline
@@ -104,7 +104,7 @@ The CWLite Standalone is a specialized capture board designed for side-channel p
 \subsection{ChipWhisperer-Husky}
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\linewidth, height=0.5\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/cwhuskyannoted.png}
+    \includegraphics[width=0.7\linewidth, height=0.7\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/cwhuskyannoted.png}
     \caption{ChipWhisperer-Husky with SAM4S target}
     \label{fig:husky_target}
 \end{figure}
@@ -118,7 +118,7 @@ The ChipWhisperer platform includes a flexible and scriptable software environme
 Installing ChipWhisperer on Windows is straightforward with the provided \.exe file \cite{chipwhisperer2025}. Once the download is complete, double-click the .exe file to launch the installer. If a security prompt appears, allow the installation to proceed. The ChipWhisperer Setup Wizard will open—follow the on-screen instructions by clicking "Next." Choose a destination folder or use the default option, then continue by clicking "Next" again. After the installation is finished, click "Finish" to complete the setup.
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.9\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/executable file.png}
+    \includegraphics[width=1\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/executable file.png}
     \caption{Chipwhisperer official GitHub page}
     \label{fig:windows_installation}
 \end{figure}

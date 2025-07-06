@@ -39,7 +39,7 @@ The diagram \ref{fig:kyber_overview} taken from \cite{10.1145/3603170} illustrat
 
 \end{figure}
 
-\section{Fault Injection in Kyber implementation using ChipWhisperer}
+\section{Fault Injection in Kyber using ChipWhisperer}
 The Kyber implementation utilized in this work originates from the official reference code submitted to the National Institute of Standards and Technology (NIST) as part of their Post-Quantum Cryptography (PQC) Standardization Project Round 3 \cite{nistpqc2020}. The reference implementation is written in portable C and primarily designed for algorithm validation and benchmarking on conventional computing platforms.
 
 To adapt the Kyber implementation for hardware-based fault analysis, the codebase was modified to support the SimpleSerial v2 protocol. SimpleSerial provides a lightweight and deterministic serial communication interface, commonly used with side-channel and fault injection tools like ChipWhisperer. Integration involved encapsulating key Kyber operations, including \texttt{crypto\_kem
