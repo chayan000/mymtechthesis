@@ -11,7 +11,7 @@
  
  By documenting each step of the setup process, this chapter aims to provide a practical guide for researchers and practitioners who wish to replicate or build upon this work. Whether the goal is to explore new fault injection strategies, assess the resilience of embedded systems, or develop novel countermeasures, a clear understanding of the experimental foundation is critical. In doing so, this chapter contributes to the broader objective of advancing transparency, repeatability, and rigor in the field of hardware security research.
 %\section*{Techniques and analysis: Side-Channel Attacks Using ChipWhisperer }
-One of ChipWhisperer’s key strengths lies in its ability to perform highly controlled fault injection techniques, most notably voltage glitching and clock glitching. With voltage glitching, the platform can momentarily drop or distort the power supply to a target device, causing it to behave unpredictably, potentially skipping instructions or bypassing security checks. Clock glitching, on the other hand, involves inserting short, precisely-timed disturbances into the device’s clock signal. These glitches can disrupt the timing of operations, often triggering exploitable faults during critical processes like encryption or authentication. The fine-grained control over timing, width, and offset of these glitches makes ChipWhisperer exceptionally effective for exploring fault-induced vulnerabilities. Combined with its trace capture and analysis tools, these capabilities allow researchers to both induce and observe faults in real time, offering deep insight into how embedded systems respond under non-ideal operating conditions.
+One of ChipWhisperer’s key strengths lies in its ability to perform highly controlled fault injection techniques, most notably voltage glitching and clock glitching.The platform can momentarily change the power supply to the target device with voltage glitchingcausing it to behave unpredictably, potentially skipping instructions or bypassing security checks. On the other hand clock glitching works by introducing short, precisely-timed disturbances into the device’s clock signal. These glitches can disrupt the timing of instruction execution, often triggering exploitable faults during critical operations like encryption, decryption or authentication. The fine-grained control over timing, width, and offset of these glitches makes ChipWhisperer exceptionally effective for exploring fault-induced vulnerabilities. Combined with its trace capture and analysis tools, these capabilities allow researchers to both induce and observe faults in real time, offering deep insight into how embedded systems respond under non-ideal operating conditions.
 
   \begin{minipage}[b]{0.3\linewidth}
     \centering
@@ -34,9 +34,10 @@ One of ChipWhisperer’s key strengths lies in its ability to perform highly con
     PhyWhisperer setup
   \end{minipage}
 \section{ChipWhisperer Hardware Platform}
-The ChipWhisperer platform is made up of specialized hardware designed to carry out side-channel analysis and fault injection on embedded devices. Its hardware setup is typically divided into two main parts: scope boards, which handle signal capture and glitching, and target boards, which run the code being tested. When used together, these components form a complete and flexible environment for testing the security of cryptographic systems and exploring hardware vulnerabilities.
+The chipwhisperer hardware platform is specialized to carry out side channel attacks and failt injection attacks on embedded systems. Its hardware setup can be typically devided into two main parts. One is scope boards and another one is target boards.
+scope boards handle signal capture and glitching, and target boards run the code being tested. When used together, these components form a complete and flexible environment for testing the security of cryptographic systems and exploring hardware vulnerabilities.
 \subsection{Scope Boards (Capture Hardware)}
-Scope boards are at the heart of ChipWhisperer's side-channel capture capabilities. They serve as the interface between the host computer and the target device, enabling the collection of high-resolution power traces or electromagnetic emissions during cryptographic operations. These boards also provide fine-grained control over clock generation, triggering, and synchronization.
+The heart of chipwhisperer's capabilities is the scope board. They serve as the interface between the host computer and the target device. This collection of high-resolution power traces or electromagnetic emissions during cryptographic operations are helpful for analysis. These boards also provide fine-tuned control over clock generation, triggering, and synchronization.
 
 A popular example is the ChipWhispererLite(CWLite), an all-in-one board combining scope and target functionality, ideal for students and researchers. ChipWhispererHusky(CWHusky) offer higher sampling rates, more precise timing, and expanded features such as fault injection support.
 Key features of scope boards:
@@ -72,7 +73,7 @@ Each of these targets includes features such as external clock input, adjustable
 
 
 \subsection{Integrated Target on ChipWhisperer-Nano}
-The CWNano is a small and low-cost tool \ref{fig:nano_target} used to learn about hardware security. It has both a target microcontroller and a measurement unit on a single board, making it easy to use. The built-in STM32F030F4P6 microcontroller has 16~KB of flash and 4kB of SRAM, suitable for running simple cryptographic algorithms. The board supports power analysis using an 8-bit ADC with a sampling rate of up to 20~MS/s. It also features basic voltage glitching through a crowbar method. The Nano connects to a computer via USB and is controlled using the ChipWhisperer software suite. It does not support clock glitching and has a limited flash size, but it is ideal for beginners, students, and hobbyists exploring side-channel analysis and embedded security. More details about this can be found in the official documentation \cite{chipwhisperer_nano}.
+The CWNano is a small and low-cost tool \ref{fig:nano_target} used to learn about hardware security. It has both a target microcontroller and a measurement unit on a single board, making it easy to use. The built-in STM32F030F4P6 microcontroller has 16~KB of flash and 4kB of SRAM, suitable for running simple cryptographic algorithms. The board supports power analysis using an 8-bit ADC with a sampling rate of up to 20~MS/s. CWNANO also features the capability of basic voltage glitching through a crowbar method. The Nano device connects to a computer via the USB and it is controlled by the computer using the ChipWhisperer software suite. CWNANO does not support clock glitching feature and has a limited size for flash, but it is ideal for beginners, students, and hobbyists exploring side-channel analysis and embedded security. More details about this can be found in the official documentation \cite{chipwhisperer_nano}.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\linewidth, height=0.8\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/CWNANO.png}
@@ -83,22 +84,22 @@ The CWNano is a small and low-cost tool \ref{fig:nano_target} used to learn abou
 
 
 \subsection{ChipWhisperer-Lite}
-The CWLite is a compact and low-cost hardware tool designed to help users learn about hardware security. It combines a power measurement system and a microcontroller target on a single board, making it easy to use. This device \cite{chipwhisperer_lite_capture} can capture power traces with high speed and allows for glitching attacks like clock or voltage glitches. It is mainly used to perform and study side-channel attacks, such as breaking encryption by analyzing power usage. The board connects to a computer through USB and works with open-source ChipWhisperer software. Because of its simplicity and low price, it is widely used in education and research.
+The CWLite is a very compact and low-cost hardware tool. It is designed to help users who are interested to learn about hardware security. It combines a power measurement system and a microcontroller target on a single board, which makes it easy to use. This device \cite{chipwhisperer_lite_capture} can capture power traces with high speed. It allows for glitching attacks like clock or voltage glitches. It is mainly used to perform side-channel attacks, such as breaking encryption or decryption by analyzing power usage pattern. The board connects to a computer through the USB and it works with open-source ChipWhisperer software. Because of its simplicity and low cost nature, it is widely used in education and research.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.7\linewidth, height=0.5\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/CWLITE.png}
     \caption{ChipWhisperer-Lite with 32-bit ARM target}
     \label{lite_target}
 \end{figure}\newline
-It is offered in four hardware options \cite{chipwhisperer_lite2} to suit different learning and testing needs. The first version is the CWLite-XMEGA, which includes both the capture hardware and an ATxmega128D4 microcontroller on a single board. The second option, CWLITE-ARM, features an STM32F3 ARM Cortex-M4 microcontroller instead of the XMEGA, also on a single board as shown in figure \ref{lite_target}. 
+CWLite is offered in four hardware options \cite{chipwhisperer_lite2} to suit different and testing needs. The first version is the CWLite-XMEGA. It includes both the capture hardware and an ATxmega128D4 microcontroller target on a single board. The second option is CWLite-ARM. It features an STM32F3 ARM Cortex-M4 microcontroller target instead of the XMEGA target, on a single board as shown in figure \ref{lite_target}. 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.7\linewidth, height=0.6\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/cwlitw_2_part.png}
     \caption{ChipWhisperer-Lite 2-Part version connections}
     \label{fig:lite_2_part}
 \end{figure}\newline
-The CWLite 2-Part version as shown in figure \ref{fig:lite_2_part} separates the capture and target sections into two distinct boards, connected via SMA and 20-pin IDC cables. This modular design allows users to easily swap or upgrade target devices, enhancing flexibility for various testing scenarios. The capture board features a 10-bit ADC with a maximum sample rate of 105 MS/s, adjustable gain up to +55\,dB, and supports both voltage and clock glitching with fine-grained control. The target board includes an ATxmega128D4 microcontroller, suitable for implementing and analyzing cryptographic algorithms. This two-part configuration is ideal for users seeking a versatile and open-source platform for embedded hardware security research.\newline
-The CWLite Standalone is a specialized capture board designed for side-channel power analysis and fault injection experiments. Unlike other variants, it does not include an integrated target microcontroller, providing flexibility to connect external targets via standard interfaces. It is ideal for researchers and educators who wish to interface with custom or third-party targets while utilizing ChipWhisperer's powerful capture and analysis capabilities.
+The CWLite 2-Part version as shown in figure \ref{fig:lite_2_part} is different as it separates the capture and target sections into two distinct boards. THese parts are connected via SMA and 20-pin IDC cables. This modular design allows users to easily swap and upgrade target devices, that enhances the flexibility for various testing scenarios. The capture board features a 10-bit ADC with a maximum sample rate of 105 MS/s, adjustable gain up to +55\,dB, and it supports both voltage and clock glitching with fine-tuned control. The target board includes an ATxmega128D4 microcontroller, that is suitable for implementing and analyzing various cryptographic algorithms. This two-part configuration is ideal for the users seeking a versatile and open-source platform for carring out embedded hardware security research.\newline
+The CWLite Standalone version is a very specialized capture board specially designed for side-channel power analysis and fault injection experiments. Unlike the other variants, it does not include an integrated target microcontroller. It provides support for providing flexibility to connect compatible external targets via standard interfaces. It is ideal for researchers and educators who wish to work with custom or third-party targets like Raspberrypi while utilizing ChipWhisperer's powerful capture and analytical capabilities.
 
 
 \subsection{ChipWhisperer-Husky}
@@ -108,14 +109,14 @@ The CWLite Standalone is a specialized capture board designed for side-channel p
     \caption{ChipWhisperer-Husky with SAM4S target}
     \label{fig:husky_target}
 \end{figure}
-Together, the scope and target boards in the ChipWhisperer hardware ecosystem offer a comprehensive solution for conducting side-channel and fault injection attacks. Their modular, open-source nature makes them accessible to students, researchers, and engineers alike, and they are widely used in academic studies, industry evaluations, and security training environments.
+The scope and target boards together in the ChipWhisperer hardware ecosystem offer a complete solution for carrieng out fault injection attacks. Their modular,cost-effective, open-source nature makes them accessible to students, researchers, and engineers alike, and they are widely used in academic studies, industry evaluations, and security training environments.
 
 \section{Software Environment}
-The ChipWhisperer platform includes a flexible and scriptable software environment built primarily around Python and Jupyter Notebooks. This environment is well-suited for side-channel analysis and fault injection research, offering full control of the hardware and reproducibility. 
+The ChipWhisperer platform includes a flexible and programmable software environment primarily built around Python and Jupyter Notebooks. This environment is well-designed for learning and research on side-channel analysis and fault injection. It offers full control of the hardware and reproducibility of the results. 
 
- Setting up the ChipWhisperer software environment involves installing the necessary tools to interface with the hardware, control experiments, and analyze captured data. This section outlines the steps required to install the ChipWhisperer software stack using the recommended method.
+ Setting up the ChipWhisperer software is done by installing the necessary tools to interact with the hardware, control experiments through inputs, and analyze captured data. This section outlines the steps required to install and use the ChipWhisperer software stack using the recommended method.
 \subsubsection{For Windows :}
-Installing ChipWhisperer on Windows is straightforward with the provided \.exe file \cite{chipwhisperer2025}. Once the download is complete, double-click the .exe file to launch the installer. If a security prompt appears, allow the installation to proceed. The ChipWhisperer Setup Wizard will open—follow the on-screen instructions by clicking "Next." Choose a destination folder or use the default option, then continue by clicking "Next" again. After the installation is finished, click "Finish" to complete the setup.
+Installation of ChipWhisperer on Windows computers is straightforward and easy with the provided \.exe file \cite{chipwhisperer2025}. Once the download is complete, double-click the .exe file to launch the installer. If a security prompt appears, allow the installation to proceed. The ChipWhisperer Setup Wizard will open—follow the on-screen instructions by clicking "Next." Choose a destination folder or use the default option, then continue by clicking "Next" again. After the installation is finished, click "Finish" to complete the setup.
 \begin{figure}[h]
     \centering
     \includegraphics[width=1\linewidth]{/home/cp07/mymtechthesis/thesisInParts/images/executable file.png}
@@ -183,35 +184,33 @@ jupyter notebook .
 \end{lstlisting}
 
 \subsection{Directory Structure}
-The ChipWhisperer framework is a comprehensive toolkit for side-channel power analysis and glitching attacks. Its directory structure is designed to support both hardware interfacing and educational experimentation. Understanding this structure is key to navigating the project efficiently, especially when working with Jupyter notebooks or compiling firmware.
+The ChipWhisperer framework is a complete set of toolkit for side-channel power analysis and glitching attacks. Its directory structure is designed to support both hardware interfacing and educational experimentation.The key to navigate the project efficiently is to understand the structure of the directoris present, especially when working with Jupyter notebooks or compiling firmware.
 
 Here’s a breakdown of the most relevant parts:
 
 \subsection*{jupyter/ Directory :}
-One of the most user-friendly components of the ChipWhisperer project is the \texttt{jupyter/} directory. This folder contains a wide range of Jupyter Notebooks designed to guide users through hands-on tutorials and experiments.
+One of the most useful and user-friendly components of the ChipWhisperer project is the \texttt{jupyter/} directory. This folder contains a wide range of Jupyter Notebooks created to guide users through various hands-on tutorials and experiments.
 
-These notebooks provide interactive lessons in topics such as: Side-channel analysis, Cryptographic attacks, Glitching techniques
-The content within the \texttt{jupyter/} directory is well-organized into subfolders, such as:
-
-The Jupyter directory in ChipWhisperer includes several folders designed to support learning and experimentation. The \texttt{demos} folder contains simple, hands-on notebooks meant for beginners. These notebooks introduce key concepts like power analysis and fault injection through guided examples. The \texttt{courses} folder offers more structured content, similar to academic classes, with lecture-style explanations and lab exercises for deeper learning. The \texttt{setupscripts} folder provides example scripts and configurations that demonstrate different experiments and usage scenarios for ChipWhisperer hardware. Together, these resources help users understand and explore various aspects of side-channel analysis and hardware security.
+These notebooks provide interactive lessons in topics such as Side-channel analysis, Cryptographic attacks, Glitching techniques
+The content within the \texttt{jupyter/} directory is well-organized into some subfolders, such as:
+ The \texttt{demos} folder contains simple, hands-on notebooks built for beginners. These notebooks introduce the key concepts like power analysis and fault injection through some guided examples. The \texttt{courses} folder offers more structured content, similar to academic classes, with lecture-style explanations and lab exercises for deeper learning.Another folder, the \texttt{setupscripts} folder provides example scripts and configurations that shows different experiments and usage scenarios of ChipWhisperer hardware. These resources together can help users understand and explore various aspects of side-channel analysis and hardware security.
 \subsection*{firmware/ Directory:}
-The \texttt{firmware/} directory in the ChipWhisperer repository contains all the source code necessary to build firmware for a variety of supported target devices. This firmware is essential for running side-channel analysis and fault injection experiments, as it enables precise control and repeatable behavior during cryptographic operations on the Device Under Test (DUT).
+The \texttt{firmware/} directory in the ChipWhisperer repository contains all the source codesthat are necessary to build firmwares for all of the supported target devices. These firmwares are essential for running side-channel analysis and fault injection experiments. it enables precise control and repeatable behavior during cryptographic operations on the Device Under Test (DUT).
 
-The \texttt{firmware/} folder is organized into several subdirectories that correspond to specific microcontroller families, target boards, or cryptographic examples. \texttt{firmware/mcu} contains Cryptographic firmware examples such as AES and RSA with SimpleSerial protocol support for host-target communication.
+The \texttt{firmware/} folder is also organized into several subdirectories like the \texttt{jupyter/} directory, that correspond to specific microcontroller families, target boards, or cryptographic examples. \texttt{firmware/mcu} directory contains Cryptographic firmware examples such as AES and RSA with SimpleSerial protocol support for the communication between host and target.
 
 \subsection{Scope API}
-The \texttt{scope} object in ChipWhisperer is used to manage the capture and glitching operations of the hardware.The official documentation \cite{chipwhisperer_scope_api} provides a comprehensive overview of the scope API, detailing how to configure the hardware, capture traces, and perform glitching operations. The scope API is designed to be intuitive and flexible, allowing users to easily set up their experiments and interact with the ChipWhisperer hardware.
+The \texttt{scope} object in ChipWhisperer is used to manage the capture and glitching operations of the hardware.The official documentation \cite{chipwhisperer_scope_api} provides an overall overview of the scope API. IT provides all the detailings of how to configure the hardware, capture traces, and perform glitching operations. The scope API is designed to be intuitive and self explanatory in nature, allowing users to easily set up their experiments and interact with the ChipWhisperer hardware.
 
-To create a \texttt{scope} object,  the 
-\texttt{chipwhisperer.scope()} function is the easiest approach to use. This function connects to a ChipWhisperer device and returns an instance of the appropriate scope object:
+The first step is to create a scope object.To create a \texttt{scope} object, the \texttt{chipwhisperer.scope()} function is the simple approach to use. This function connects to a ChipWhisperer device and returns an instance of the appropriate scope object:
 
 \begin{lstlisting}[language=Python]
 import chipwhisperer as cw
 scope = cw.scope()
 \end{lstlisting}
 
-There are two types of \texttt{scope} : OpenADC for \texttt{CWLite/Husky} and CWNano for \texttt{CWNano}. The choice of scope depends on the specific hardware being used.
-The \texttt{scope} object provides various properties and methods to configure the hardware, capture traces, and perform glitching operations. Here are some of the key properties and methods:
+There are two types of \texttt{scope} objects present. These are OpenADC for \texttt{CWLite/Husky} and CWNano for \texttt{CWNano}. The choice of scope depends on the specific hardware being used based on the specific requirements of the user.
+The \texttt{scope} object provides various properties and methods to configure the hardware, capture traces, and perform glitching operations in the target device. Here are some of the key properties and methods:
 \subsubsection{\textbf{\texttt{scope.adc.samples} :}}
 This property sets the number of samples to capture by the  ADC (Analog-to-Digital Converter). It is useful for determining the length of the captured trace.
 maximum number of samples for Lite is 244000 and for Husky is 131070
@@ -308,15 +307,15 @@ The \texttt{capture(poll\_done=False)} function starts the process of capturing 
 The \texttt{get\_last\_trace(as\_int=False)} function returns the most recent trace captured by the scope. By default, it provides the data as a NumPy array of floating-point values scaled between \texttt{-0.5} and \texttt{0.5}. If the parameter \texttt{as\_int} is set to \texttt{True}, the function returns the trace as raw integer values, which are the direct outputs from the ADC of the ChipWhisperer device. The resolution of these values depends on the hardware: for example, the ChipWhisperer-Lite uses a 10-bit ADC, the Nano uses 8-bit, and the Husky can use either 8-bit or 12-bit ADC data.
 
 \subsection{Target API}
-The \texttt{target} object in ChipWhisperer is used to manage the device under test (DUT) and perform operations such as loading firmware, executing commands, and capturing traces. It provides a high-level interface for interacting with the target device.
-ChipWhisperer provides two classes for UART communication:
+The \texttt{target} object in ChipWhisperer is used to manage the device under test (DUT) and perform operations such as loading firmware, executing commands, and capturing traces. ChipWhisperer provides a high level interface for interacting with the target device.
+ChipWhisperer provides two classes for UART communication. These are:
 
 \begin{itemize}
-    \item Simple Serial Target (default)
+    \item Simple Serial Target
     \item Simple Serial V2 Target
 \end{itemize}
 
-The most straightforward way to create a target object in ChipWhisperer is by using the \texttt{cw.target} function. Here is a simple example:
+The most simple way to create a target object in ChipWhisperer is by using the \texttt{cw.target} function. Here is a simple example in python code:
 
 \begin{lstlisting}[language=Python]
 import chipwhisperer as cw
@@ -334,11 +333,11 @@ try:
     target = cw.target(scope, target_type)
 \end{lstlisting}
 
-This code initializes the ChipWhisperer scope and sets up the Simple Serial target.
+This code snippet initializes the ChipWhisperer scope and sets up the Simple Serial target.
 
-some useful methods and properties of the \texttt{Simple Serial V2 Target} object include:
+some of the most useful methods and properties of the \texttt{Simple Serial V2 Target} object include:
 \subsubsection{$target.flush() :$}
-The \texttt{flush()} function clears all data currently stored in the serial buffer. This is useful when you want to discard any previous or unwanted serial communication data before starting a new operation. It helps ensure that the buffer only contains fresh data relevant to the current task.
+The \texttt{flush()} function clears all data that are currently stored in the serial buffer. This is specially useful when you want to discard any previous or unwanted serial communication data before starting a new operation. It helps ensure that the buffer only contains fresh data relevant to the current task.
 
 \subsubsection{$target.simpleserial\_write(cmd, data) :$}
 This function sends a command and associated data to a target device using the SimpleSerial protocol. This function is typically used when communicating with firmware that implements cryptographic functions such as AES encryption. 

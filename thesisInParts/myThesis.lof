@@ -10,7 +10,7 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces ChipWhisperer-Lite with 32-bit ARM target\relax }}{16}{figure.caption.12}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces ChipWhisperer-Lite 2-Part version connections\relax }}{16}{figure.caption.13}%
 \contentsline {figure}{\numberline {3.4}{\ignorespaces ChipWhisperer-Husky with SAM4S target\relax }}{17}{figure.caption.14}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Chipwhisperer official GitHub page\relax }}{18}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Chipwhisperer official GitHub page\relax }}{19}{figure.caption.16}%
 \addvspace {10pt}
 \contentsline {figure}{\numberline {4.1}{\ignorespaces AES128 Power Trace on CWLite-ARM\relax }}{35}{figure.caption.35}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Power Trace of AES-128 with Clock Glitch at Start of Round 8\relax }}{37}{figure.caption.37}%
